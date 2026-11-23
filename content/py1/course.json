@@ -1,0 +1,1801 @@
+{
+ "id": "py1",
+ "code": "PY1",
+ "title": "Python Foundations",
+ "level": "Core · Sheetah Python",
+ "hours": 35,
+ "programme": "python",
+ "lang": "python",
+ "summary": "Everyone starts here. From your first print() to programs that ask, decide, repeat, remember and save: variables, input, decisions, loops, lists and dictionaries, functions and files. Real Python runs in your browser.",
+ "prereq": "Nothing: no coding or maths background is needed. About 14 and up, or 12–13 with a teacher.",
+ "outcomes": [
+  "Write and run Python programs that print, calculate and ask questions.",
+  "Store values in variables and build messages with f-strings.",
+  "Make decisions with if, elif, else, and/or/not and match-case.",
+  "Repeat work with while and for loops, and keep data in lists and dictionaries.",
+  "Write functions that take values in and give results back, and read Python’s error messages.",
+  "Tidy text, save data to files, and build Pocket Bank, an expense tracker."
+ ],
+ "levels": [
+  {
+   "id": "B",
+   "name": "Beginner",
+   "hours": 20,
+   "who": "First contact with code, or a non-tech learner who needs the useful core.",
+   "outcome": "Write small programs that ask, decide, repeat and save, with the lessons to lean on. Pocket Bank: add, list and total."
+  },
+  {
+   "id": "I",
+   "name": "Intermediate",
+   "hours": 35,
+   "who": "Most learners, and what PY2 and most streams expect.",
+   "outcome": "Read errors, handle messy input, and build Pocket Bank with categories, monthly totals and saving to a file."
+  }
+ ],
+ "levelNote": "PY1 stops at Intermediate because its depth continues in PY2 · Intermediate Python.",
+ "recommend": "B",
+ "pass": 80,
+ "upcoming": [],
+ "project": {
+  "title": "Pocket Bank: an expense tracker that saves to a file",
+  "brief": "Beginner: add, list and total expenses. Intermediate: categories, monthly totals and saving to a file. One brief, a checklist per level, hidden tests and three “explain your code” questions."
+ },
+ "exam": {
+  "questions": 30,
+  "tasks": 4,
+  "minutes": 75,
+  "pass": 70,
+  "attempts": 3,
+  "gapHours": 48,
+  "byLevel": {
+   "B": {
+    "questions": 25,
+    "tasks": 2,
+    "minutes": 50
+   },
+   "I": {
+    "questions": 30,
+    "tasks": 4,
+    "minutes": 75
+   }
+  }
+ },
+ "downloads": [],
+ "modules": [
+  {
+   "n": 1,
+   "title": "First programs",
+   "free": true,
+   "summary": "Print, numbers and maths, variables, input() and f-strings, and reading Python’s error messages. It ends with a bill for Ravi’s chai stall.",
+   "testInfo": "print, numbers and maths, variables, input() and f-strings, and reading errors",
+   "lessons": [
+    {
+     "id": "py1-1-1",
+     "num": "1.1",
+     "title": "Hello, Python",
+     "summary": "A program is a list of instructions Python runs from the top down. print() shows text on the screen; text goes inside quotes. Comments start with #.",
+     "minutes": 30,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Write and run a program that prints text.",
+      "Put text in quotes, and print numbers without them.",
+      "Print several lines, and a blank line.",
+      "Write a comment that Python skips."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a welcome sign"
+      ],
+      [
+       0,
+       1,
+       "print() shows things"
+      ],
+      [
+       0,
+       2,
+       "Text goes in quotes"
+      ],
+      [
+       1,
+       0,
+       "Top to bottom"
+      ],
+      [
+       1,
+       1,
+       "Comments: notes Python skips"
+      ],
+      [
+       1,
+       2,
+       "Capitals and brackets matter"
+      ]
+     ],
+     "tasks": [
+      "What does this program print?",
+      "Type exactly what this prints.",
+      "Put the lines in order so the board prints **Ravi’s Chai**, then a blank line, then **Chai ₹15**.",
+      "Fill the gaps so the program prints **Hello, Asha**.",
+      "This program should print the two prices, but it stops with an error. Fix it.",
+      "Change the board.",
+      "Write a program that prints this sign, exactly:"
+     ]
+    },
+    {
+     "id": "py1-1-2",
+     "num": "1.2",
+     "title": "Numbers and maths",
+     "summary": "Python is a calculator: + - * / for the usual sums, // and % for whole-number division and the remainder, ** for powers. Whole numbers are int, decimals are float, and round() tidies them.",
+     "minutes": 35,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Do sums with + - * / and brackets.",
+      "Use // and % for whole-number division and the remainder.",
+      "Tell an int from a float, and round a float.",
+      "Predict the order Python works a sum out in."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the bill in your head, done by Python"
+      ],
+      [
+       0,
+       1,
+       "The operators"
+      ],
+      [
+       0,
+       2,
+       "Order: brackets first"
+      ],
+      [
+       1,
+       0,
+       "int and float"
+      ],
+      [
+       1,
+       1,
+       "round() tidies decimals"
+      ],
+      [
+       1,
+       2,
+       "Decimals are a tiny bit off"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill in each variable’s value after its line runs.",
+      "Put the lines in order: work out the total of 4 chai at ₹15 and 2 samosas at ₹20, then print it.",
+      "Fill the gaps so it prints **2** full boxes and **5** cups left from 29 cups in boxes of 12.",
+      "The bill should be 4 cups of chai at ₹15 plus a ₹10 tip, which is ₹70. It prints 100. Fix it with brackets or a new order.",
+      "Change the program.",
+      "A movie is 135 minutes long. Write a program that prints how many **whole hours** that is on one line, and the **minutes left over** on the "
+     ]
+    },
+    {
+     "id": "py1-1-3",
+     "num": "1.3",
+     "title": "Variables",
+     "summary": "A variable is a name that holds a value: `price = 15`. The = means “store”, not “equals”. Variables can change, += adds to them, and every value has a type.",
+     "minutes": 35,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Store values in variables and use them in sums.",
+      "Update a variable, including with +=.",
+      "Choose clear names that Python accepts.",
+      "Find a value’s type with type()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a running total"
+      ],
+      [
+       0,
+       1,
+       "= means “store”"
+      ],
+      [
+       0,
+       2,
+       "Updating a variable"
+      ],
+      [
+       1,
+       0,
+       "Naming rules"
+      ],
+      [
+       1,
+       1,
+       "Every value has a type"
+      ],
+      [
+       1,
+       2,
+       "A name Python doesn’t know yet"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill in each value just after its line runs.",
+      "Arrange the lines so it prints Ravi’s takings for 25 cups at ₹15.",
+      "Fill the gaps to add 3 to the score and print it.",
+      "This should print 45 but stops with an error. Fix it.",
+      "Change the program.",
+      "Write a program with a variable **marks** set to 72 and **total** set to 80, then print the percentage, `marks / total * 100`."
+     ]
+    },
+    {
+     "id": "py1-1-4",
+     "num": "1.4",
+     "title": "input() and f-strings",
+     "summary": "input() asks the person a question and gives back what they typed, always as text. int() and float() turn it into a number. f-strings put values inside text: f\"Total: {total}\".",
+     "minutes": 40,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Ask a question with input() and store the answer.",
+      "Turn typed text into a number with int() or float().",
+      "Build a message with an f-string, including money to 2 decimal places.",
+      "Spot the “text plus number” mistake and fix it."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a program that talks back"
+      ],
+      [
+       0,
+       1,
+       "input() always gives text"
+      ],
+      [
+       0,
+       2,
+       "int() needs digits"
+      ],
+      [
+       1,
+       0,
+       "f-strings"
+      ],
+      [
+       1,
+       1,
+       "Money to 2 places"
+      ],
+      [
+       1,
+       2,
+       "Text plus a number"
+      ]
+     ],
+     "tasks": [
+      "The person types **4**. What does this print?",
+      "The person types **Asha** then **17**. Fill in each value after its line runs.",
+      "Arrange a program that asks for a price and prints it with 18% GST added. Use 100 to test it: it should print **118.0**.",
+      "Fill the gaps so the person types their name and sees **Welcome, Asha!**",
+      "The program should say **You have 7 days left** when the person types 7. Fix it.",
+      "Change the program.",
+      "Write a program that asks **Your name? ** and **Your age? **, then prints **Asha, next year you will be 18** for Asha, 17."
+     ]
+    },
+    {
+     "id": "py1-1-5",
+     "num": "1.5",
+     "title": "Build it: the chai stall bill",
+     "summary": "A brief and hidden tests, no step-by-step instructions: plan it, then build a bill that asks for cups of chai and samosas and prints the total.",
+     "minutes": 35,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Plan a program before writing it.",
+      "Combine input(), int(), variables, maths and f-strings in one program.",
+      "Test your program with your own inputs."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Ravi’s brief"
+      ],
+      [
+       0,
+       1,
+       "Plan first"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the program in order.",
+      "Build the bill. It asks **Cups of chai? ** then **Samosas? **, and prints exactly:"
+     ]
+    },
+    {
+     "id": "py1-1-6",
+     "num": "1.6",
+     "title": "Reading error messages",
+     "summary": "An error message is Python telling you exactly where it got stuck. Read it from the bottom: the last line names the error, the line above shows the code, and the File line gives the line number.",
+     "minutes": 40,
+     "free": true,
+     "level": "I",
+     "objectives": [
+      "Read a traceback: error type, message, and line number.",
+      "Tell a SyntaxError (can’t read it) from a runtime error (stopped while running).",
+      "Fix NameError, TypeError, ValueError and ZeroDivisionError.",
+      "Use a small, repeatable method for any error."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Errors are directions"
+      ],
+      [
+       0,
+       1,
+       "Two kinds of error"
+      ],
+      [
+       0,
+       2,
+       "The line number can be one off"
+      ],
+      [
+       1,
+       0,
+       "Read, locate, explain, fix, rerun"
+      ],
+      [
+       1,
+       1,
+       "Step through to see the values"
+      ]
+     ],
+     "tasks": [
+      "This program has an error on line 3. What appears on the screen **before** it stops?",
+      "Arrange a program that asks for a number of people and shares ₹600 between them. Leave out the lines that would cause errors.",
+      "Read the error and fix the program. It should print the area of a 5 by 3 rectangle.",
+      "Read the error and fix it. The program should print **Marks: 75**.",
+      "This one stops on bad input. Make it accept a price with paise, like **12.50**, and print it doubled.",
+      "Change the program so it never crashes.",
+      "Write a program that asks **Distance in km? ** and **Hours? ** and prints the speed with 1 decimal place, like **Speed: 42.5 km/h**. If hour"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title": "Decisions",
+   "free": false,
+   "summary": "True and False, comparisons, if, elif and else, combining conditions with and, or and not, and match-case. It ends with a cinema ticket price calculator.",
+   "testInfo": "comparisons, if/elif/else, and/or/not, and match-case",
+   "lessons": [
+    {
+     "id": "py1-2-1",
+     "num": "2.1",
+     "title": "True, False and comparisons",
+     "summary": "A comparison asks a question and gets True or False back. == asks “equal?”, != asks “different?”, and < > <= >= compare sizes. One = stores; two == compares.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Write comparisons with == != < > <= >=.",
+      "Say what a comparison gives back: True or False (a bool).",
+      "Tell = (store) from == (compare).",
+      "Compare text, and know that capitals matter."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the pass-or-fail check"
+      ],
+      [
+       0,
+       1,
+       "Six comparisons"
+      ],
+      [
+       0,
+       2,
+       "One = or two?"
+      ],
+      [
+       1,
+       0,
+       "Text comparisons"
+      ],
+      [
+       1,
+       1,
+       "Numbers typed in are text"
+      ],
+      [
+       1,
+       2,
+       "Decimals and =="
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill in each value after its line runs.",
+      "Arrange a program that asks for an age and prints **True** if the person can vote (18 or over).",
+      "Fill the gaps: print **True** when the password typed is exactly **chai123**.",
+      "This should print **True** when 40 is typed. It prints False. Fix it.",
+      "Change the program.",
+      "Write a program that asks **Temperature? ** (a whole number) and prints **True** if it is above 35, otherwise **False**."
+     ]
+    },
+    {
+     "id": "py1-2-2",
+     "num": "2.2",
+     "title": "if, elif and else",
+     "summary": "if runs a block of code only when a condition is True. else runs when it isn’t. elif checks more conditions in order, and the first True one wins. Blocks are marked by a colon and 4 spaces of indentation.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Write if, if/else and if/elif/else.",
+      "Indent blocks with 4 spaces, and end the line before a block with a colon.",
+      "Order elif conditions so the right one wins.",
+      "Trace which lines run for a given input."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: grades from marks"
+      ],
+      [
+       0,
+       1,
+       "Colon, then indent"
+      ],
+      [
+       0,
+       2,
+       "Indentation mistakes"
+      ],
+      [
+       1,
+       0,
+       "elif, in order"
+      ],
+      [
+       1,
+       1,
+       "Put the strictest test first"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Follow it for an order of 14 cups. Fill in the values after each line runs.",
+      "Arrange a program: ask for a number and print **Even** or **Odd**. Indent the lines inside the blocks.",
+      "Fill the gaps: the shop is open from 7 to 21 (whole hours).",
+      "It stops before running anything. Fix it so it prints **Big order** for more than 10 cups.",
+      "Change the program.",
+      "Write a ticket price program: ask **Age? **; children under 12 pay **₹100**, people 60 and over pay **₹120**, everyone else pays **₹200**. P"
+     ]
+    },
+    {
+     "id": "py1-2-3",
+     "num": "2.3",
+     "title": "and, or, not",
+     "summary": "and is True when both sides are True; or when at least one is; not flips True and False. Python can also chain a range check: 13 <= age <= 19.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Combine conditions with and and or.",
+      "Flip a condition with not.",
+      "Write range checks, including the chained form.",
+      "Avoid the `x == \"a\" or \"b\"` trap."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the discount rule"
+      ],
+      [
+       0,
+       1,
+       "and, or, not"
+      ],
+      [
+       0,
+       2,
+       "Range checks"
+      ],
+      [
+       1,
+       0,
+       "Each side is a full question"
+      ],
+      [
+       1,
+       1,
+       "not"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill in the values after each line runs.",
+      "Arrange: print **Weekend** if the day typed is Sat or Sun, otherwise **Weekday**.",
+      "Fill the gaps: a free delivery needs a bill of at least ₹500 **and** a distance under 5 km.",
+      "This says **Booking it!** even for **no**. Fix it so only **yes** or **y** books.",
+      "Change the rule.",
+      "Write a program: ask **Age? **. Print **Teen** if the age is 13 to 19 (both included), otherwise **Not a teen**."
+     ]
+    },
+    {
+     "id": "py1-2-4",
+     "num": "2.4",
+     "title": "Build it: cinema ticket prices",
+     "summary": "A brief and hidden tests: plan, then build a ticket price calculator with age groups, a Tuesday offer and a student discount.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan a program with several decisions.",
+      "Combine input(), comparisons, if/elif/else and and/or in one program.",
+      "Test edge cases: the ages right on a boundary."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Meena’s cinema"
+      ],
+      [
+       0,
+       1,
+       "Boundaries are where bugs live"
+      ]
+     ],
+     "tasks": [
+      "Put the steps in order.",
+      "Build the ticket calculator. It asks **Age? **, **Day? ** (Mon, Tue…) and **Student? ** (yes or no), and prints the price like **₹150**."
+     ]
+    },
+    {
+     "id": "py1-2-5",
+     "num": "2.5",
+     "title": "match-case",
+     "summary": "match checks one value against several cases, top to bottom, and runs the first that fits. | joins choices, and case _ catches everything else. It’s the tidy way to write menus.",
+     "minutes": 35,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Write a match statement with several cases.",
+      "Join choices with | and catch the rest with case _.",
+      "Choose between match and if/elif.",
+      "Add a condition to a case with if (a guard)."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a menu that reads like a menu"
+      ],
+      [
+       0,
+       1,
+       "| means “or” in a case"
+      ],
+      [
+       0,
+       2,
+       "Without case _, nothing may run"
+      ],
+      [
+       1,
+       0,
+       "Guards: a case with a condition"
+      ],
+      [
+       1,
+       1,
+       "Choosing"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Arrange a program that prints the price for a code: **C** ₹15, **S** ₹20, anything else **Not on the menu**.",
+      "For **X** this program prints nothing. Fix it so unknown codes print **Unknown code**.",
+      "Change the program.",
+      "Write a calculator: ask **First? **, **Operator? ** (+, -, * or /) and **Second? ** (whole numbers). Use match on the operator to print the "
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title": "Loops",
+   "free": false,
+   "summary": "while and for, range, totals and counters, break and continue. It ends with the number-guessing game, and Intermediate adds loops inside loops.",
+   "testInfo": "while, for and range, totals and counters, break and continue, and nested loops",
+   "lessons": [
+    {
+     "id": "py1-3-1",
+     "num": "3.1",
+     "title": "while loops",
+     "summary": "A while loop repeats its block for as long as a condition is True. Something inside the loop must change, so the condition turns False one day; otherwise the loop runs for ever.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Write a while loop with a condition, a colon and an indented body.",
+      "Make sure something in the loop changes, so it ends.",
+      "Use a while loop to keep asking until the answer is right.",
+      "Trace how many times a loop body runs."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: how long to save up?"
+      ],
+      [
+       0,
+       1,
+       "The shape of a while loop"
+      ],
+      [
+       0,
+       2,
+       "A loop that never ends"
+      ],
+      [
+       1,
+       0,
+       "Keep asking until it’s right"
+      ],
+      [
+       1,
+       1,
+       "Counting the rounds"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Follow the savings loop. Fill in the values after each line runs.",
+      "Arrange a program that keeps asking **Password? ** until the answer is **open sesame**, then prints **Come in**.",
+      "Fill the gaps: print the even numbers from 2 to 10.",
+      "This never stops. Fix it so it prints 1 to 5.",
+      "Change the program.",
+      "Write Ravi’s savings counter: ask **Goal? ** and **Saved each month? ** (whole numbers). Count the months until the savings reach the goal, "
+     ]
+    },
+    {
+     "id": "py1-3-2",
+     "num": "3.2",
+     "title": "for loops and range",
+     "summary": "A for loop goes through a sequence one item at a time: the numbers from range(), or the letters of a text. range(stop), range(start, stop) and range(start, stop, step) never include the stop number.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Loop a set number of times with for and range().",
+      "Use range(start, stop, step), and remember the stop is left out.",
+      "Loop over the letters of a text.",
+      "Choose between for (a known number of rounds) and while (until something happens)."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a times table for any number"
+      ],
+      [
+       0,
+       1,
+       "range() in three shapes"
+      ],
+      [
+       0,
+       2,
+       "Off by one"
+      ],
+      [
+       1,
+       0,
+       "Letters of a text"
+      ],
+      [
+       1,
+       1,
+       "for or while?"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Follow this loop. Fill in the values after each line runs.",
+      "Arrange a program that asks for a number and prints its times table from 1 to 10, like **4 x 1 = 4**.",
+      "Fill the gaps: print every letter of the name on its own line.",
+      "It should print 1 to 5 but prints 1 to 4. Fix it.",
+      "Change the program.",
+      "Write a program that asks **Number? ** and prints its times table from 1 to 12, like **6 x 12 = 72**."
+     ]
+    },
+    {
+     "id": "py1-3-3",
+     "num": "3.3",
+     "title": "Totals, counters and the biggest",
+     "summary": "Three patterns cover most loops: a running total (start at 0, add each value), a counter (start at 0, add 1 when something is true) and the biggest so far (keep the largest value seen). An average is the total divided by the count, if the count isn’t 0.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Keep a running total in a loop.",
+      "Count the values that pass a test.",
+      "Find the biggest or smallest value.",
+      "Work out an average safely."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a day’s sales at the chai stall"
+      ],
+      [
+       0,
+       1,
+       "Counting what passes a test"
+      ],
+      [
+       0,
+       2,
+       "Where the 0 goes"
+      ],
+      [
+       1,
+       0,
+       "The biggest so far"
+      ],
+      [
+       1,
+       1,
+       "An average, safely"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Follow the search for the biggest. Fill in the values after each line runs.",
+      "Arrange a program that asks for 4 marks and prints their total.",
+      "Fill the gaps: count how many words in the list start with **a**.",
+      "It should print the total of the sales, but prints only the last one. Fix it.",
+      "Change the program.",
+      "Write the stall summary: ask **How many sales? **, then ask **Sale? ** that many times (whole rupees). Print **Total: ₹N**, then **Biggest: "
+     ]
+    },
+    {
+     "id": "py1-3-4",
+     "num": "3.4",
+     "title": "break, continue and menus",
+     "summary": "break leaves a loop straight away; continue skips the rest of this round and goes on to the next. `while True:` with a break inside is how menus and “keep asking” programs are usually written.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Leave a loop early with break.",
+      "Skip a round with continue.",
+      "Write a menu with `while True:` and break.",
+      "Know that break and continue only work inside loops."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a menu that keeps going"
+      ],
+      [
+       0,
+       1,
+       "break in a for loop"
+      ],
+      [
+       1,
+       0,
+       "continue"
+      ],
+      [
+       1,
+       1,
+       "Keep asking until it’s valid"
+      ],
+      [
+       1,
+       2,
+       "Only inside loops"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that keeps asking **Word? ** and prints each word in capitals, until the word is **stop**.",
+      "Fill the gaps: add up the numbers typed until the user types **0**.",
+      "Python refuses to run this. Fix it so it leaves the loop when the answer is **no**.",
+      "Change the program.",
+      "Write a checker: keep asking **Age? ** until the age is between 1 and 120 (whole numbers, both included). For a bad age print **Not a real a"
+     ]
+    },
+    {
+     "id": "py1-3-5",
+     "num": "3.5",
+     "title": "Build it: the number-guessing game",
+     "summary": "A brief and hidden tests: the computer picks a secret number from 1 to 100 and the player guesses, told “Too low” or “Too high” each time, until they get it.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan a game loop before coding it.",
+      "Pick a random number with the random module.",
+      "Combine a while loop, input, if/elif/else, a counter and break in one program."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The guessing game"
+      ],
+      [
+       0,
+       1,
+       "What a game looks like"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the game in order.",
+      "Build the game."
+     ]
+    },
+    {
+     "id": "py1-3-6",
+     "num": "3.6",
+     "title": "Loops inside loops",
+     "summary": "A loop can sit inside another loop: the inner one runs all the way through for every round of the outer one. That makes grids, tables and patterns, and lets you compare every item with every other.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Trace a nested loop and count how many times the inner body runs.",
+      "Print a grid or pattern with print(…, end=\"\").",
+      "Use the outer loop’s variable inside the inner loop.",
+      "Search with a flag and stop both loops when you’re done."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a times-table grid"
+      ],
+      [
+       0,
+       1,
+       "Who goes round faster"
+      ],
+      [
+       1,
+       0,
+       "Patterns that grow"
+      ],
+      [
+       1,
+       1,
+       "Stopping both loops"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Arrange a program that asks **Size? ** and prints a square of # that many wide and tall.",
+      "It should print a triangle (1, 2, 3, 4 stars) but every row has 4 stars. Fix it.",
+      "Change the program.",
+      "Write a program that asks **Rows? ** and prints a number triangle: row 1 is **1**, row 2 is **1 2**, row 3 is **1 2 3**, and so on, with sin"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title": "Lists and dictionaries",
+   "free": false,
+   "summary": "Lists keep many values in order; dictionaries look values up by a name. Their methods, loops over them, and at Intermediate, comprehensions and sorting. It ends with a contact book.",
+   "testInfo": "lists, list methods, loops over lists, dictionaries, comprehensions and sorting",
+   "lessons": [
+    {
+     "id": "py1-4-1",
+     "num": "4.1",
+     "title": "Lists",
+     "summary": "A list keeps several values in order, inside square brackets. Each item has a position, its index, counting from 0. Negative indexes count from the end, len() says how many items there are, and a slice takes a piece.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Make a list with square brackets.",
+      "Get an item by its index, counting from 0, and the last with -1.",
+      "Find the length with len().",
+      "Take a slice like items[1:3]."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: this week’s chai orders"
+      ],
+      [
+       0,
+       1,
+       "Counting from 0"
+      ],
+      [
+       0,
+       2,
+       "One past the end"
+      ],
+      [
+       1,
+       0,
+       "A slice is a piece"
+      ],
+      [
+       1,
+       1,
+       "Changing an item"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: print the first and the last score.",
+      "It stops with an IndexError. Fix it so it prints the last day’s cups.",
+      "Change the program.",
+      "Make a list of these temperatures: 31, 33, 35, 34, 29. Then print the first, the last, and how many there are, each on its own line."
+     ]
+    },
+    {
+     "id": "py1-4-2",
+     "num": "4.2",
+     "title": "Changing lists: append, remove, sort",
+     "summary": "Lists grow and shrink: append adds to the end, insert adds at a position, remove takes out a value and pop takes out by position. sort puts the list in order, and sum, min and max work on lists of numbers.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Add items with append and insert.",
+      "Take items out with remove and pop.",
+      "Sort a list, and know that sort() changes it and gives back None.",
+      "Use sum, min, max and count on a list."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a shopping list that changes"
+      ],
+      [
+       0,
+       1,
+       "Empty lists and building up"
+      ],
+      [
+       0,
+       2,
+       "Removing what isn’t there"
+      ],
+      [
+       1,
+       0,
+       "sort() and sorted()"
+      ],
+      [
+       1,
+       1,
+       "sort() gives back None"
+      ],
+      [
+       1,
+       2,
+       "Quick sums"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Follow the list. Fill in the values after each line runs.",
+      "Arrange a program that asks for 3 marks, keeps them in a list, then prints the list sorted from lowest to highest.",
+      "It prints None. Fix it so it prints the sorted names.",
+      "Change the program.",
+      "Write a guest list: keep asking **Guest? ** until the answer is **done**, collecting the names. Then print **N guests** and the names sorted"
+     ]
+    },
+    {
+     "id": "py1-4-3",
+     "num": "4.3",
+     "title": "Looping over lists",
+     "summary": "for item in list: visits each item in turn. enumerate() adds the position, zip() walks two lists side by side, and a new list can be built from an old one by looping and appending. Don’t remove items from a list while looping over it.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Loop over a list with for.",
+      "Number the items with enumerate().",
+      "Walk two lists together with zip().",
+      "Build a new list from an old one, and avoid changing a list while looping over it."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a class report"
+      ],
+      [
+       0,
+       1,
+       "Numbered: enumerate()"
+      ],
+      [
+       0,
+       2,
+       "Side by side: zip()"
+      ],
+      [
+       1,
+       0,
+       "Filter into a new list"
+      ],
+      [
+       1,
+       1,
+       "Don’t change the list you’re looping over"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints a numbered list of tasks, starting at 1, like **1. Buy milk**.",
+      "It should keep only the passing marks (40 and up), but one low mark survives. Fix it by building a new list called **passed** and printing i",
+      "Change the program.",
+      "Two lists are given: `items = [\"chai\", \"samosa\", \"vada\"]` and `prices = [15, 20, 12]`. Ask **Budget? ** (whole rupees) and print each item y"
+     ]
+    },
+    {
+     "id": "py1-4-4",
+     "num": "4.4",
+     "title": "Dictionaries",
+     "summary": "A dictionary stores pairs: a key and its value, like a word and its meaning. Look a value up by its key, add or change pairs with d[key] = value, check with in, and use get() for keys that may be missing. Loop over items() to see every pair.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Make a dictionary of key: value pairs.",
+      "Look up, add and change values by key.",
+      "Avoid KeyError with in and get().",
+      "Loop over a dictionary’s keys, values and items.",
+      "Count things with a dictionary."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a menu with prices"
+      ],
+      [
+       0,
+       1,
+       "Keys that aren’t there"
+      ],
+      [
+       1,
+       0,
+       "Keys, values, items"
+      ],
+      [
+       1,
+       1,
+       "Counting with a dictionary"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Follow the counting loop. Fill in the values after each line runs.",
+      "Fill the gaps: print every student and their mark, like **Asha: 82**.",
+      "It crashes for an item that isn’t on the menu. Make it print **Not on the menu** instead.",
+      "Change the program.",
+      "Write a vote counter: keep asking **Vote? ** until the answer is **done**. Then print each option and its number of votes in the order first"
+     ]
+    },
+    {
+     "id": "py1-4-5",
+     "num": "4.5",
+     "title": "Build it: a contact book",
+     "summary": "A brief and hidden tests: a command menu that adds contacts, finds a phone number by name and lists everyone A to Z, kept in a dictionary.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan a menu program before coding it.",
+      "Keep data in a dictionary that lives across the rounds of a loop.",
+      "Combine a while True menu, input, if/elif, dictionary look-ups and sorted()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Om’s contact book"
+      ],
+      [
+       0,
+       1,
+       "Where the data lives"
+      ]
+     ],
+     "tasks": [
+      "Put the steps in order.",
+      "Build the contact book."
+     ]
+    },
+    {
+     "id": "py1-4-6",
+     "num": "4.6",
+     "title": "Comprehensions",
+     "summary": "A list comprehension builds a new list in one line: [expression for item in items if test]. Dictionary comprehensions do the same for dictionaries. They replace the “empty list, loop, append” pattern when it’s short.",
+     "minutes": 35,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Rewrite an append loop as a list comprehension.",
+      "Filter with an if inside a comprehension.",
+      "Build a dictionary with a comprehension.",
+      "Know when a plain loop is clearer."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: prices with GST, in one line"
+      ],
+      [
+       0,
+       1,
+       "With a filter"
+      ],
+      [
+       1,
+       0,
+       "Dictionary comprehensions"
+      ],
+      [
+       1,
+       1,
+       "Keep it readable"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: keep only the even numbers.",
+      "Change the program.",
+      "Given `marks = {\"Asha\": 82, \"Ravi\": 35, \"Meena\": 67, \"Om\": 28}`, use a dictionary comprehension to make **passed**: only the students with 4"
+     ]
+    },
+    {
+     "id": "py1-4-7",
+     "num": "4.7",
+     "title": "Sorting by a key, and data inside data",
+     "summary": "sorted() and sort() take a key= function that says what to sort by: the length, the second item, a value in a dictionary. Real data is often a list of dictionaries or a dictionary of lists, and you reach inside with two steps of brackets.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Sort with key= and reverse=True.",
+      "Sort a dictionary’s items by their values.",
+      "Keep records as a list of dictionaries.",
+      "Read and change values inside nested data."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a leaderboard"
+      ],
+      [
+       0,
+       1,
+       "Sorting pairs by their second part"
+      ],
+      [
+       1,
+       0,
+       "A list of dictionaries"
+      ],
+      [
+       1,
+       1,
+       "A dictionary of lists"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Arrange a program that prints the words sorted from longest to shortest.",
+      "It should print the team with the highest score, but prints the team that comes last alphabetically. Fix it.",
+      "Given `spends = [(\"food\", 120), (\"bus\", 30), (\"food\", 80), (\"books\", 250), (\"bus\", 30)]`, build a dictionary of totals per category, then pr"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title": "Functions and safe input",
+   "free": false,
+   "summary": "def, parameters and return, and where variables live; at Intermediate, try/except and input that checks itself. It ends with a unit converter.",
+   "testInfo": "def, parameters, return, scope, try/except and checking input",
+   "lessons": [
+    {
+     "id": "py1-5-1",
+     "num": "5.1",
+     "title": "Your own functions",
+     "summary": "def gives a name to a block of code. The block doesn’t run when Python reads it; it runs each time you call the function with brackets. Functions stop you writing the same lines twice.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Define a function with def, a name, brackets and a colon.",
+      "Call it with brackets, as many times as you like.",
+      "Tell the moment a function is defined from the moment it runs.",
+      "Spot repeated code that should be a function."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a receipt header you write once"
+      ],
+      [
+       0,
+       1,
+       "Defining isn’t running"
+      ],
+      [
+       0,
+       2,
+       "Forgetting the brackets"
+      ],
+      [
+       1,
+       0,
+       "Don’t repeat yourself"
+      ],
+      [
+       1,
+       1,
+       "Naming functions"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Arrange a program that defines **stars()** to print a line of 10 stars, then uses it above and below the word **MENU**.",
+      "It prints nothing. Fix it so it prints the welcome.",
+      "Change the program.",
+      "Define a function **rules()** that prints these three lines: **1. Be on time**, **2. Bring your ID**, **3. No phones**. Then print **Exam da"
+     ]
+    },
+    {
+     "id": "py1-5-2",
+     "num": "5.2",
+     "title": "Parameters and return",
+     "summary": "Parameters let a function take values in; return hands a value back to the line that called it. A function that only prints gives back None. Return a value when the caller needs to use it.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Give a function parameters and call it with arguments.",
+      "Send a value back with return, and use it.",
+      "Tell return from print.",
+      "Give a parameter a default value."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a GST calculator"
+      ],
+      [
+       0,
+       1,
+       "Several parameters"
+      ],
+      [
+       1,
+       0,
+       "print shows, return gives back"
+      ],
+      [
+       1,
+       1,
+       "return ends the function"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: a function that gives back the area of a rectangle.",
+      "It crashes with a TypeError. Fix the function so the total works.",
+      "Change the program.",
+      "Write a function **grade(marks)** that returns **\"A\"** for 80 and up, **\"B\"** for 60 to 79, **\"C\"** for 40 to 59 and **\"Fail\"** below 40. Sh"
+     ]
+    },
+    {
+     "id": "py1-5-3",
+     "num": "5.3",
+     "title": "Scope, and programs made of functions",
+     "summary": "Variables made inside a function are local: they exist only while it runs. Pass values in as parameters and get results out with return, rather than reaching for outside variables. Big programs are small functions that call each other.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Explain why a variable made in a function isn’t visible outside it.",
+      "Pass data in and out instead of using outside variables.",
+      "Split a program into small functions with a main part.",
+      "Call one function from another."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a bill made of small functions"
+      ],
+      [
+       0,
+       1,
+       "Local means local"
+      ],
+      [
+       1,
+       0,
+       "One job each"
+      ],
+      [
+       1,
+       1,
+       "Reading globals is fine; changing them isn’t"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "It stops with a NameError. Fix it so it prints 45.",
+      "Arrange a program with a helper **square(n)** and a **main()** that prints the squares of 1 to 3.",
+      "Write **average(nums)** that returns the average of a list of numbers, or **0** for an empty list. Sheetah calls it with lists you haven’t s",
+      "Write **count_vowels(word)** that returns how many vowels (a, e, i, o, u, small or capital) are in the word."
+     ]
+    },
+    {
+     "id": "py1-5-4",
+     "num": "5.4",
+     "title": "Build it: a unit converter",
+     "summary": "A brief and hidden tests: three conversion functions and a menu that uses them, for kilometres to miles, kilograms to pounds and Celsius to Fahrenheit.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan a program as functions plus a menu.",
+      "Write small functions that return results.",
+      "Test each function on its own, then the whole program."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Zoya’s converter"
+      ],
+      [
+       0,
+       1,
+       "Functions first"
+      ]
+     ],
+     "tasks": [
+      "Put the steps in order.",
+      "Build the converter."
+     ]
+    },
+    {
+     "id": "py1-5-5",
+     "num": "5.5",
+     "title": "try and except",
+     "summary": "try runs code that might fail; except catches a named error and runs a backup plan instead of crashing. Catch the specific error you expect, such as ValueError or ZeroDivisionError, and keep the try block small.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Catch an error with try and except.",
+      "Name the error you expect: ValueError, ZeroDivisionError, KeyError, FileNotFoundError.",
+      "Use else and finally when they help.",
+      "Keep the try block small, and avoid a bare except."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a program that doesn’t crash on “abc”"
+      ],
+      [
+       0,
+       1,
+       "How it flows"
+      ],
+      [
+       1,
+       0,
+       "Common errors to catch"
+      ],
+      [
+       1,
+       1,
+       "Don’t catch everything"
+      ],
+      [
+       1,
+       2,
+       "else and finally"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Arrange a program that asks **Number? ** and prints double it, or **Not a number** if the text isn’t a whole number.",
+      "It crashes when the count is 0. Make **share(total, people)** return **0** in that case instead, using try/except.",
+      "Write **to_number(text)** that returns the text as a float, or **None** if it isn’t a number. Sheetah calls it with texts you haven’t seen."
+     ]
+    },
+    {
+     "id": "py1-5-6",
+     "num": "5.6",
+     "title": "Input that checks itself",
+     "summary": "A reusable ask function keeps asking until the answer is valid: it strips spaces, catches text that isn’t a number, checks the range, and returns a clean value. Write it once and every program gets safe input.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Clean text input with strip() and lower().",
+      "Combine while True, try/except and a range check in one function.",
+      "Return a valid value from a loop.",
+      "Reuse one ask function for several questions."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: one function for every question"
+      ],
+      [
+       0,
+       1,
+       "return inside a loop"
+      ],
+      [
+       1,
+       0,
+       "Checking a word"
+      ]
+     ],
+     "tasks": [
+      "What does this print with the input shown?",
+      "It accepts ages like -5. Fix **ask_age()** so it keeps asking (printing **Please choose 1 to 120**) until the age is 1 to 120.",
+      "Write **ask_number(prompt, low, high)** as in the lesson: it strips the text, prints **Please type a number.** for non-numbers, **Please cho"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title": "Text, files and Pocket Bank",
+   "free": false,
+   "summary": "String methods and neat output for everyone; reading and writing files and CSV at Intermediate. Both levels end by building Pocket Bank, the course project.",
+   "testInfo": "string methods, formatting output, files and CSV",
+   "lessons": [
+    {
+     "id": "py1-6-1",
+     "num": "6.1",
+     "title": "Working with text",
+     "summary": "Text has methods: upper, lower, title and strip tidy it; replace swaps parts; split breaks it into a list and join glues a list back together; find, startswith and in search it. Text never changes in place: each method gives back a new text.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Tidy text with strip, lower, upper and title.",
+      "Swap parts with replace.",
+      "Split text into a list and join a list into text.",
+      "Search with in, startswith and find.",
+      "Remember to keep the result: text methods don’t change the original."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: tidy names from a messy form"
+      ],
+      [
+       0,
+       1,
+       "Text doesn’t change in place"
+      ],
+      [
+       0,
+       2,
+       "replace"
+      ],
+      [
+       1,
+       0,
+       "split and join"
+      ],
+      [
+       1,
+       1,
+       "Searching text"
+      ],
+      [
+       1,
+       2,
+       "A letter at a time"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: print the last name in capitals.",
+      "It prints the name unchanged. Fix it so the name is tidied to Title Case without spaces at the ends.",
+      "Change the program.",
+      "Write a phone checker: ask **Phone? **, remove spaces and dashes, then print **OK 9845012345** if what’s left is exactly 10 digits, or **Not"
+     ]
+    },
+    {
+     "id": "py1-6-2",
+     "num": "6.2",
+     "title": "Neat output: money and tables",
+     "summary": "Format specs inside f-string braces line output up: :.2f for two decimals, :, for thousands separators, :>8 and :<12 to pad to a width, right or left. Together they make receipts and tables that read well.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Show money with two decimals and thousands separators.",
+      "Pad text and numbers to a fixed width, left or right.",
+      "Print a lined-up table with a loop."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a receipt that lines up"
+      ],
+      [
+       0,
+       1,
+       "Indian grouping"
+      ],
+      [
+       1,
+       0,
+       "Padding to a width"
+      ],
+      [
+       1,
+       1,
+       "A header and a rule"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: show the price with exactly 2 decimals, right-aligned in 8 characters.",
+      "Change the program.",
+      "Ask **Amount? ** (a decimal) and print it as Indian rupees with commas and 2 decimals, like **₹12,345.50**."
+     ]
+    },
+    {
+     "id": "py1-6-3",
+     "num": "6.3",
+     "title": "Build it: Pocket Bank, first steps",
+     "summary": "The course project starts here. Plan Pocket Bank, an expense tracker, and build its skeleton: a command loop that adds expenses and quits. The project page adds the list and total commands, and more at Intermediate.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Read a project brief and turn it into a plan.",
+      "Choose how to keep the data: a list of expenses.",
+      "Build and test the skeleton of a command program."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Pocket Bank"
+      ],
+      [
+       0,
+       1,
+       "Keeping the data"
+      ]
+     ],
+     "tasks": [
+      "Put the steps in order.",
+      "Build the skeleton."
+     ]
+    },
+    {
+     "id": "py1-6-4",
+     "num": "6.4",
+     "title": "Reading and writing files",
+     "summary": "open() connects a program to a file. with open(name) as f: reads it and closes it again; \"w\" writes a new file (wiping the old one), \"a\" adds to the end. Lines read from a file end with a newline, so strip them. A missing file raises FileNotFoundError, which a first run should expect.",
+     "minutes": 45,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Read a whole file, or line by line, with with open(…).",
+      "Write a file with \"w\" and add to one with \"a\".",
+      "Strip the newline from each line.",
+      "Handle a file that doesn’t exist yet."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: notes that survive"
+      ],
+      [
+       0,
+       1,
+       "Line by line"
+      ],
+      [
+       1,
+       0,
+       "\"w\" and \"a\""
+      ],
+      [
+       1,
+       1,
+       "\"w\" wipes"
+      ],
+      [
+       1,
+       2,
+       "The first run"
+      ]
+     ],
+     "tasks": [
+      "What does this print? (notes.txt holds three lines: Buy milk, Call Ravi, Pay fees.)",
+      "It prints a blank line after every note. Fix it.",
+      "Change the program.",
+      "notes.txt may or may not exist. Read its lines into a list (an empty list if the file is missing), print **N notes**, then ask **New note? *"
+     ]
+    },
+    {
+     "id": "py1-6-5",
+     "num": "6.5",
+     "title": "CSV files and monthly totals",
+     "summary": "A CSV file is a table in text: one row per line, commas between the columns, often a header row first. Split each line on commas (or use the csv module), turn the amount into a number, and add up by category or by month. Write rows back with join or csv.writer.",
+     "minutes": 45,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Read a CSV file row by row, skipping the header.",
+      "Turn each row into values of the right types.",
+      "Total by category and by month (a date’s first 7 characters).",
+      "Write rows to a CSV file."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: where Asha’s money went"
+      ],
+      [
+       0,
+       1,
+       "Row by row"
+      ],
+      [
+       1,
+       0,
+       "By category, by month"
+      ],
+      [
+       1,
+       1,
+       "The csv module"
+      ],
+      [
+       1,
+       2,
+       "Writing a row"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: total all the amounts in spends.csv.",
+      "It crashes with a ValueError on the header row. Fix it.",
+      "Read spends.csv and print the total for each category, sorted A to Z, like **Food: ₹32.50**.",
+      "Ask **Month? ** (like 2026-11) and print **₹N.NN** spent that month from spends.csv (₹0.00 if none)."
+     ]
+    },
+    {
+     "id": "py1-6-6",
+     "num": "6.6",
+     "title": "Build it: Pocket Bank that remembers",
+     "summary": "Give Pocket Bank a memory: a load() function that reads pocketbank.csv at start (or starts empty on the first run) and a save() function that writes every expense back. The project page then adds categories, monthly totals and messy input.",
+     "minutes": 45,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Plan load and save as two functions.",
+      "Read a CSV into a list of expenses, coping with a first run.",
+      "Write the whole list back with \"w\" and a header."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Load at start, save after a change"
+      ],
+      [
+       0,
+       1,
+       "Why \"w\" is right here"
+      ]
+     ],
+     "tasks": [
+      "Put the steps in order.",
+      "Build load and save."
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1338 @@
+{
+ "id": "py2",
+ "code": "PY2",
+ "title": "Intermediate Python",
+ "level": "Core · Sheetah Python",
+ "hours": 40,
+ "programme": "python",
+ "lang": "python",
+ "summary": "From scripts to real programs: functions used properly, the right data structure for each job, errors handled, your own classes, tests that prove the code works, and a command line. It ends with a library manager built from classes, with tests and a command line.",
+ "prereq": "PY1 · Python Foundations at Intermediate: functions, lists and dictionaries, loops, files and try/except.",
+ "outcomes": [
+  "Write functions with defaults, named and any number of arguments, and pass functions around with key= and lambda.",
+  "Pick the right structure: tuples, sets, dictionaries and comprehensions, and the collections module.",
+  "Handle errors on purpose: catch, raise and define your own exceptions.",
+  "Design classes with methods, properties and inheritance, and use dataclasses.",
+  "Prove code works with tests, written first when it helps.",
+  "Build a command-line program that saves its data as JSON: the library manager."
+ ],
+ "levels": [
+  {
+   "id": "I",
+   "name": "Intermediate",
+   "hours": 28,
+   "who": "Anyone who finished PY1 and wants to write real programs; what PY3 and most streams expect.",
+   "outcome": "Write clean functions, classes and tests, and build the library manager with a command line."
+  },
+  {
+   "id": "M",
+   "name": "Master",
+   "hours": 40,
+   "who": "Future developers who want the depth behind the tools: closures, decorators, generators and design.",
+   "outcome": "Use closures, decorators, generators and dunder methods, and design the library manager to grow."
+  }
+ ],
+ "levelNote": "PY2 starts at Intermediate, where PY1 stops.",
+ "recommend": "I",
+ "pass": 70,
+ "upcoming": [
+  {
+   "n": 5,
+   "title": "Inheritance and design",
+   "summary": "Subclasses and super(), composition, dunder methods for comparing and sorting, and when not to use a class.",
+   "lessons": 6
+  },
+  {
+   "n": 6,
+   "title": "Tests, JSON and the command line",
+   "summary": "assert and pytest-style tests, test-first, JSON files, modules and a command line with argparse: the library manager’s shape.",
+   "lessons": 7
+  }
+ ],
+ "project": {
+  "title": "A library manager with classes, tests and a command line",
+  "brief": "Books, members and loans as classes, saved to a JSON file, driven from a command line, with tests that prove the rules (no lending a book that is out, fines on late returns). A checklist per level, hidden tests and three “explain your code” questions.",
+  "coming": true
+ },
+ "exam": {
+  "questions": 30,
+  "tasks": 4,
+  "minutes": 75,
+  "pass": 70,
+  "attempts": 3,
+  "gapHours": 48,
+  "byLevel": {
+   "I": {
+    "questions": 30,
+    "tasks": 4,
+    "minutes": 75
+   },
+   "M": {
+    "questions": 30,
+    "tasks": 5,
+    "minutes": 90
+   }
+  }
+ },
+ "downloads": [],
+ "modules": [
+  {
+   "n": 1,
+   "title": "Functions, properly",
+   "free": true,
+   "summary": "The functions of PY1, grown up: default and named arguments, several values handed back at once, any number of arguments, where variables live, and functions passed around as values with key= and lambda. It ends with the college library’s book tools, and Master adds closures and decorators.",
+   "testInfo": "default and keyword arguments, returning tuples and unpacking, *args and **kwargs, scope and the mutable default, key= and lambda, docstrings and type hints, and (Master) closures and decorators",
+   "lessons": [
+    {
+     "id": "py2-1-1",
+     "num": "1.1",
+     "title": "Default and named arguments",
+     "summary": "A parameter can have a default value, used when the call leaves it out: def fine(days, rate=2). A call can name its values, fine(days=5, rate=3), so the order no longer matters and the call says what each number means. Values by position come first, named ones after; in a def, parameters with defaults come after the ones without.",
+     "minutes": 40,
+     "free": true,
+     "level": "I",
+     "objectives": [
+      "Give parameters default values.",
+      "Call a function with named (keyword) arguments.",
+      "Follow the order rules for calls and defs.",
+      "Choose defaults that make the common call short."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: one fine() for every case"
+      ],
+      [
+       0,
+       1,
+       "Named arguments"
+      ],
+      [
+       1,
+       0,
+       "Positions first, names after"
+      ],
+      [
+       1,
+       1,
+       "Keyword-only parameters"
+      ],
+      [
+       1,
+       2,
+       "Good defaults"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps so **fine(4)** charges ₹2 a day and the second call charges ₹5 a day.",
+      "Python won’t run this. Fix the def so **title** comes first and **days** defaults to 14, and fix the calls to match.",
+      "Change the function.",
+      "Write **fine(days, rate=2, cap=100)** that returns days × rate, but never more than cap. Sheetah calls it with values you haven’t seen."
+     ]
+    },
+    {
+     "id": "py2-1-2",
+     "num": "1.2",
+     "title": "Handing back several values",
+     "summary": "return a, b hands back a tuple, and the call unpacks it into names: low, high = min_max(xs). One name per value, or Python stops. A function can return early when there is nothing to do, and one with no return gives back None.",
+     "minutes": 40,
+     "free": true,
+     "level": "I",
+     "objectives": [
+      "Return several values as a tuple.",
+      "Unpack the result into one name per value.",
+      "Return early for the empty or bad case.",
+      "Know that a function with no return gives None."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a shelf summary in one call"
+      ],
+      [
+       0,
+       1,
+       "One name per value"
+      ],
+      [
+       1,
+       0,
+       "Return early"
+      ],
+      [
+       1,
+       1,
+       "No return means None"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: unpack the result and print the lowest first.",
+      "It stops with ValueError. Fix the unpacking so it prints **20 days, fine ₹12, late: True**.",
+      "Write **parse_code(code)** that takes a book code like **\"FIC-0042\"** and returns the shelf and the number as a tuple, **(\"FIC\", 42)**. If t",
+      "Write **first_last(names)** that returns the first and the last name in A to Z order, as a tuple. For an empty list return **(None, None)**."
+     ]
+    },
+    {
+     "id": "py2-1-3",
+     "num": "1.3",
+     "title": "Any number of arguments",
+     "summary": "*args collects any number of values by position into a tuple: def total(*prices). **kwargs collects named values into a dictionary. In a call, * and ** do the reverse: total(*cart) spreads a list into separate values, and make(**settings) spreads a dictionary into named ones.",
+     "minutes": 40,
+     "free": true,
+     "level": "I",
+     "objectives": [
+      "Write a function that takes any number of values with *args.",
+      "Collect named extras with **kwargs.",
+      "Spread a list or dictionary into a call with * and **."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a total() that takes any number of prices"
+      ],
+      [
+       0,
+       1,
+       "Spreading a list into a call"
+      ],
+      [
+       1,
+       0,
+       "Named extras"
+      ],
+      [
+       1,
+       1,
+       "Spreading a dictionary"
+      ],
+      [
+       1,
+       2,
+       "All together"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: average any number of marks, then the marks in a list.",
+      "It stops with a TypeError. Fix the **call** so it prints **125**.",
+      "Write **longest(*titles)** that returns the longest title (the first one if two are equally long), or **None** when it is given none.",
+      "Write **make_book(title, author, **extra)** that returns a dictionary with **title**, **author** and any extra details given by name, in tha"
+     ]
+    },
+    {
+     "id": "py2-1-4",
+     "num": "1.4",
+     "title": "Where variables live",
+     "summary": "A name set inside a function is local: it exists only while the function runs and hides any outside name with the same spelling. Reading an outside name works, but setting one inside makes Python treat it as local everywhere in the function. Pass values in and return them, instead of reaching outside. A list or dict default is made once and shared by every call: use None.",
+     "minutes": 40,
+     "free": true,
+     "level": "I",
+     "objectives": [
+      "Tell local names from global ones.",
+      "Explain UnboundLocalError and fix it by passing and returning.",
+      "Know that a list passed in can be changed by the function.",
+      "Avoid list and dict defaults with None."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a loan counter that counts"
+      ],
+      [
+       0,
+       1,
+       "Setting an outside name"
+      ],
+      [
+       1,
+       0,
+       "A list passed in is the same list"
+      ],
+      [
+       1,
+       1,
+       "The mutable default"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It stops with UnboundLocalError. Fix it **without** `global`: pass count in and return the new count, so it prints **Borrowed Godan (1 today",
+      "Each call should start a new list, but the second call shows both tags. Fix the default.",
+      "Write **add_copy(stock, title, n=1)** that adds n to **stock[title]** (a new title starts from 0) and returns nothing: it changes the dictio"
+     ]
+    },
+    {
+     "id": "py2-1-5",
+     "num": "1.5",
+     "title": "Functions as values: key= and lambda",
+     "summary": "A function is a value: it can be stored in a name and handed to another function. sorted, min and max take key=, a function that says what to compare: sorted(titles, key=len). A lambda is a one-line function without a name, handy for key: sorted(books, key=lambda b: b[\"year\"]). A tuple key sorts by several things at once.",
+     "minutes": 45,
+     "free": true,
+     "level": "I",
+     "objectives": [
+      "Pass a function to sorted, min and max with key=.",
+      "Write a lambda for a key.",
+      "Sort newest first with reverse=True, and by two things with a tuple key."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the shelf in any order"
+      ],
+      [
+       0,
+       1,
+       "Pass the function, don’t call it"
+      ],
+      [
+       1,
+       0,
+       "A function in one line"
+      ],
+      [
+       1,
+       1,
+       "Newest first, and two keys"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: list the books newest first.",
+      "It stops with a TypeError. Fix the key so it prints the shortest title.",
+      "Change the program.",
+      "Write **oldest(books)** that returns the **title** of the oldest book, using **min** with a key.",
+      "Write **by_copies(books)** that returns the titles sorted by **copies**, most first; books with the same copies in title order A to Z."
+     ]
+    },
+    {
+     "id": "py2-1-6",
+     "num": "1.6",
+     "title": "Build it: the library’s book tools",
+     "summary": "Small functions that each do one job, with a docstring saying what and type hints saying what goes in and out, add up to a tool: format_book, search with a default field, and report, which sorts what search finds with a lambda key. A short program on top asks what to look for.",
+     "minutes": 50,
+     "free": true,
+     "level": "I",
+     "objectives": [
+      "Split a job into small functions that each do one thing.",
+      "Write docstrings and type hints.",
+      "Use defaults and key= in a real tool.",
+      "Test each function on its own, then together."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Meera’s search"
+      ],
+      [
+       0,
+       1,
+       "Docstrings and type hints"
+      ],
+      [
+       1,
+       0,
+       "Build order"
+      ]
+     ],
+     "tasks": [
+      "Put the build in order.",
+      "Write **format_book(book)** that returns one line like **Godan by Premchand (1936)**, with a docstring and type hints.",
+      "Build the whole tool. Keep the **books** list as given and write:"
+     ]
+    },
+    {
+     "id": "py2-1-7",
+     "num": "1.7",
+     "title": "Functions that make functions: closures and decorators",
+     "summary": "A function defined inside another can use the outer one’s names, even after the outer one has returned: a closure. make_fine(5) returns a fine function with its rate built in. nonlocal lets the inner function change such a name. A decorator is a function that takes a function and returns a wrapped one; @logged above a def applies it. The wrapper must pass every argument on and return the result.",
+     "minutes": 50,
+     "free": true,
+     "level": "M",
+     "objectives": [
+      "Return a function from a function, and explain what it remembers.",
+      "Use nonlocal to keep a count inside a closure.",
+      "Write a decorator with *args, **kwargs that returns the result.",
+      "Apply it with @."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: fines made to order, and calls that log themselves"
+      ],
+      [
+       0,
+       1,
+       "nonlocal"
+      ],
+      [
+       1,
+       0,
+       "Wrapping a function"
+      ],
+      [
+       1,
+       1,
+       "The wrapper must return"
+      ],
+      [
+       1,
+       2,
+       "Where you’ll meet them"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "The decorated function returns None. Fix the wrapper so it prints **calling fine** then **10**.",
+      "Write **make_counter(start=0)** that returns a function; each call of that function returns the next number: start + 1, start + 2, …",
+      "Write a decorator **shout** that makes a function’s text result upper case: with **@shout** above **def greet(name): return f\"hello {name}\"*"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title": "Data structures in depth",
+   "free": false,
+   "summary": "The right container for each job: tuples for fixed records, sets for “is it in?” and “which are in both?”, dictionaries for lookups, counts and groups, comprehensions to build them in one line, and Counter and defaultdict from the collections module. It ends with the library’s loans report, and Master adds generators.",
+   "testInfo": "tuples, unpacking, enumerate and zip, sets and set operations, dictionary get, grouping and nesting, list, dict and set comprehensions, Counter and defaultdict, and (Master) generators",
+   "lessons": [
+    {
+     "id": "py2-2-1",
+     "num": "2.1",
+     "title": "Tuples and unpacking",
+     "summary": "A tuple is a fixed record: values in an order that won’t change, like (member, title, days). Unpack it in a for loop to name each part. enumerate numbers the items, zip walks two lists side by side, a, b = b, a swaps, and first, *rest = … splits off the head. A tuple of one needs a comma.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Use tuples for fixed records and unpack them in loops.",
+      "Number items with enumerate and pair lists with zip.",
+      "Swap and split with unpacking, including *rest.",
+      "Write a one-item tuple correctly."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the loans book, read properly"
+      ],
+      [
+       0,
+       1,
+       "A tuple of one"
+      ],
+      [
+       1,
+       0,
+       "enumerate and zip"
+      ],
+      [
+       1,
+       1,
+       "Swap, and split off the head"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: print each title with its copies, numbered from 1.",
+      "It should print **1 Godan**, but prints **5 G**. Fix the tuple.",
+      "Write **late_loans(loans, limit=14)** that takes a list of **(member, title, days)** tuples and returns a list of **\"member: title (N days l",
+      "Write **pair_up(members, books)** that returns a list of **\"member gets book\"** texts, pairing the lists in order and stopping at the shorte"
+     ]
+    },
+    {
+     "id": "py2-2-2",
+     "num": "2.2",
+     "title": "Sets: unique, and in common",
+     "summary": "A set keeps each value once, in no particular order, and answers “is it in?” instantly. set(list) removes repeats. a | b is everything in either, a & b what is in both, a - b what is in a but not b, a ^ b what is in exactly one. An empty set is set(), because {} is an empty dictionary.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Remove repeats with set() and test membership with in.",
+      "Add and discard items.",
+      "Combine sets with |, &, - and ^.",
+      "Sort a set to print it, and start an empty one with set()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: who borrowed in both months"
+      ],
+      [
+       0,
+       1,
+       "No order, no positions"
+      ],
+      [
+       0,
+       2,
+       "{} is a dictionary"
+      ],
+      [
+       1,
+       0,
+       "Both, either, only one"
+      ],
+      [
+       1,
+       1,
+       "Sets of things that don’t change"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: print who borrowed in **both** months, A to Z.",
+      "It stops with an AttributeError. Fix it so it prints how many different members borrowed.",
+      "Write **compare(oct_names, nov_names)** that takes two lists (with repeats) and returns a tuple of three sorted lists: who came in **both** ",
+      "Write **has_repeats(codes)** that returns **True** if any book code appears more than once in the list."
+     ]
+    },
+    {
+     "id": "py2-2-3",
+     "num": "2.3",
+     "title": "Dictionaries in depth",
+     "summary": "d.get(key, default) looks up without failing, which makes counting one line: counts[x] = counts.get(x, 0) + 1. setdefault(key, []) groups values into lists. Dictionaries can hold dictionaries. sorted(d.items(), key=…) orders by value. a | b merges. Don’t add or remove keys while looping over the same dictionary.",
+     "minutes": 45,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Count with get(key, 0).",
+      "Group values into lists with setdefault.",
+      "Read and update nested dictionaries.",
+      "Sort a dictionary’s items by value, and merge two dictionaries.",
+      "Change a dictionary safely while looping."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: loans per member, and each member’s books"
+      ],
+      [
+       0,
+       1,
+       "Grouping into lists"
+      ],
+      [
+       0,
+       2,
+       "get without a default"
+      ],
+      [
+       1,
+       0,
+       "Dictionaries inside dictionaries"
+      ],
+      [
+       1,
+       1,
+       "Sorting by value, merging"
+      ],
+      [
+       1,
+       2,
+       "Changing while looping"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It stops with a TypeError. Fix the count.",
+      "It stops with RuntimeError. Fix it so the members with 0 loans are removed and it prints **{'Asha': 2}**.",
+      "Write **titles_by_member(loans)** that takes **(member, title, days)** tuples and returns a dictionary of member → list of their titles, in ",
+      "Write **top_borrowers(loans, n=2)** that returns the n members with the most loans as **(member, count)** tuples, most first; for equal coun"
+     ]
+    },
+    {
+     "id": "py2-2-4",
+     "num": "2.4",
+     "title": "Comprehensions",
+     "summary": "A comprehension builds a list, dictionary or set in one line: [expression for item in items if condition]. {k: v for …} builds a dictionary and {x for …} a set. A conditional expression, a if test else b, picks a value inside one. Keep them to one loop and one condition; anything more reads better as an ordinary loop.",
+     "minutes": 45,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Write list comprehensions with and without if.",
+      "Build dictionaries and sets with comprehensions.",
+      "Use a conditional expression inside one.",
+      "Know when a plain loop is clearer."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: four loops become four lines"
+      ],
+      [
+       0,
+       1,
+       "Picking a value: a if test else b"
+      ],
+      [
+       1,
+       0,
+       "{key: value for …}"
+      ],
+      [
+       1,
+       1,
+       "When to stop"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: a dictionary of title → days late (days over 14), for late loans only.",
+      "Change the program.",
+      "Write **labels(loans, limit=14)** that returns a list with **\"late\"** or **\"ok\"** for each **(member, title, days)** loan, in order, using o",
+      "Write **index_by_code(books)** that takes a list of book dictionaries (each has **code** and **title**) and returns a dictionary of code → t"
+     ]
+    },
+    {
+     "id": "py2-2-5",
+     "num": "2.5",
+     "title": "Counter and defaultdict",
+     "summary": "The collections module has ready-made dictionaries for the two jobs you keep writing by hand. Counter(items) counts everything at once and most_common(n) gives the top n. defaultdict(list) makes the empty list for a new key by itself, so grouping is groups[key].append(value); defaultdict(int) starts counts at 0.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Count with Counter and take the top with most_common.",
+      "Update and add Counters.",
+      "Group with defaultdict(list) and count with defaultdict(int).",
+      "Turn them back into plain dictionaries to print or save."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the most borrowed books in two lines"
+      ],
+      [
+       0,
+       1,
+       "Adding up counts"
+      ],
+      [
+       1,
+       0,
+       "Groups without setdefault"
+      ],
+      [
+       1,
+       1,
+       "Back to a plain dictionary"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: the two most borrowed titles.",
+      "Change the program.",
+      "Write **days_per_member(loans)** that returns a plain dictionary of member → total days on loan, using **defaultdict(int)**.",
+      "Write **word_counts(text, n=3)** that returns the n most common words in the text, ignoring capitals, as **(word, count)** pairs."
+     ]
+    },
+    {
+     "id": "py2-2-6",
+     "num": "2.6",
+     "title": "Build it: the loans report",
+     "summary": "Every structure of this module in one report. The loans come from loans.csv as tuples; Counter gives loans per member and the most borrowed books; defaultdict groups each member’s titles; a comprehension finds the late loans; a set difference finds members who never borrowed. The loan period is asked for, so next term’s rule needs no code change.",
+     "minutes": 55,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Choose a structure for each question.",
+      "Read a CSV file into a list of tuples.",
+      "Combine Counter, defaultdict, comprehensions and sets in one program.",
+      "Print a report whose order doesn’t depend on luck."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "One question, one structure"
+      ],
+      [
+       0,
+       1,
+       "Order on purpose"
+      ],
+      [
+       1,
+       0,
+       "CSV rows into tuples"
+      ]
+     ],
+     "tasks": [
+      "Put the report in order.",
+      "Build the loans report. Ask **Loan period in days? ** (a whole number), read **loans.csv** (member, title, days) and **members.txt** (one na"
+     ]
+    },
+    {
+     "id": "py2-2-7",
+     "num": "2.7",
+     "title": "Generators: one value at a time",
+     "summary": "A function with yield is a generator: calling it gives an object that produces values one at a time, pausing between them, instead of building a whole list. A generator expression, (x for x in xs), does the same in one line and can go straight into sum, max or any. Generators are lazy, so they handle files too big for memory, and they can be chained into pipelines. A generator can be used once.",
+     "minutes": 50,
+     "free": false,
+     "level": "M",
+     "objectives": [
+      "Write a generator function with yield.",
+      "Use generator expressions inside sum, max, any and all.",
+      "Chain generators into a pipeline that reads a file lazily.",
+      "Know that a generator runs out after one pass."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a ten-year loans log, read without loading it"
+      ],
+      [
+       0,
+       1,
+       "Generator expressions"
+      ],
+      [
+       1,
+       0,
+       "Generators feeding generators"
+      ],
+      [
+       1,
+       1,
+       "Used once"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It stops with ValueError. Fix it so it prints the total and then the longest loan.",
+      "Write a generator **clean(lines)** that yields each line stripped of spaces, skipping blank lines and lines that start with **#**.",
+      "Write a generator **records(lines)** that turns cleaned lines like **\"Asha,Godan,9\"** into **(member, title, days)** tuples with days as a n"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title": "Errors on purpose",
+   "free": false,
+   "summary": "Errors stop being surprises: catch only the ones you expect, with else and finally where they help; raise your own with clear messages; define a family of exceptions for the library; and check input at the edges so the inside of a program can trust its data. It ends with a loan desk that never crashes, and Master adds exception chains and context managers.",
+   "testInfo": "try, except, else and finally, catching specific errors, raise with a message, your own exception classes, input loops that check values, and (Master) raise … from and context managers",
+   "lessons": [
+    {
+     "id": "py2-3-1",
+     "num": "3.1",
+     "title": "Catching errors properly",
+     "summary": "try runs the risky lines; except ValueError: runs only if that error happens. Name the errors you expect, one except each or a tuple of them, and keep the message with as e. else runs when nothing went wrong, and finally runs every time. A bare except catches typos too and hides bugs.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Catch the specific errors you expect, and read the message with as e.",
+      "Handle several kinds of error, specific ones first.",
+      "Use else for the success path and finally for clean-up.",
+      "Avoid the bare except."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a fine calculator that survives the front desk"
+      ],
+      [
+       0,
+       1,
+       "Several kinds"
+      ],
+      [
+       0,
+       2,
+       "The bare except"
+      ],
+      [
+       1,
+       0,
+       "else: only when it worked"
+      ],
+      [
+       1,
+       1,
+       "finally: every time"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: catch only a bad number, and show its message.",
+      "It says **Please type a number** even for **5**. Catch only **ValueError**, show the fine in **else**, and fix the bug the bare except was h",
+      "Write **safe_int(text, default=0)** that returns the whole number in text (spaces allowed around it), or default if it isn’t one.",
+      "Write **copies_left(stock, title)** that returns **stock[title]**, or the text **\"No book called X\"** if the title isn’t a key. Use try/exce"
+     ]
+    },
+    {
+     "id": "py2-3-2",
+     "num": "3.2",
+     "title": "Raising errors",
+     "summary": "raise ValueError(\"days must be 0 or more\") stops a function that has been given something it can’t use, and says why. That beats printing a warning and returning None, which lets the caller carry on with nonsense. Check the inputs at the top, pick the error type that fits (TypeError for the wrong kind, ValueError for a bad value), and write the message for the person who will read it. A bare raise in an except passes the error on.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Raise ValueError and TypeError with clear messages.",
+      "Check a function’s inputs at the top.",
+      "Choose between raising and returning a special value.",
+      "Pass an error on with a bare raise after noting it."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a fine() that refuses nonsense"
+      ],
+      [
+       0,
+       1,
+       "Raise, don’t print"
+      ],
+      [
+       1,
+       0,
+       "The right type"
+      ],
+      [
+       1,
+       1,
+       "Pass it on"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It prints **bad days** and then crashes on None. Make **fine** raise **ValueError(\"days must be 0 or more\")** instead, so the try below catc",
+      "Write **check_days(days)** that raises **TypeError(\"days must be a whole number\")** if days isn’t an int, **ValueError(\"days must be 0 or mo",
+      "Write **take_copy(stock, title)** that takes one copy off **stock[title]** and returns how many are left. Raise **KeyError(title)** if the t"
+     ]
+    },
+    {
+     "id": "py2-3-3",
+     "num": "3.3",
+     "title": "Your own exceptions",
+     "summary": "class NotAvailable(Exception): pass makes a new kind of error with a name that says what went wrong at the library. Build a family: a LibraryError for the whole desk, and NotAvailable and NotAMember under it, so except LibraryError: catches them all while except NotAvailable: catches one. Raise them with a message like any other error.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Define an exception class in one line.",
+      "Build a family with a common parent.",
+      "Raise and catch your own errors, one or the whole family."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: errors that speak library"
+      ],
+      [
+       0,
+       1,
+       "Families"
+      ],
+      [
+       0,
+       2,
+       "From Exception, never BaseException"
+      ],
+      [
+       1,
+       0,
+       "Raise where, catch where"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: a NotAvailable error in the LibraryError family, raised with a message.",
+      "Define **LibraryError** (from Exception) with **NotAvailable** and **NotAMember** under it. Then write **borrow(stock, members, member, titl",
+      "With the same three errors, write **lend_all(stock, members, requests)** that tries each **(member, title)** request in order with borrow, a"
+     ]
+    },
+    {
+     "id": "py2-3-4",
+     "num": "3.4",
+     "title": "Checking input at the edges",
+     "summary": "Check data where it comes into the program, from a person or a file, and turn it into clean values once. An input loop keeps asking until the answer is usable: try the conversion, check the range, and only then leave the loop. Python style often tries first and handles the error (“easier to ask forgiveness”), rather than checking every case first. Inside, functions can then trust what they get.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Write an input loop that asks again until the value is usable.",
+      "Wrap it in a reusable ask_int(prompt, low, high).",
+      "Choose between trying first and checking first.",
+      "Clean data from a file once, at the edge, and count what was skipped."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a desk that asks again"
+      ],
+      [
+       0,
+       1,
+       "Try first, or check first?"
+      ],
+      [
+       1,
+       0,
+       "Clean once, at the edge"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "It crashes on **two**. Make it ask again, printing **Please type a whole number**, until it gets one, then print the fine.",
+      "Write **ask_int(prompt, low, high)** that keeps asking until the answer is a whole number from low to high, and returns it. For text that is",
+      "Write **read_loans(lines)** that turns lines like **\"Asha,Godan,9\"** into **(member, title, days)** tuples with days as a number, skipping l"
+     ]
+    },
+    {
+     "id": "py2-3-5",
+     "num": "3.5",
+     "title": "Build it: a loan desk that never crashes",
+     "summary": "A command loop for the desk: borrow, return, stock and quit, with titles typed any old way. The functions raise library errors where the rules live: UnknownBook when the title isn’t found, NotAvailable when no copy is left. The loop catches LibraryError once and says Sorry, so a bad command or a missing book never stops the desk.",
+     "minutes": 55,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Split a command line into a command and the rest.",
+      "Raise your own errors in the functions that know the rules.",
+      "Catch the whole family once, in the loop.",
+      "Test the desk with good and bad sessions."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Meera’s desk"
+      ],
+      [
+       0,
+       1,
+       "Splitting a command"
+      ]
+     ],
+     "tasks": [
+      "Put the desk in order.",
+      "Build the loan desk. Start with **stock = {\"Godan\": 1, \"The Guide\": 2, \"Malgudi Days\": 0}** and the three errors (**LibraryError**, and **No"
+     ]
+    },
+    {
+     "id": "py2-3-6",
+     "num": "3.6",
+     "title": "Exception chains and context managers",
+     "summary": "raise LoanFormatError(\"bad line 3\") from e turns a low-level error into one that speaks your program’s language, keeping the original as its cause. A context manager is what with uses: set up, run the block, always clean up. contextlib.contextmanager makes one from a generator with try/yield/finally, and contextlib.suppress ignores one named error for a block.",
+     "minutes": 50,
+     "free": false,
+     "level": "M",
+     "objectives": [
+      "Translate errors with raise … from e and read __cause__.",
+      "Write a context manager with @contextmanager, try, yield and finally.",
+      "Use contextlib.suppress for an error you really mean to ignore."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: errors that say which line of the file was bad"
+      ],
+      [
+       1,
+       0,
+       "What with does"
+      ],
+      [
+       1,
+       1,
+       "suppress"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Define **LoanFormatError** (from Exception) and write **parse(n, line)** that returns **(member, title, days)** from **\"Asha,Godan,9\"**, wit",
+      "Write a context manager **section(title)** with **@contextmanager** that prints **== Title** before the block and **== end** after it, even "
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title": "Classes and objects",
+   "free": false,
+   "summary": "Your own types. A class bundles data and the functions that work on it: Book and Member with __init__, methods that change them, text for print with __str__ and __repr__, values shared by the whole class, properties that check what is stored, and dataclasses that write the dull parts for you. It ends with books and members that enforce the library’s rules, and Master adds class methods and static methods.",
+   "testInfo": "class, __init__ and self, attributes and methods, __str__ and __repr__, class attributes, @property and setters, @dataclass and field(default_factory=list), and (Master) @classmethod and @staticmethod",
+   "lessons": [
+    {
+     "id": "py2-4-1",
+     "num": "4.1",
+     "title": "Your first class",
+     "summary": "A class is a new type: class Book: … describes what every book has. Calling Book(\"Godan\", \"Premchand\") makes an object, an instance of the class, and runs __init__ to fill it in. self is the object being made or used: self.title = title stores the title on it. Each object keeps its own values.",
+     "minutes": 45,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Define a class with __init__.",
+      "Make objects and read their attributes.",
+      "Explain what self is.",
+      "Store values with self., not as plain local names."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: books that know their own details"
+      ],
+      [
+       0,
+       1,
+       "self"
+      ],
+      [
+       1,
+       0,
+       "Forgetting self."
+      ],
+      [
+       1,
+       1,
+       "The class versus an object"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill in the values after each line runs.",
+      "Fill the gaps: store the name and the year on each member.",
+      "It stops with AttributeError. Fix __init__ so the book keeps its title and author.",
+      "Write a class **Member** whose **__init__(self, name, year=1)** stores **name**, **year** and an empty list **loans**, each member with its "
+     ]
+    },
+    {
+     "id": "py2-4-2",
+     "num": "4.2",
+     "title": "Methods",
+     "summary": "A method is a function inside the class, called on an object: book.lend(). It gets the object as self, so it can read and change that object’s attributes. Methods can return values (book.available()), change state (book.lend()), call each other (self.available()) and raise when a rule is broken. The rules live with the data they protect.",
+     "minutes": 45,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Write methods that read, change and return.",
+      "Call one method from another with self.",
+      "Keep a rule inside the method that changes the data.",
+      "Remember self as the first parameter."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a book that lends itself"
+      ],
+      [
+       0,
+       1,
+       "Methods calling methods"
+      ],
+      [
+       1,
+       0,
+       "Every method takes self"
+      ],
+      [
+       1,
+       1,
+       "Methods that return or change"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Put the lines in order: a Member who can **borrow(title)** and tell how many **loans** they have.",
+      "It stops with a TypeError. Fix the method so it prints **GODAN**.",
+      "Change the class.",
+      "Write a class **Shelf** with **__init__(self, name)** (an empty list of titles), **add(title)**, **remove(title)** (raise **ValueError(f\"{ti"
+     ]
+    },
+    {
+     "id": "py2-4-3",
+     "num": "4.3",
+     "title": "Objects as text: __str__ and __repr__",
+     "summary": "print(book) shows something like <__main__.Book object at 0x7f…> until the class says otherwise. __str__ returns the friendly text print and f-strings use. __repr__ returns the developer’s text, used inside lists and by the step-through panel, ideally looking like the code that makes the object. Both must return a string.",
+     "minutes": 35,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Give a class friendly text with __str__.",
+      "Give it debugging text with __repr__.",
+      "Know which one print, f-strings and lists use.",
+      "Return, not print, from both."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: books that print themselves"
+      ],
+      [
+       0,
+       1,
+       "A good repr"
+      ],
+      [
+       1,
+       0,
+       "Return, don’t print"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It prints the title and then fails. Make **__str__** return the text instead.",
+      "Write a class **Member(name, year)** whose **__str__** gives **Asha (year 2)** and whose **__repr__** gives **Member('Asha', 2)**."
+     ]
+    },
+    {
+     "id": "py2-4-4",
+     "num": "4.4",
+     "title": "Values the whole class shares",
+     "summary": "A name set in the class body, outside any method, belongs to the class: every object sees the same one. That suits constants like FINE_PER_DAY = 2 and counters of how many objects exist. Read them as self.FINE_PER_DAY or Book.count; change shared ones through the class. A list in the class body is shared too, which is almost never what you want for per-object data.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Define class attributes for constants and counters.",
+      "Tell class attributes from instance attributes.",
+      "Change a shared value through the class name.",
+      "Keep per-object lists in __init__."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: one place for the fine rate"
+      ],
+      [
+       0,
+       1,
+       "A counter on the class"
+      ],
+      [
+       1,
+       0,
+       "Lists on the class are shared"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Ravi shows Asha’s loan. Give each member their own list.",
+      "Write a class **Member** with a class attribute **count = 0**. Each new member adds 1 to it and stores **number** (its place: 1, 2, 3…) and ",
+      "Write **Loan(title, days)** with class attributes **LOAN_DAYS = 14** and **FINE_PER_DAY = 2**, and a method **fine()** returning the late da"
+     ]
+    },
+    {
+     "id": "py2-4-5",
+     "num": "4.5",
+     "title": "Properties",
+     "summary": "@property makes a method look like an attribute: book.available, no brackets, worked out each time it is read. A setter, @copies.setter, runs whenever someone assigns book.copies = …, so it can refuse bad values; the real value lives under another name, self._copies. Start with plain attributes and turn one into a property when it needs checking or computing: the code that uses it doesn’t change.",
+     "minutes": 45,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Write a read-only computed property.",
+      "Guard an attribute with a property and a setter.",
+      "Store the value under _name and avoid a property that calls itself.",
+      "Switch an attribute to a property without changing its users."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: copies that can’t go negative"
+      ],
+      [
+       1,
+       0,
+       "A setter checks every assignment"
+      ],
+      [
+       1,
+       1,
+       "A property that calls itself"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: a read-only property **is_late**.",
+      "It stops with RecursionError. Fix the property so it prints **2**.",
+      "Write **Book(title, copies=1)** where **copies** is a property: the setter raises **ValueError(\"copies can't be negative\")** for a negative "
+     ]
+    },
+    {
+     "id": "py2-4-6",
+     "num": "4.6",
+     "title": "Dataclasses",
+     "summary": "from dataclasses import dataclass, then @dataclass above a class with typed fields (title: str, copies: int = 1) writes __init__, __repr__ and == for you. Lists need field(default_factory=list), so each object gets its own. order=True adds <, so objects sort; frozen=True makes them unchangeable. Use one for classes that mostly hold data; add methods as usual.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Write a dataclass with typed fields and defaults.",
+      "Give list fields default_factory.",
+      "Compare and sort dataclass objects.",
+      "Know when a dataclass fits and when a plain class does."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a Book in four lines"
+      ],
+      [
+       0,
+       1,
+       "Methods as usual"
+      ],
+      [
+       1,
+       0,
+       "Lists need default_factory"
+      ],
+      [
+       1,
+       1,
+       "Sorting and freezing"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "It stops with ValueError. Give **loans** a default that makes a new list for each member.",
+      "Change the class.",
+      "Write a dataclass **Loan(member: str, title: str, days: int)** whose **__post_init__** raises **ValueError(\"days can't be negative\")**, with"
+     ]
+    },
+    {
+     "id": "py2-4-7",
+     "num": "4.7",
+     "title": "Build it: books and members",
+     "summary": "Two classes that work together and keep the library’s rules. A Book knows its copies and how many are out, and works out available as a property. A Member keeps their own list of books and borrows and gives back through methods that raise the library’s errors: NotAvailable when none are in, LimitReached past three books, LibraryError for returning a book they don’t have. Both print themselves.",
+     "minutes": 55,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Design two classes that hold references to each other’s objects.",
+      "Put each rule in the method that changes the data.",
+      "Raise your own errors from methods.",
+      "Test the classes on their own, then together."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Who knows what"
+      ],
+      [
+       0,
+       1,
+       "Check, then change"
+      ]
+     ],
+     "tasks": [
+      "Put the build in order.",
+      "Build **Book** and **Member** with the library’s errors (**LibraryError**, and **NotAvailable** and **LimitReached** under it):"
+     ]
+    },
+    {
+     "id": "py2-4-8",
+     "num": "4.8",
+     "title": "Class methods and static methods",
+     "summary": "@classmethod gets the class itself as cls instead of an object, which makes it the place for other ways to build one: Book.from_line(\"Godan; Premchand; 1936\"). Using cls(…) rather than Book(…) means subclasses get objects of their own type. @staticmethod gets neither: it is a plain function that lives in the class because it belongs with it, like Book.valid_code(\"FIC-0042\").",
+     "minutes": 45,
+     "free": false,
+     "level": "M",
+     "objectives": [
+      "Write an alternative constructor with @classmethod and cls.",
+      "Write a helper with @staticmethod.",
+      "Choose between a method, a class method, a static method and a plain function."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: books straight from the catalogue file"
+      ],
+      [
+       0,
+       1,
+       "Why cls, not Book"
+      ],
+      [
+       1,
+       0,
+       "Four kinds of function"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "RareBook.from_line gives a plain Book. Make **from_line** build whatever class it is called on.",
+      "Write **Member(name, year)** with a class method **from_card(text)** that reads **\"M007 | Asha Nair | 2\"** into a Member (name stripped, yea"
+     ]
+    }
+   ]
+  }
+ ]
+}

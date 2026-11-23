@@ -1,0 +1,10 @@
+Pyodide 0.29.3 (Python 3.13 compiled to WebAssembly), from the npm package "pyodide".
+Licence: Mozilla Public License 2.0. Source: https://github.com/pyodide/pyodide
+These files are unchanged. Sheetah loads them from here so the Python labs work without a CDN and offline once cached.
+
+Added in v41 for the Python-for-Excel labs (loaded only when a lab needs them):
+- numpy, pandas, python-dateutil, pytz and six: unchanged wheels from the Pyodide 0.29.3 release (they match pyodide-lock.json). Licences: BSD-3-Clause (numpy, pandas), Apache-2.0/BSD (python-dateutil), MIT (pytz, six).
+- openpyxl 3.1.5 and et_xmlfile 2.0.0: unchanged wheels from PyPI. Licence: MIT.
+
+Added in v49 for the chart labs (loaded only when a lab imports matplotlib):
+- matplotlib 3.8.4, contourpy 1.3.1, cycler 0.12.1, fonttools 4.56.0, kiwisolver 1.4.8, packaging 24.2, pillow 11.3.0 and pyparsing 3.2.1: unchanged wheels from the Pyodide 0.29.3 release (they match pyodide-lock.json). Licences: matplotlib licence (PSF-based), BSD-3-Clause (contourpy, kiwisolver), BSD (cycler), MIT (fonttools, pyparsing), Apache-2.0/BSD (packaging), MIT-CMU (pillow).

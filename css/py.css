@@ -1,0 +1,132 @@
+/* Sheetah Python: code blocks, the editor, the step-through panel, the practice ladder, levels */
+:root { --code-bg: #FBFAF7; --code-ink: #1F2233; --pk: #7A3EB1; --ps: #1B7F4C; --pc: #8A8778; --pd: #B35C00; --pb: #2456C8; --pn: #0D6E8A; --pf: #A23A6B; --cur: #FFF1B8; --prev: #EAF4EC; --errl: #FBE1E5; }
+[data-theme="dark"] { --code-bg: #171925; --code-ink: #E7E8F0; --pk: #C9A2FF; --ps: #7FD9A6; --pc: #8E90A3; --pd: #FFB870; --pb: #8EB0FF; --pn: #6FD1EE; --pf: #FF9CC8; --cur: #4A4220; --prev: #1F3326; --errl: #4A2129; }
+.mono, .pyblock, .pyed, .pyout { font-family: var(--mono); }
+/* Python learners copy what they see: show >= and != as typed, never as ≥ or ≠ ligatures */
+.mono, .pyblock, .pyed, .pyed *, .pyout, .sp-frame, .stdin-l textarea, .predict-in, .plan-in, code, kbd { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
+.pyblock { font-size: 14px; line-height: 1.6; background: var(--code-bg); color: var(--code-ink); border: 1px solid var(--line); border-radius: 12px; padding: 8px 0; margin: 0 0 10px; overflow-x: auto; }
+.pyl { display: flex; white-space: pre; padding-right: 14px; min-height: 1.6em; } .pyl.hl { background: var(--cur); }
+.pyn { width: 34px; flex: none; text-align: right; padding-right: 12px; color: var(--pc); user-select: none; } .pyc { white-space: pre; }
+.pk { color: var(--pk); font-weight: 700; } .ps { color: var(--ps); } .pc { color: var(--pc); font-style: italic; } .pd { color: var(--pd); } .pb { color: var(--pb); } .pfn { color: var(--pn); } .pf { color: var(--pf); }
+.pyout { background: #1E2030; color: #F1F2F8; border-radius: 10px; padding: 10px 14px; margin: 4px 0 10px; font-size: 13.5px; line-height: 1.5; white-space: pre-wrap; overflow-x: auto; max-height: 320px; }
+.pyout.err { background: var(--nobg); color: var(--no); border: 1px solid var(--no); }
+.pyout-w, .console { margin-top: 6px; } .sp-tag { display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+/* the editor */
+.pyed { display: flex; border: 1px solid var(--line); border-radius: 12px; background: var(--code-bg); overflow: hidden; font-size: 14px; line-height: 21px; }
+.pyed:focus-within { outline: 3px solid var(--blue); outline-offset: 1px; }
+.pyed-gut { flex: none; width: 40px; padding: 8px 10px 8px 0; text-align: right; color: var(--pc); user-select: none; overflow: hidden; background: color-mix(in srgb, var(--code-bg) 85%, var(--line)); }
+.pyed-gut div { height: 21px; } .pyed-gut .err { color: var(--no); font-weight: 800; } .pyed-gut .stepl { color: var(--ink); font-weight: 800; }
+.pyed-main { position: relative; flex: 1; min-width: 0; }
+.pyed-hl, .pyed-ta { margin: 0; padding: 8px 12px; font: inherit; line-height: 21px; white-space: pre; tab-size: 4; letter-spacing: 0; }
+.pyed-hl { position: absolute; inset: 0; pointer-events: none; color: var(--code-ink); overflow: hidden; }
+.pyed-hl .pyl { display: block; min-height: 21px; padding: 0; } /* block, not flex: a flex line drops runs of spaces between highlighted words */ .pyed-hl .pyl.err { background: var(--errl); } .pyed-hl .pyl.stepl { background: var(--cur); }
+.pyed-ta { position: relative; display: block; width: 100%; min-height: calc(var(--rows, 6) * 21px + 16px); border: 0; outline: 0; resize: vertical; background: transparent; color: transparent; caret-color: var(--ink); overflow: auto; }
+.pyed-ta::selection { background: rgba(53, 87, 214, .25); color: transparent; }
+.pyed-ta[readonly] { caret-color: transparent; }
+.pyrun { margin: 8px 0 0; gap: 6px; } .stdin-l { display: block; margin-top: 8px; } .stdin-l textarea, .predict-in, .plan-in { width: 100%; font-family: var(--mono); font-size: 14px; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; background: var(--card); color: var(--ink); }
+.explain { background: var(--warnbg); border-radius: 10px; padding: 10px 14px; margin: 6px 0; } .explain p { margin: 4px 0 0; }
+.cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } @media (max-width: 640px) { .cmp { grid-template-columns: 1fr; } }
+.spec { background: var(--blue2); border-radius: 10px; padding: 10px 14px; margin-bottom: 8px; } .spec p:last-child { margin: 0; }
+.errshow summary { cursor: pointer; font-weight: 700; font-size: .9rem; margin-bottom: 4px; }
+/* cautions */
+.caution { border-left: 5px solid var(--amber); background: var(--cream); border-radius: 10px; padding: 10px 14px; margin: 8px 0; } .caution > b { display: block; margin-bottom: 4px; } .caution p { margin: 4px 0; }
+.caution.big .pyblock { margin: 4px 0 8px; } .cz-wrong .pyblock { border-color: var(--no); } .cz-right .pyblock { border-color: var(--ok); }
+/* step-through */
+.stepper { border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; margin: 10px 0; background: var(--card); }
+.stepper:focus-visible { outline: 3px solid var(--blue); }
+.sp-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; } .sp-count { color: var(--muted); font-size: .9rem; }
+.sp-ctl { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; } .sp-ctl input[type=range] { flex: 1; min-width: 120px; }
+.sp-cols { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px; } @media (max-width: 760px) { .sp-cols { grid-template-columns: 1fr; } }
+.sp-code .pyl.sp-cur { background: var(--cur); } .sp-code .pyl.sp-ret { background: var(--blue2); } .sp-code .pyl.sp-prev { background: var(--prev); }
+.sp-code .pyl.sp-cur .pyn, .sp-code .pyl.sp-ret .pyn { color: var(--ink); font-weight: 800; } .sp-legend { color: var(--muted); margin: 0; }
+.sp-k { display: inline-block; width: 18px; text-align: center; border-radius: 4px; } .sp-k.cur { background: var(--cur); } .sp-k.prev { background: var(--prev); }
+.sp-frame .sp-tag { display: block; white-space: nowrap; } .sp-code .pyl.sp-err { background: var(--errl); } .sp-code .pyl.sp-err .pyn { color: var(--no); font-weight: 800; }
+.sp-frame { display: block; border: 1px solid var(--line); border-radius: 10px; padding: 6px 10px; margin-bottom: 8px; } .sp-frame.sp-top { border-color: var(--blue); }
+.sp-frame table { width: 100%; border-collapse: collapse; font-size: .92rem; } .sp-frame th { text-align: left; font-family: var(--mono); padding: 2px 8px 2px 0; width: 30%; } .sp-frame td { padding: 2px 4px; }
+.sp-frame tr.chg { background: var(--cur); transition: background .4s; } .sp-out { max-height: 160px; min-height: 2.2em; }
+/* the practice ladder */
+.ladder { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; margin: 6px 0 8px; } .ladder > b { color: var(--muted); }
+.rung { display: inline-flex; gap: 4px; align-items: center; padding: 3px 10px; border-radius: 999px; background: var(--cream); border: 1px solid var(--line); font-weight: 700; font-size: .85rem; cursor: pointer; }
+.rung.done { background: var(--okbg); border-color: var(--ok); color: var(--ok); } .rung.done i { font-style: normal; } .rung i { font-style: normal; }
+.pytasks { grid-template-columns: minmax(0, 1fr); } .pytask .tbody { min-width: 0; } .rung-tag { margin-bottom: 2px; } .tprompt p { margin-bottom: 6px; }
+.pystat { margin: 4px 0 0; } .tbtns { margin-top: 10px; gap: 6px; }
+.opt.mono { font-family: var(--mono); text-align: left; } .opt.dim { opacity: .55; }
+/* arrange */
+.arr { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 12px; } @media (max-width: 760px) { .arr { grid-template-columns: minmax(0, 1fr); } }
+.arr-bank, .arr-prog { list-style: none; margin: 4px 0 0; padding: 8px; border: 2px dashed var(--line); border-radius: 12px; min-height: 64px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; align-content: start; }
+.arr-prog { counter-reset: ln; background: var(--code-bg); }
+.arr-chip, .arr-line { display: block; width: 100%; text-align: left; font-size: 14px; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--code-ink); cursor: grab; white-space: pre; overflow-x: auto; }
+.arr-prog li { display: flex; gap: 4px; align-items: center; } .arr-prog li .arr-line { flex: 1; min-width: 0; } .arr-prog li.sel .arr-line { border-color: var(--blue); box-shadow: 0 0 0 2px var(--blue2); }
+.arr-tools { display: flex; gap: 2px; flex: none; } .arr-prog li:not(.sel) .arr-tools { opacity: .45; } .arr-ind { color: var(--pc); } .arr-empty { padding: 10px; }
+/* fill the gaps */
+.gaps .pyl { align-items: center; min-height: 2.1em; }
+.gap { font: inherit; min-width: 56px; padding: 1px 8px; margin: 0 2px; border-radius: 6px; border: 2px dashed var(--blue); background: var(--blue2); color: var(--ink); cursor: pointer; }
+.gap.full { border-style: solid; background: var(--card); font-weight: 700; } .gap.sel { box-shadow: 0 0 0 3px var(--amber); } .gapn { color: var(--blue); font-size: .8em; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; } .chip { font-size: 14px; padding: 5px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--code-ink); cursor: grab; font-weight: 700; } .chip[disabled] { opacity: .3; cursor: default; }
+/* trace table */
+.tbl.trace td { vertical-align: middle; } .trace-in { width: 100%; min-width: 64px; font-size: 14px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); }
+.tbl.trace td.trl, .tbl.trace th, .tbl.trace td code { white-space: nowrap; }
+@media (max-width: 560px) { .tbl.trace .trl-code { display: none; } .tbl.trace td, .tbl.trace th { padding: 6px 6px; } .trace-in { min-width: 60px; } }
+.trace-in.good { border-color: var(--ok); background: var(--okbg); } .trace-in.bad { border-color: var(--no); background: var(--nobg); }
+/* replay */
+.replay .rp-ed { margin: 8px 0; } .rp-ctl { gap: 6px; align-items: center; } .rp-own { margin-top: 8px; }
+/* "what will this print?" */
+.pypredict .pp-q { margin: 6px 0; } .pp-res { margin-top: 6px; }
+/* levels */
+.lvtag { display: inline-block; font-size: .72rem; font-weight: 800; padding: 1px 8px; border-radius: 999px; letter-spacing: .02em; vertical-align: middle; }
+.lv-B { background: #E3F4EA; color: #1F6B45; } .lv-I { background: #E7ECFB; color: #2D49B3; } .lv-M { background: #F6E6FA; color: #7A2D93; }
+[data-theme="dark"] .lv-B { background: #173528; color: #8FE0B5; } [data-theme="dark"] .lv-I { background: #26305A; color: #AFC1FF; } [data-theme="dark"] .lv-M { background: #3A2445; color: #E3B3F5; }
+.lvcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 8px; }
+.lvcard { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; text-align: left; padding: 14px; border: 2px solid var(--line); border-radius: 14px; background: var(--card); color: var(--ink); font: inherit; cursor: pointer; }
+.lvcard:hover { border-color: var(--blue); } .lvcard.on { border-color: var(--ok); background: var(--okbg); } .lvcard.rec { border-color: var(--amber); } .rec-tag { font-size: .75rem; font-weight: 800; color: var(--warn); }
+.lvprog { display: flex; align-items: center; gap: 10px; margin: 6px 0 2px; position: relative; } .lvprog .pbar { flex: 1; }
+.has-pop { position: relative; } .lv-pop { display: none; position: absolute; z-index: 20; left: 12px; top: calc(100% - 6px); min-width: 260px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 26px rgba(0, 0, 0, .14); padding: 10px 12px; color: var(--ink); font-size: .9rem; }
+.has-pop:hover .lv-pop, .has-pop:focus-within .lv-pop, .has-pop:focus .lv-pop, .has-pop.pop-on .lv-pop { display: grid; gap: 6px; }
+.lv-row { display: grid; grid-template-columns: minmax(90px, 1fr) 80px 40px 44px; gap: 6px; align-items: center; } .lv-row.on { font-weight: 800; } .lv-row.shared { grid-template-columns: 1fr; } .lv-row small { color: var(--muted); }
+.modcard { position: relative; } .modring { position: absolute; right: 10px; top: 10px; } .modring .ring { width: 46px; height: 46px; }
+.lessons li.stretch { opacity: .62; } .lessons li.stretch:hover { opacity: 1; } .ln .lvtag { margin-left: 4px; }
+.course-card.py h3 { margin-top: 0; } .pyprog { margin-top: 26px; background: linear-gradient(135deg, var(--blue2), var(--cream)); } .pyfam h2 { font-size: 1.15rem; }
+.newkey code { font-size: .85em; }
+@media (max-width: 640px) { .pyblock, .pyed { font-size: 13px; } .pyn { width: 26px; padding-right: 8px; } .pyed-gut { width: 30px; } .lv-pop { left: 0; right: 0; min-width: 0; } }
+/* the lab's folder of files */
+.pyfiles { margin: 10px 0; } .pyfiles .sp-tag { display: block; margin-bottom: 4px; }
+.pyfile { border: 1px solid var(--line); border-radius: 10px; margin: 4px 0; background: var(--card); } .pyfile summary { cursor: pointer; padding: 6px 10px; font-size: .92rem; } .pyfile pre.pyout { margin: 0; border-radius: 0 0 10px 10px; max-height: 220px; overflow: auto; }
+.pyfile.chg { border-color: var(--amber); } .pyfile.chg summary .tag { font-size: .72rem; }
+/* Python course project */
+.pjlist { padding-left: 0; list-style: none; counter-reset: pj; } .pjlist li { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.pjst { flex: 0 0 22px; text-align: center; font-weight: 800; color: var(--muted); } .pjlist li.ok .pjst { color: var(--ok); } .pjlist li.no .pjst { color: var(--no); }
+.pjlocked { opacity: .7; } .pjq { border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; margin: 0 0 12px; } .pjq legend { padding: 0 6px; }
+.pjq .ck { display: block; margin: 4px 0; } .pjrows { list-style: none; padding-left: 0; } .pjrows li { margin: 6px 0; } .pjrows li.no { color: var(--ink); }
+.card.inner { box-shadow: none; margin-top: 12px; }
+.sp-frame td.muted { white-space: nowrap; width: 1%; }
+/* Excel workbooks in the files panel: sheets with tabs at the bottom, as in Excel */
+.xlbook { margin: 6px 0 4px; } .xlbook .xlr { position: absolute; opacity: 0; pointer-events: none; }
+.xlpane { display: none; } .xlscroll { overflow: auto; max-height: 340px; border: 1px solid var(--sheet-line, #D9DCE3); border-radius: 6px 6px 0 0; background: var(--sheet); }
+.xlbook .xlr:nth-of-type(1):checked ~ .xlpanes .xlpane:nth-child(1), .xlbook .xlr:nth-of-type(2):checked ~ .xlpanes .xlpane:nth-child(2), .xlbook .xlr:nth-of-type(3):checked ~ .xlpanes .xlpane:nth-child(3), .xlbook .xlr:nth-of-type(4):checked ~ .xlpanes .xlpane:nth-child(4), .xlbook .xlr:nth-of-type(5):checked ~ .xlpanes .xlpane:nth-child(5), .xlbook .xlr:nth-of-type(6):checked ~ .xlpanes .xlpane:nth-child(6), .xlbook .xlr:nth-of-type(7):checked ~ .xlpanes .xlpane:nth-child(7), .xlbook .xlr:nth-of-type(8):checked ~ .xlpanes .xlpane:nth-child(8), .xlbook .xlr:nth-of-type(9):checked ~ .xlpanes .xlpane:nth-child(9), .xlbook .xlr:nth-of-type(10):checked ~ .xlpanes .xlpane:nth-child(10), .xlbook .xlr:nth-of-type(11):checked ~ .xlpanes .xlpane:nth-child(11), .xlbook .xlr:nth-of-type(12):checked ~ .xlpanes .xlpane:nth-child(12) { display: block; }
+.xltabs { display: flex; flex-wrap: wrap; gap: 2px; border-top: 2px solid var(--t-green-b); padding-left: 28px; }
+.xltabs label { font-size: .82rem; padding: 3px 12px; border: 1px solid var(--line); border-top: none; border-radius: 0 0 6px 6px; background: var(--bg); cursor: pointer; color: var(--ink2); }
+.xlbook .xlr:nth-of-type(1):checked ~ .xltabs label:nth-child(1), .xlbook .xlr:nth-of-type(2):checked ~ .xltabs label:nth-child(2), .xlbook .xlr:nth-of-type(3):checked ~ .xltabs label:nth-child(3), .xlbook .xlr:nth-of-type(4):checked ~ .xltabs label:nth-child(4), .xlbook .xlr:nth-of-type(5):checked ~ .xltabs label:nth-child(5), .xlbook .xlr:nth-of-type(6):checked ~ .xltabs label:nth-child(6), .xlbook .xlr:nth-of-type(7):checked ~ .xltabs label:nth-child(7), .xlbook .xlr:nth-of-type(8):checked ~ .xltabs label:nth-child(8), .xlbook .xlr:nth-of-type(9):checked ~ .xltabs label:nth-child(9), .xlbook .xlr:nth-of-type(10):checked ~ .xltabs label:nth-child(10), .xlbook .xlr:nth-of-type(11):checked ~ .xltabs label:nth-child(11), .xlbook .xlr:nth-of-type(12):checked ~ .xltabs label:nth-child(12) { background: var(--sheet); color: var(--t-green-b); font-weight: 800; border-color: var(--t-green-b); }
+.xlbook .xlr:focus-visible ~ .xltabs { outline: 2px solid var(--blue); outline-offset: 2px; }
+.xlgrid { border-collapse: collapse; font: 13px/1.35 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--sheet-ink); }
+.xlgrid th { background: var(--sheet-head); color: var(--muted); font-weight: 600; font-size: 11.5px; border: 1px solid var(--sheet-line); padding: 2px 8px; position: sticky; top: 0; z-index: 1; min-width: 26px; }
+.xlgrid tbody th { position: sticky; left: 0; text-align: center; white-space: nowrap; }
+.xlgrid td { border: 1px solid var(--sheet-line); padding: 3px 8px; min-width: 64px; max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.xlgrid td.xln { text-align: right; font-variant-numeric: tabular-nums; } .xlgrid td.xlb { font-weight: 700; }
+.xlgrid td.xlf { color: var(--t-green-b); font-family: var(--mono); font-size: 12px; } .xlgrid td.xlmark { outline: 2px solid var(--no); outline-offset: -2px; }
+.xldiffs { margin: 6px 0; padding-left: 20px; } .xldiffs li { margin: 2px 0; }
+.cmp .xlscroll { max-height: 260px; }
+.tprompt, #tp > h2 { white-space: pre-line; } /* a prompt’s line breaks (expected output lines) show as lines */
+.xlchart { margin: 8px 0 4px; padding: 8px 10px; border: 1px solid var(--sheet-line, #D9DCE3); border-radius: 6px; background: var(--sheet); color: var(--sheet-ink); max-width: 440px; }
+.xlchart figcaption { margin-bottom: 4px; } .xlchart-svg { width: 100%; height: auto; display: block; font: 10px system-ui, sans-serif; fill: var(--sheet-ink); }
+.xlchart-svg .grid { stroke: var(--sheet-line, #D9DCE3); stroke-width: 1; } .xlchart-svg .ax { stroke: var(--muted); stroke-width: 1; }
+.xlkey { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin: 0 4px 0 6px; vertical-align: -1px; border: 1px solid rgba(0,0,0,.15); }
+.xlcf { margin: 6px 0 0; }
+
+.csvgrid { max-height: 320px; overflow: auto; } .csvmore { margin: 4px 10px; } .csvtext { margin: 0 10px 6px; } .csvtext pre.pyout { max-height: 200px; overflow: auto; }
+
+/* charts a program draws (matplotlib) */
+.pyfigs { margin: 6px 0 10px; } .pyfig { display: block; max-width: 100%; height: auto; background: #fff; border: 1px solid var(--line); border-radius: 10px; margin: 4px 0; }
+.cmp .pyfig { width: 100%; }
+.caution .pyfig { max-width: 420px; }
+.pypage { display: block; width: 100%; height: 420px; border: 1px solid var(--line); border-radius: 0 0 10px 10px; background: #fff; } .cmp .pypage { height: 340px; border-radius: 10px; }
+.pysrc { padding: 4px 10px 8px; } .pysrc summary { cursor: pointer; } .pyfilepic { margin: 0 10px 10px; max-width: calc(100% - 20px); }

@@ -1,0 +1,19 @@
+Sheetah site update v54 (23 Nov 2026)
+PY2 · Intermediate Python: Modules 3 and 4 are now live too (28 lessons in Modules 1–4; Module 1 is free). PY1, E1, E2, D1 and the Excel courses are unchanged.
+
+What's new
+- PY2 Module 3, Errors on purpose: catching the right error (except ValueError, else and finally), raising errors with clear messages, your own exception classes, checking input at the edges of a program, Build it: a loan desk that never crashes, and (Master) exception chains and context managers.
+- PY2 Module 4, Classes and objects: your first class and __init__, methods and self, __str__ and __repr__, class attributes and the shared-list trap, properties, dataclasses, Build it: books and members as classes, and (Master) classmethod and staticmethod.
+- Labs spot classes, decorators, your own exceptions, finally, try/else and bare except: for "use a …" rules, and explain the usual mistakes in plain words with 11 new "Watch out" cards (bare except:, except order, raise don't print, exceptions need a base class, methods take self first, self. keeps it in the object, call the class to make an object, __str__ must return text, a list on the class is shared, a property that calls itself, lists in a dataclass need default_factory).
+- Every PY2 lesson output (226) was re-run in the browser's own Python as well, and matches.
+
+No admin step this time: py2.key has not changed, so the admin.bin you uploaded with v53 still works.
+
+Changed folders
+- Outside content: sw.js, VERSION.txt, README.md, js/py/ (harness.py, explain.js).
+- Inside content: catalog.json and the py2 folder. py1, e1, e2, d1, c1, c2, p1–p6 and library.json have not changed.
+- vendor: unchanged since v49.
+
+Upload (two drags):
+ (1) everything except the content and vendor folders;
+ (2) inside content: the py2 folder together with catalog.json.

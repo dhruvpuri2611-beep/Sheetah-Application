@@ -1,0 +1,1940 @@
+{
+ "id": "e1",
+ "code": "E1",
+ "title": "Data Visualisation & Storytelling",
+ "level": "For everyone · Sheetah Python",
+ "hours": 25,
+ "programme": "python",
+ "lang": "python",
+ "summary": "Charts that people understand at a glance, drawn with matplotlib from real files: bars, lines, scatters and histograms, chosen for the question, designed to make one point, and put together into a visual story about a city that you can share as a web page.",
+ "prereq": "PY1 · Python Foundations at Beginner (variables, lists, loops, f-strings). Reading a CSV file with pandas is taught here, in a few lines; D1 goes much further.",
+ "outcomes": [
+  "Draw bar, line, scatter, histogram and pie charts from CSV files with matplotlib.",
+  "Pick the chart that fits the question: compare, change over time, relationship, spread or parts of a whole.",
+  "Give every chart a headline, labelled axes and units, worked out from the data.",
+  "Design for the point: sort, highlight, annotate and remove clutter.",
+  "Lay charts out together and save them as pictures.",
+  "Turn charts and a few sentences into a visual story, shared as a web page."
+ ],
+ "levels": [
+  {
+   "id": "B",
+   "name": "Beginner",
+   "hours": 10,
+   "who": "Anyone who wants clear charts for school, work or a club: no maths beyond averages.",
+   "outcome": "Draw, label and save the right chart for a question, from any CSV file."
+  },
+  {
+   "id": "I",
+   "name": "Intermediate",
+   "hours": 18,
+   "who": "Analysts, marketers, researchers and students who present data to others.",
+   "outcome": "Design charts that make one point, combine them into layouts and tell a story with them."
+  },
+  {
+   "id": "M",
+   "name": "Master",
+   "hours": 25,
+   "who": "People who publish charts: reports, newsrooms and dashboards.",
+   "outcome": "Build reusable chart functions and a complete, honest visual story as a shareable web page."
+  }
+ ],
+ "recommend": "B",
+ "pass": 70,
+ "upcoming": [],
+ "project": {
+  "title": "A visual story about your city, as a shareable web page",
+  "brief": "A city’s open data becomes a short visual story: charts with headlines and a few sentences each, saved as pictures and put on one web page. A checklist per level and hidden tests on another city."
+ },
+ "exam": {
+  "questions": 30,
+  "tasks": 4,
+  "minutes": 75,
+  "pass": 70,
+  "attempts": 3,
+  "gapHours": 48,
+  "byLevel": {
+   "B": {
+    "questions": 25,
+    "tasks": 2,
+    "minutes": 50
+   },
+   "I": {
+    "questions": 30,
+    "tasks": 4,
+    "minutes": 75
+   },
+   "M": {
+    "questions": 30,
+    "tasks": 5,
+    "minutes": 90
+   }
+  }
+ },
+ "downloads": [],
+ "modules": [
+  {
+   "n": 1,
+   "title": "First charts",
+   "free": true,
+   "summary": "Draw your first charts with matplotlib: lines and bars from two lists, then straight from a CSV file. Sort bars, give every chart a title and labelled axes with units, and save it as a picture. It ends with the monsoon chart of a city, and Intermediate adds several lines with a legend.",
+   "testInfo": "plt.plot and plt.bar, x and y lists, charts from a CSV column, bar and barh, sorting, titles, axis labels and units, fig and ax, savefig, and several series with a legend",
+   "lessons": [
+    {
+     "id": "e1-1-1",
+     "num": "1.1",
+     "title": "Your first chart",
+     "summary": "A chart turns a list of numbers into a picture you can read in a second. matplotlib draws it: plt.bar() for bars, plt.plot() for a line, each from two lists, one for across (x) and one for up (y), with one value per point.",
+     "minutes": 25,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Say why a chart beats a list of numbers.",
+      "Draw a bar chart and a line chart from two lists.",
+      "Explain how x and y values pair up.",
+      "Fix a chart whose lists have different lengths."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a year of rain in one picture"
+      ],
+      [
+       0,
+       1,
+       "Two lists, paired up"
+      ],
+      [
+       1,
+       0,
+       "plt.plot draws a line"
+      ],
+      [
+       1,
+       1,
+       "One y for every x"
+      ]
+     ],
+     "tasks": [
+      "plt.bar() gives back the bars it drew. What does this print?",
+      "What does this print?",
+      "Fill the gaps to draw a **bar chart** with the months across and the rain up.",
+      "Arrange a program that draws the temperatures as a **line**.",
+      "It should draw sunny days as bars, but crashes. Fix it so every month has its number.",
+      "Draw a **line chart** of the ward’s weekly bus riders: days **Mon** to **Fri** across, riders **820, 790, 845, 870, 910** up."
+     ]
+    },
+    {
+     "id": "e1-1-2",
+     "num": "1.2",
+     "title": "Charts from a file",
+     "summary": "Real numbers live in files, not in your code. pandas reads a CSV file into a table in one line, df[\"Column\"] picks a column, and a column goes straight into plt.bar() or plt.plot(). Change the file and the chart follows.",
+     "minutes": 30,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Read a CSV file into a table with pd.read_csv().",
+      "Pick a column with df[\"Column\"].",
+      "Chart one column against another.",
+      "Explain why charts should read their numbers from the file."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the chart follows the file"
+      ],
+      [
+       0,
+       1,
+       "A column into a chart"
+      ],
+      [
+       1,
+       0,
+       "Typed numbers go stale"
+      ],
+      [
+       1,
+       1,
+       "Exact column names"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps to draw **sunny days** as bars, months across.",
+      "It should draw temperature as a line, but crashes. Fix it.",
+      "This draws rain from typed numbers. Change it to read **weather.csv**, so it works for any city.",
+      "Read **weather.csv** and draw **Temp_C** by **Month** as a **line**."
+     ]
+    },
+    {
+     "id": "e1-1-3",
+     "num": "1.3",
+     "title": "Bar charts that read well",
+     "summary": "Bars compare things: wards, shops, teams. Sort them so the biggest is easy to find, turn them sideways with barh() when the names are long, and keep the bars starting at zero so their lengths tell the truth.",
+     "minutes": 30,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Sort a table with sort_values() before charting it.",
+      "Draw sideways bars with plt.barh().",
+      "Explain why a bar chart’s axis starts at zero.",
+      "Pick one colour for every bar."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the wards, biggest first"
+      ],
+      [
+       0,
+       1,
+       "Long names go sideways"
+      ],
+      [
+       1,
+       0,
+       "Start at zero"
+      ],
+      [
+       1,
+       1,
+       "One colour"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: sideways bars of **Trees** per ward, the most trees on top.",
+      "It should show schools per ward, biggest first, but the bars are in file order. Fix it.",
+      "Read **wards.csv** and draw **upright bars** of **Population** per **Ward**, biggest first, all in the colour **\"tab:green\"**, with the name",
+      "Draw **sideways bars** of **AQI** per **Ward**, the worst (highest) air on top."
+     ]
+    },
+    {
+     "id": "e1-1-4",
+     "num": "1.4",
+     "title": "Titles, labels and units",
+     "summary": "A chart without words is a puzzle. Every chart needs a title that says what it shows (or, better, what it found), and labels on both axes with their units. A title can even be worked out from the data, so it stays true for any file.",
+     "minutes": 30,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Add a title and axis labels with plt.title(), plt.xlabel() and plt.ylabel().",
+      "Put units in axis labels.",
+      "Write a headline title that says what the chart found.",
+      "Work out a headline from the data with idxmax()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a chart that explains itself"
+      ],
+      [
+       0,
+       1,
+       "Units in the label"
+      ],
+      [
+       1,
+       0,
+       "Say what you found"
+      ],
+      [
+       1,
+       1,
+       "A headline that stays true"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: a title, and labels with units.",
+      "The title should name the **hottest** month, but it names the wrong one. Fix it.",
+      "Draw **Rain_mm** by **Month** as bars, with the title **Rain, month by month**, x label **Month** and y label **Rain (mm)**.",
+      "Draw **Sunny_days** by **Month** as bars, with a headline title worked out from the data, like **Dec has the most sunny days: 28**, and the "
+     ]
+    },
+    {
+     "id": "e1-1-5",
+     "num": "1.5",
+     "title": "Figure and axes, and saving",
+     "summary": "plt.bar() draws on “the current chart”. Real programs name it instead: fig, ax = plt.subplots() gives the figure (the whole picture) and the axes (the chart inside it). Draw with ax.bar(), label with ax.set_title(), size it with figsize, and save it with fig.savefig().",
+     "minutes": 30,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Make a figure and axes with plt.subplots().",
+      "Draw and label on ax: ax.bar(), ax.set_title(), ax.set_xlabel().",
+      "Set the size with figsize.",
+      "Save the chart as a PNG picture with savefig()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a chart saved as a picture"
+      ],
+      [
+       0,
+       1,
+       "set_ on the axes"
+      ],
+      [
+       1,
+       0,
+       "figsize"
+      ],
+      [
+       1,
+       1,
+       "savefig, then show"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Arrange a program that draws **Temp_C** by **Month** as a line on ax and titles it **Temperature**.",
+      "It crashes. Fix it so it draws the rain bars.",
+      "It crashes on the label. Fix it.",
+      "With **fig, ax**, draw **Rain_mm** by **Month** as bars on a figure **8 wide and 4 high**, y label **Rain (mm)**, and save it as **rain.png*"
+     ]
+    },
+    {
+     "id": "e1-1-6",
+     "num": "1.6",
+     "title": "Build it: the monsoon chart",
+     "summary": "A brief and hidden tests: the city’s newsletter wants a chart of the year’s rain for its monsoon issue. Read weather.csv, draw the bars, write a headline from the data, label it, save monsoon.png and print a short summary. It must work for any city’s file.",
+     "minutes": 40,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Plan a chart program from a brief.",
+      "Combine reading, drawing, labelling and saving in one program.",
+      "Print a summary that matches the chart."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The newsletter’s request"
+      ],
+      [
+       0,
+       1,
+       "Check it like a reader"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the monsoon chart in order.",
+      "Build it. From **weather.csv**: bars of **Rain_mm** by **Month** in **\"tab:blue\"** on a figure **8 wide, 4 high**; the title worked out from"
+     ]
+    },
+    {
+     "id": "e1-1-7",
+     "num": "1.7",
+     "title": "Several lines and a legend",
+     "summary": "Compare cities on one chart: each ax.plot() adds a line, label= names it and ax.legend() lists the names. A loop over the columns draws one line per city, however many the file has. Markers and line styles help when the chart is printed in grey.",
+     "minutes": 35,
+     "free": true,
+     "level": "I",
+     "objectives": [
+      "Draw several series on one axes.",
+      "Name each with label= and show them with legend().",
+      "Loop over a table’s columns to draw one line each.",
+      "Use markers and line styles so lines can be told apart."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: three cities, one chart"
+      ],
+      [
+       0,
+       1,
+       "A loop over the columns"
+      ],
+      [
+       1,
+       0,
+       "label= or the legend is empty"
+      ],
+      [
+       1,
+       1,
+       "Markers and styles"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: one line per city, each named, and the legend.",
+      "The legend comes out empty, with a warning. Fix it.",
+      "This draws only Sundarpur. Change it to draw **every city** in the file, each labelled, with a legend.",
+      "Draw every city’s temperature as a line with **marker=\"o\"**, each labelled with its city, a legend, the title **Three cities, one year** (or"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title": "Choosing the right chart",
+   "free": false,
+   "summary": "The question picks the chart: bars to compare, lines for change over time, scatters for relationships, histograms for spread, and (rarely) pies for parts of a whole. Charts of totals and counts by group come from groupby and value_counts. It ends with a commuting fact sheet of two charts, and Intermediate adds colour and size as a third value.",
+   "testInfo": "matching chart to question, scatter and correlation, histograms and bins, reference lines, value_counts, pie versus bars, groupby totals into charts, and colouring points by group",
+   "lessons": [
+    {
+     "id": "e1-2-1",
+     "num": "2.1",
+     "title": "The question picks the chart",
+     "summary": "Before drawing, say the question in words. Comparing things asks for bars; change over time for a line; does one thing go with another for a scatter; how spread out for a histogram; parts of one whole for a pie or a single stacked bar. The wrong chart can say something untrue.",
+     "minutes": 25,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Match five kinds of question to five kinds of chart.",
+      "Explain why a line between categories misleads.",
+      "Redraw a chart in the form that fits its question."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the question first, then the chart"
+      ],
+      [
+       0,
+       1,
+       "Time goes across"
+      ],
+      [
+       1,
+       0,
+       "No line between categories"
+      ],
+      [
+       1,
+       1,
+       "Say it, then draw it"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "“Which ward has the most parks?” This draws a line across the wards. Change it to **sideways bars**, sorted so the most parks are on top.",
+      "“How did the number of sunny days change through the year?” Change these bars to a **line** with a dot at each month (**marker=\"o\"**).",
+      "“Which wards have the worst air?” Draw **sideways bars** of **AQI** per **Ward**, worst on top, with the x label **AQI (higher is worse)**.",
+      "“How does the temperature change through the year?” Draw **Temp_C** by **Month** as a **line**, with the y label **Temperature (°C)**."
+     ]
+    },
+    {
+     "id": "e1-2-2",
+     "num": "2.2",
+     "title": "Scatter: does one thing go with another?",
+     "summary": "A scatter chart puts one dot per row, one number across and one up, so you can see whether they rise together, one falls as the other rises, or nothing at all. corr() puts a number on it, from -1 to 1. Going together is not the same as causing.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Draw a scatter chart with plt.scatter().",
+      "Read a scatter: rising, falling, or no pattern.",
+      "Measure it with corr() and round it.",
+      "Explain why correlation isn’t cause."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: do trees go with cleaner air?"
+      ],
+      [
+       0,
+       1,
+       "Reading the dots"
+      ],
+      [
+       1,
+       0,
+       "corr()"
+      ],
+      [
+       1,
+       1,
+       "Together isn’t because"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: a scatter with **Parks** across and **AQI** up.",
+      "It should be a scatter of commute **Km** (across) and **Minutes** (up), but it draws a scribbled line. Fix it.",
+      "Distance should go **across** and time **up**, but they are the wrong way round. Fix it.",
+      "Draw a scatter of **Parks** (across) and **AQI** (up), with the title worked out from the data, like **Parks and air quality (r = -0.94)**, "
+     ]
+    },
+    {
+     "id": "e1-2-3",
+     "num": "2.3",
+     "title": "Histograms: how spread out?",
+     "summary": "A histogram answers “how long do most commutes take?”. It cuts the range of one number into bins and draws a bar for how many rows fall in each. The bins change the picture, so choose them and say what they are. A line at the median marks the middle.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Draw a histogram with plt.hist().",
+      "Choose bins: a number of them, or the edges yourself.",
+      "Mark the median with axvline().",
+      "Describe a distribution: where most fall, and how far it stretches."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: how Sundarpur gets to work"
+      ],
+      [
+       0,
+       1,
+       "Choose the bins"
+      ],
+      [
+       1,
+       0,
+       "The median line"
+      ],
+      [
+       1,
+       1,
+       "Bins change the story"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: a histogram of **Minutes** with your own bin edges.",
+      "The dashed line should mark the **median**, but it is at the mean. Fix it.",
+      "Draw a histogram of **Km** with the edges **0, 2, 4, 6, 8, 10, 15, 25**, x label **Distance to work (km)** and y label **People**.",
+      "Draw a histogram of **Minutes** with the edges **0, 15, 30, 45, 60, 75, 90, 120**, a dashed black line at the median, and the title worked o"
+     ]
+    },
+    {
+     "id": "e1-2-4",
+     "num": "2.4",
+     "title": "Parts of a whole: pie or bars?",
+     "summary": "value_counts() counts how many rows have each value: how many people go by bus, metro or two-wheeler. Those counts are parts of one whole, so a pie can show them, if there are only a few. Sorted bars are easier to compare, and work for any number of parts.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Count the rows for each value with value_counts().",
+      "Draw a pie chart with labels and percentages.",
+      "Say when a pie works and when bars are better.",
+      "Draw counts as sorted sideways bars."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: how Sundarpur travels"
+      ],
+      [
+       0,
+       1,
+       "A pie"
+      ],
+      [
+       1,
+       0,
+       "Eyes compare lengths, not angles"
+      ],
+      [
+       1,
+       1,
+       "Only parts of a whole"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: a pie of the travel mix with names and percentages.",
+      "It should draw sorted sideways bars with the biggest on top, but the biggest is at the bottom. Fix it.",
+      "Count **Mode** and draw sorted **sideways bars**, the most used on top, with the x label **People** and a title worked out from the data, li"
+     ]
+    },
+    {
+     "id": "e1-2-5",
+     "num": "2.5",
+     "title": "Totals and averages by group",
+     "summary": "Many charts show one number per group: total population per zone, average commute per travel mode. groupby() makes those numbers in one line; the group names land in the index, so the chart takes s.index and s.values, sorted like any bars.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Total a column by group with groupby().sum().",
+      "Average by group with mean() or median().",
+      "Chart a grouped result with s.index and s.values.",
+      "Sort grouped results before charting them."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the zones of the city"
+      ],
+      [
+       0,
+       1,
+       "Into a chart"
+      ],
+      [
+       1,
+       0,
+       "Sum or average?"
+      ],
+      [
+       1,
+       1,
+       "Names are the index"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: total **Trees** per **Zone**, biggest first, as bars.",
+      "It crashes. Fix it so it draws total population per zone.",
+      "Draw the **average AQI** per **Zone** as **sideways bars**, worst on top, x label **Average AQI**.",
+      "Draw the **median Minutes** per **Mode** from commute.csv as **sideways bars**, slowest on top, with the x label **Median minutes to work**."
+     ]
+    },
+    {
+     "id": "e1-2-6",
+     "num": "2.6",
+     "title": "Build it: the commute fact sheet",
+     "summary": "A brief and hidden tests: the city’s transport office wants two charts from its commuting survey: how long commutes take, and how people travel. Pick the right chart for each question, give each a headline from the data, save both, and print the facts behind them.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Choose the chart for each question in a brief.",
+      "Draw and save two figures from one program.",
+      "Write headlines and a summary from the same numbers."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The transport office’s request"
+      ],
+      [
+       0,
+       1,
+       "Two figures, two names"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the fact sheet in order.",
+      "Build it. From **commute.csv**:"
+     ]
+    },
+    {
+     "id": "e1-2-7",
+     "num": "2.7",
+     "title": "A third value: colour and size",
+     "summary": "A scatter shows two numbers; colour and size can add a third. Loop over groupby to give each zone its own colour and legend entry, and set s= to make dot size follow a number such as parks. Use it sparingly: one extra value is readable, three are not.",
+     "minutes": 35,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Colour a scatter’s points by group with a loop over groupby.",
+      "Size points by a number with s=.",
+      "Add a legend with a title.",
+      "Judge when a third value helps and when it clutters."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: wards by area, people and zone"
+      ],
+      [
+       0,
+       1,
+       "What the loop gives"
+      ],
+      [
+       1,
+       0,
+       "Size by a number"
+      ],
+      [
+       1,
+       1,
+       "One extra value, not three"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: one colour per zone, labelled, with a legend.",
+      "Every zone comes out with all ten wards: the colours sit on top of each other. Fix it.",
+      "Scatter **Trees** (across) and **AQI** (up), one colour per **Zone** with a legend titled **Zone**, and labels **Trees** and **AQI**.",
+      "Scatter **Area_km2** and **Population**, with dot size **s = Parks × 20** and **alpha=0.6**, labelled **Area (km²)** and **Population**."
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title": "Charts from tables",
+   "free": false,
+   "summary": "Real tables need work before they chart well. Turn text into dates and draw a year day by day, smooth the noise with rolling averages, roll days up into months, let pandas draw straight from a table, and compare groups with grouped and stacked bars. It ends with an air-quality year chart, and Intermediate adds shares and growth over time.",
+   "testInfo": "to_datetime and date axes, filtering dates, rolling averages, resample by month, strftime labels, pandas .plot(), pivot_table, grouped and stacked bars, shares and index lines",
+   "lessons": [
+    {
+     "id": "e1-3-1",
+     "num": "3.1",
+     "title": "Dates across the bottom",
+     "summary": "aqi.csv has Sundarpur’s air quality for every day of 2025. read_csv leaves the dates as text; pd.to_datetime turns them into real dates, so matplotlib spaces them by time and labels just a few. Filter a stretch of dates to zoom in, and write dates the way people read them.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Turn a text column into dates with pd.to_datetime().",
+      "Draw a daily line with dates across.",
+      "Pick a stretch of dates with a filter.",
+      "Format a date for a title with :%d %b."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: 365 days of air in one line"
+      ],
+      [
+       0,
+       1,
+       "Text that looks like dates"
+      ],
+      [
+       1,
+       0,
+       "A stretch of dates"
+      ],
+      [
+       1,
+       1,
+       "Dates the way people read them"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: turn Date into dates, then draw the daily line.",
+      "It should draw only **October to December**, but it draws the whole year. Fix it.",
+      "Draw **June to September** (the monsoon: dates from **2025-06-01** up to but not including **2025-10-01**) as a line on a **10 × 4** figure,",
+      "Draw the whole year as a line on a **10 × 4** figure, with the title worked out from the data, like **Worst day: 20 Oct (AQI 287)**, and the"
+     ]
+    },
+    {
+     "id": "e1-3-2",
+     "num": "3.2",
+     "title": "Smoothing the noise",
+     "summary": "Daily numbers jump about, and the jumps hide the trend. A rolling average replaces each day with the average of the last few days, so the line shows the season, not the noise. Draw the raw days faintly and the average boldly, with a legend saying which is which.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Compute a rolling average with rolling(n).mean().",
+      "Explain why the first days of a rolling average are blank.",
+      "Draw raw data faintly and its average boldly.",
+      "Choose a window: 7 days, 30 days."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the season through the noise"
+      ],
+      [
+       0,
+       1,
+       "The first days are blank"
+      ],
+      [
+       1,
+       0,
+       "Wider is smoother, and slower"
+      ],
+      [
+       1,
+       1,
+       "rolling() needs a summary"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: a 7-day average drawn over a faint daily line.",
+      "It crashes. Fix it so it draws the 7-day average.",
+      "Draw the daily AQI in **\"lightgrey\"** labelled **Daily**, and its **30-day average** labelled **30-day average**, with a legend, on a **10 ×"
+     ]
+    },
+    {
+     "id": "e1-3-3",
+     "num": "3.3",
+     "title": "Days into months",
+     "summary": "A council report wants twelve numbers, not 365. resample(\"MS\", on=\"Date\") groups the days by month, so .mean() gives each month’s average and .sum() each month’s total. Label the bars with short month names, and count the bad-air days in each month too.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Group days into months with resample(\"MS\", on=\"Date\").",
+      "Label monthly bars with strftime(\"%b\").",
+      "Find the worst month with idxmax().",
+      "Count days that pass a limit, month by month."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the year in twelve bars"
+      ],
+      [
+       0,
+       1,
+       "The worst month"
+      ],
+      [
+       1,
+       0,
+       "Days over the limit"
+      ],
+      [
+       1,
+       1,
+       "resample needs dates"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: monthly averages as bars with short month names.",
+      "It crashes. Fix it.",
+      "Draw the **monthly average AQI** as bars with short month names, the title worked out from the data, like **January has the worst air**, and",
+      "Count the days with **AQI over 100** in each month and draw them as bars with short month names, y label **Days with AQI over 100**."
+     ]
+    },
+    {
+     "id": "e1-3-4",
+     "num": "3.4",
+     "title": "Let pandas draw",
+     "summary": "A pandas table or column can draw itself: s.plot(kind=\"barh\", ax=ax) gives the same chart as ax.barh(s.index, s.values) in one call, and labels the axis from the index’s name. kind picks the chart; ax= puts it on your axes so you can keep styling it.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Draw a Series with .plot(kind=..., ax=ax).",
+      "Draw two columns of a table with df.plot(x=, y=).",
+      "Know the kinds: bar, barh, line, hist, pie, scatter.",
+      "Keep styling a pandas chart through ax."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: one-line charts from tables"
+      ],
+      [
+       0,
+       1,
+       "The kinds"
+      ],
+      [
+       1,
+       0,
+       "pandas doesn’t pick the chart for you"
+      ],
+      [
+       1,
+       1,
+       "Counts in one line"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: sorted counts of Mode as sideways bars, on ax.",
+      "It draws a line across the zones. Fix it to draw sorted sideways bars.",
+      "With **df.plot**, draw **Rain_mm** by **Month** from weather.csv as bars, no legend, y label **Rain (mm)**.",
+      "With **.plot()**, draw the **total Trees** per **Zone** as sorted **sideways bars** (most on top), x label **Trees**."
+     ]
+    },
+    {
+     "id": "e1-3-5",
+     "num": "3.5",
+     "title": "Grouped and stacked bars",
+     "summary": "budget.csv lists what each city department spent in each of three years. To compare departments and years at once, pivot the long list into a table, one row per department and one column per year; .plot(kind=\"bar\") then draws grouped bars, and stacked=True piles each department’s years into one bar.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Reshape a long table with pivot_table().",
+      "Draw grouped bars from a wide table.",
+      "Draw stacked bars, and say what they compare well and badly.",
+      "Title the legend and label the money axis."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: six departments, three years"
+      ],
+      [
+       0,
+       1,
+       "Grouped bars"
+      ],
+      [
+       1,
+       0,
+       "One bar, its parts piled"
+      ],
+      [
+       1,
+       1,
+       "Only the bottom is easy"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: departments along the axis, one bar per year.",
+      "It should group bars by **department** (one colour per year), but it groups by year. Fix it.",
+      "Draw **grouped bars**: departments along the axis, one bar per year, on a **9 × 4** figure, y label **Spend (₹ crore)**, legend titled **Yea",
+      "Draw **stacked bars**: one bar per **Year**, departments piled, y label **Spend (₹ crore)**."
+     ]
+    },
+    {
+     "id": "e1-3-6",
+     "num": "3.6",
+     "title": "Build it: the air-quality year",
+     "summary": "A brief and hidden tests: the city’s environment cell wants one chart of the year’s air for its annual report, and the numbers to quote with it. Turn the dates into dates, draw the days faintly and a 7-day average boldly, mark the unhealthy limit, headline the worst day, save it, and print the facts.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Combine dates, rolling averages and a reference line in one chart.",
+      "Write a headline and a summary from the data.",
+      "Check a busy chart still reads at a glance."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The environment cell’s request"
+      ],
+      [
+       0,
+       1,
+       "A reference line in the legend"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the air-quality year in order.",
+      "Build it. From **aqi.csv**, on a **10 × 4** figure: daily AQI in **\"lightgrey\"** labelled **Daily**; the **7-day average** in **\"tab:blue\"**"
+     ]
+    },
+    {
+     "id": "e1-3-7",
+     "num": "3.7",
+     "title": "Shares and growth over time",
+     "summary": "Totals grow, so raw bars hide what changed in the mix. Divide each year by its total to get shares that add to 100%, and draw them as 100% stacked bars. To compare growth from different starting sizes, rebase each series to 100 in the first year.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Turn each row of a table into percentages with div().",
+      "Draw 100% stacked bars and place the legend outside.",
+      "Rebase series to 100 to compare growth.",
+      "Say which view answers which question."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: what changed in the mix"
+      ],
+      [
+       0,
+       1,
+       "100% stacked bars"
+      ],
+      [
+       1,
+       0,
+       "Rebase to 100"
+      ],
+      [
+       1,
+       1,
+       "Which view for which question?"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "The shares should add to 100 **within each year**, but they add up down each department. Fix it.",
+      "Draw **100% stacked bars** of each year’s spending mix, y label **Share of the budget (%)**, legend titled **Department**.",
+      "Draw each department’s spending **rebased to 2023 = 100** as lines with **marker=\"o\"**, y label **Spend (2023 = 100)**, and the title worked"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title": "Design that makes a point",
+   "free": false,
+   "summary": "A chart should make one point, fast. Clear away borders and heavy grids, colour the one thing the title talks about and grey the rest, write the numbers and notes on the chart itself, compare fairly per person and from zero, and use colour that means something to every reader. It ends with a ward air-quality chart for the newspaper, and Intermediate builds a house style as a function.",
+   "testInfo": "spines and light grids, highlighting with a list of colours, bar_label and annotate, per-person rates and axes from zero, colour maps and colour bars, consistent colours, colour-blind safe choices, and a style function",
+   "lessons": [
+    {
+     "id": "e1-4-1",
+     "num": "4.1",
+     "title": "Clear the clutter",
+     "summary": "matplotlib’s defaults draw a box around every chart and leave the data to fight with it. Take off the top and right borders (spines), make grid lines faint and put them behind the bars, and drop anything that doesn’t help: a legend for one series, a title that repeats the axis.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Hide the top and right spines.",
+      "Add a faint grid behind the data.",
+      "Remove a legend or labels that add nothing.",
+      "Judge each mark on the chart: does it help the reader?"
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the same chart, calmer"
+      ],
+      [
+       0,
+       1,
+       "Before and after"
+      ],
+      [
+       1,
+       0,
+       "Ask of every mark: does it help?"
+      ],
+      [
+       1,
+       1,
+       "Thin the tick labels"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: no top or right border, a faint grid across, behind the bars.",
+      "It should hide the **top and right** borders, but hides the wrong ones. Fix it.",
+      "Draw **Rain_mm** by **Month** as bars with no top or right border, a faint y grid (**alpha=0.3**) behind the bars, and the y label **Rain (m",
+      "Draw sorted **sideways bars** of **Population** per **Ward** (biggest on top) with no top or right border, a faint **x** grid behind the bar"
+     ]
+    },
+    {
+     "id": "e1-4-2",
+     "num": "4.2",
+     "title": "Highlight one thing",
+     "summary": "Colour pulls the eye. Give the bar your title talks about a strong colour and every other bar light grey, and the point is made before anyone reads a word. A list of colours, one per bar, built from the data, does it, so the right bar lights up for any file.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Pass a list of colours, one per bar.",
+      "Build the list with a list comprehension and an if.",
+      "Find the bar to highlight from the data, not by position.",
+      "Highlight a line among grey lines."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the worst ward jumps out"
+      ],
+      [
+       0,
+       1,
+       "The colour list, step by step"
+      ],
+      [
+       1,
+       0,
+       "One line among many"
+      ],
+      [
+       1,
+       1,
+       "Highlight by a rule"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: the ward with the **most parks** in **\"tab:green\"**, the rest light grey.",
+      "The red bar should be the worst ward in **any** city, but it is typed in, so other cities get no red. Fix it.",
+      "Draw sorted **sideways bars** of **AQI** per ward (worst on top): wards with **AQI over 150** in **\"tab:red\"**, the rest **\"lightgrey\"**, an",
+      "Draw sorted sideways bars of **Population** (biggest on top), the **biggest** ward in **\"tab:blue\"** and the rest **\"lightgrey\"**, titled fr"
+     ]
+    },
+    {
+     "id": "e1-4-3",
+     "num": "4.3",
+     "title": "Words on the chart",
+     "summary": "Put the numbers and notes where the eye already is. ax.bar_label() writes each bar’s value at its end; ax.annotate() points an arrow at the moment that matters, like the festival spike; ax.text() writes a note anywhere. Readers then don’t have to squint at the axis.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Write each bar’s value on it with bar_label().",
+      "Format those numbers with fmt.",
+      "Point at one moment with annotate() and an arrow.",
+      "Decide when numbers on the bars replace the axis."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: values where the eye is"
+      ],
+      [
+       0,
+       1,
+       "Format the numbers"
+      ],
+      [
+       1,
+       0,
+       "annotate"
+      ],
+      [
+       1,
+       1,
+       "One or two notes, not ten"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: label each bar with its value.",
+      "The labels should show populations with commas, like **182,000**, but show **182000**. Fix it.",
+      "Draw sorted sideways bars of **Parks** (most on top), label every bar with its value (**padding=3**), remove the x axis numbers (**ax.set_xt",
+      "Draw the daily AQI line and annotate the **worst day** with the text **Worst day**, an arrow (**arrowprops={\"arrowstyle\": \"->\"}**) from **60"
+     ]
+    },
+    {
+     "id": "e1-4-4",
+     "num": "4.4",
+     "title": "Fair comparisons",
+     "summary": "A chart can be accurate and still unfair. Big wards have more of everything, so compare per person or per km². Bars start at zero. And the unit, “per 1,000 people”, goes in the label. Fair charts are the ones people trust.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Turn totals into rates: per 1,000 people, per km².",
+      "Keep bar axes starting at zero.",
+      "Put the rate’s unit in the label.",
+      "Spot a chart whose comparison isn’t fair."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: which ward is really greenest?"
+      ],
+      [
+       0,
+       1,
+       "Totals or rates?"
+      ],
+      [
+       1,
+       0,
+       "Bars from zero, always"
+      ],
+      [
+       1,
+       1,
+       "Units and rounding"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "The bars should start at zero, but the axis is cut. Fix it.",
+      "Add **Per1000** = trees per 1,000 people (**rounded to 1 decimal**), then draw sorted sideways bars of it (most on top), x label **Trees per",
+      "Draw sorted sideways bars of **people per km²** (Population ÷ Area_km2, **rounded to whole numbers**), the most crowded on top, values on th"
+     ]
+    },
+    {
+     "id": "e1-4-5",
+     "num": "4.5",
+     "title": "Colour with meaning",
+     "summary": "Colour can carry a number (light to dark for low to high) or a category (one hue per zone). Use a colour map with a colour bar for numbers, a fixed dictionary for categories so each zone is the same colour on every chart, and choose colours that colour-blind readers can tell apart.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Colour points by a number with c= and a colour map.",
+      "Add a colour bar with a label.",
+      "Keep one colour per category across charts with a dictionary.",
+      "Avoid red–green pairs; choose colour-blind-safe colours."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: AQI as colour"
+      ],
+      [
+       0,
+       1,
+       "Sequential and diverging"
+      ],
+      [
+       1,
+       0,
+       "The same colour everywhere"
+      ],
+      [
+       1,
+       1,
+       "Red and green look alike to many"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: dots coloured by AQI with a labelled colour bar.",
+      "Scatter **Area_km2** and **Population**, dots coloured by **AQI** with **cmap=\"magma\"**, and a colour bar labelled **AQI**.",
+      "Total **Population** per **Zone**, sorted, as sideways bars coloured by the dictionary given (each zone its own colour), x label **People**."
+     ]
+    },
+    {
+     "id": "e1-4-6",
+     "num": "4.6",
+     "title": "Build it: the newspaper chart",
+     "summary": "A brief and hidden tests: the city newspaper wants one chart for a story on air quality by ward, readable in a second. Sort, highlight the worst ward from the data, write the values on the bars, mark the AQI 100 line, clear the clutter, headline it and save it, then print the facts for the reporter.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Combine sorting, highlighting, labels, a reference line and decluttering.",
+      "Write a headline from the data.",
+      "Check the chart makes its point at a glance."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The newspaper’s request"
+      ],
+      [
+       0,
+       1,
+       "The two-second test"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the newspaper chart in order.",
+      "Build it. From **wards.csv**, on a **7 × 5** figure: sideways bars of **AQI** sorted with the worst on top; the worst ward **\"tab:red\"**, th"
+     ]
+    },
+    {
+     "id": "e1-4-7",
+     "num": "4.7",
+     "title": "A house style",
+     "summary": "Newsrooms and companies give every chart the same look, so readers trust it and writers don’t repeat themselves. Put your clean-up steps in a function, style(ax, title), and call it on every chart. rcParams sets defaults once for the whole program.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Write a function that styles an axes.",
+      "Call it on several charts.",
+      "Left-align titles the newsroom way.",
+      "Set program-wide defaults with plt.rcParams."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: one call, every chart consistent"
+      ],
+      [
+       0,
+       1,
+       "Left-aligned, bold titles"
+      ],
+      [
+       1,
+       0,
+       "rcParams"
+      ],
+      [
+       1,
+       1,
+       "A style that stays honest"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "The function styles a chart, but the second chart isn’t styled. Fix it.",
+      "Write **style(ax, title, xlabel=\"\")** that hides the top and right spines, adds a faint y grid (**alpha=0.3**) behind the data, sets a **bol",
+      "With the same **style()** function, draw two charts from weather.csv: bars of **Rain_mm** titled **Rain** and a line of **Temp_C** titled **"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title": "Layouts and small multiples",
+   "free": false,
+   "summary": "One chart answers one question; a page of them answers the next ones too. Put charts side by side and in grids, draw one small panel per city or zone with a loop, give the panels one shared scale so they compare fairly, and show two measures together without a misleading second axis. It ends with a city-at-a-glance figure of four panels, and Intermediate builds layouts beyond the grid.",
+   "testInfo": "plt.subplots with rows and columns, unpacking and indexing axes, suptitle and tight_layout, small multiples with zip and axes.flat, sharey and sharex, hiding unused panels, twinx versus stacked panels, and subplot_mosaic",
+   "lessons": [
+    {
+     "id": "e1-5-1",
+     "num": "5.1",
+     "title": "Two charts side by side",
+     "summary": "Rain and temperature tell one story about the year, so show them together. plt.subplots(1, 2) makes one figure with two charts in a row; unpack them as ax1 and ax2, draw on each, give each its own title, and put a headline over both with fig.suptitle.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Make a figure with two axes in a row.",
+      "Unpack the axes into two names.",
+      "Title each chart and the whole figure.",
+      "Size the figure for two charts."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: rain and heat, together"
+      ],
+      [
+       0,
+       1,
+       "What subplots gives back"
+      ],
+      [
+       1,
+       0,
+       "Give the figure room"
+      ],
+      [
+       1,
+       1,
+       "Two kinds of title"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: one row of two charts, rain bars on the left and the temperature line on the right.",
+      "Both charts land on the left and the right one is empty. Fix it so the temperature line is on the right.",
+      "In one **10 × 4** figure, draw bars of **Rain_mm** on the left titled **Rain (mm)** and bars of **Sunny_days** on the right titled **Sunny d",
+      "Two charts side by side from weather.csv: a line of **Temp_C** on the left titled with the hottest month, like **Hottest: May (31.0 °C)**, a"
+     ]
+    },
+    {
+     "id": "e1-5-2",
+     "num": "5.2",
+     "title": "A grid of charts",
+     "summary": "plt.subplots(2, 2) makes four charts in two rows and two columns. The axes come back as a small table: axes[0, 1] is row 0, column 1, the top right. A loop over axes.flat visits every chart in reading order, so one loop can draw a column of the file in each.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Make a 2 × 2 grid of charts.",
+      "Pick a chart with axes[row, column].",
+      "Loop over axes.flat with zip.",
+      "Tidy a grid with tight_layout."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: four views of the weather"
+      ],
+      [
+       0,
+       1,
+       "The shape of axes"
+      ],
+      [
+       1,
+       0,
+       "axes.flat and zip"
+      ],
+      [
+       1,
+       1,
+       "Tidy the grid"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Put the lines in order: a 2 × 2 grid with rain bars top left and the temperature line bottom right, then tidy it.",
+      "It stops with an IndexError. The sunny days should be bottom left. Fix it.",
+      "A **2 × 2** grid (**figsize=(10, 7)**): rain bars top left titled **Rain (mm)**, the **Temp_C** line top right titled **Temperature (°C)**, ",
+      "With one loop over **axes.flat**, draw a **2 × 2** grid (**figsize=(10, 7)**) of sideways bars per ward for **Population**, **Parks**, **Tre"
+     ]
+    },
+    {
+     "id": "e1-5-3",
+     "num": "5.3",
+     "title": "Small multiples",
+     "summary": "Three cities on one line chart tangle; three small charts, one per city, side by side, are read at a glance. The number of panels comes from the data, so a file with two cities gets two and a file with four gets four. One loop draws them all, the same way.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Make one panel per category with a loop.",
+      "Size the grid from the data.",
+      "Filter the rows for each panel.",
+      "Title each panel with its category."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: one small chart per city"
+      ],
+      [
+       0,
+       1,
+       "Tangle or multiples?"
+      ],
+      [
+       1,
+       0,
+       "One panel per zone"
+      ],
+      [
+       1,
+       1,
+       "Keep every panel the same"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: one panel per city, the same y scale in each.",
+      "Every line lands in the first panel. Fix it so each city has its own panel.",
+      "From **temps.csv**, draw small multiples: one line chart per city (every column after **Month**), in one row, **sharey=True**, **figsize=(4 ",
+      "From **wards.csv**, one panel per **Zone** (in the order zones first appear), in one row, **sharex=True**, **figsize=(4 × the number of zone"
+     ]
+    },
+    {
+     "id": "e1-5-4",
+     "num": "5.4",
+     "title": "One scale for fair comparison",
+     "summary": "Each panel picks its own axis range unless you say otherwise, so the parks budget can look as big as the roads budget. sharey=True gives every panel one scale, and size on the page means size in the data again. A grid with more panels than groups hides the spare ones.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "See how separate scales mislead.",
+      "Share axes with sharey and sharex.",
+      "Hide unused panels in a grid.",
+      "Set one range by hand with set_ylim."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: budgets you can compare"
+      ],
+      [
+       0,
+       1,
+       "The same data, unshared"
+      ],
+      [
+       1,
+       0,
+       "Hide the spare panels"
+      ],
+      [
+       1,
+       1,
+       "Set the range yourself"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "These temperature panels each pick their own scale. Change it so all the panels share one y axis.",
+      "Parks looks as big as Roads. Fix the figure so the panels compare fairly.",
+      "From **budget.csv**: a **2 × 3** grid (**sharey=True**, **figsize=(10, 5)**), one panel per **Department** in file order, bars of **Spend_cr",
+      "Two panels side by side (**figsize=(10, 4)**): bars of **Rain_mm** on the left and of **Sunny_days** on the right, both with **set_ylim(0, …"
+     ]
+    },
+    {
+     "id": "e1-5-5",
+     "num": "5.5",
+     "title": "Two measures, one picture",
+     "summary": "Rain is in millimetres and heat in degrees: one axis can’t hold both. A second y axis with twinx() overlays them, but where the lines cross is up to you, which makes it easy to mislead. Two panels stacked on one shared time axis show the same thing honestly.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Add a second y axis with twinx().",
+      "Colour each axis label like its series.",
+      "Know why twin axes can mislead.",
+      "Stack two panels on a shared x axis instead."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: rain bars, a heat line, two scales"
+      ],
+      [
+       0,
+       1,
+       "Why twin axes can mislead"
+      ],
+      [
+       1,
+       0,
+       "Stack two panels, share the x"
+      ],
+      [
+       1,
+       1,
+       "Which to choose?"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "The temperature line is squashed flat on the rain scale. Fix it so it uses its own axis on the right.",
+      "An **8 × 4** chart: bars of **Rain_mm** in **\"tab:blue\"** with the left label **Rain (mm)** in blue, and on a **twin axis** a **Temp_C** lin",
+      "The honest version: two panels stacked (**2 rows, 1 column**, **sharex=True**, **figsize=(8, 6)**), rain bars on top titled **Rain (mm)** an"
+     ]
+    },
+    {
+     "id": "e1-5-6",
+     "num": "5.6",
+     "title": "Build it: the city at a glance",
+     "summary": "A brief and hidden tests: the city council wants one picture for the front of its yearly report, four panels from three files: when it rains, when it’s hot, where the air is worst and how people travel. Every panel title is a finding worked out from the data.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Read three files and work out four findings.",
+      "Lay out a 2 × 2 figure with the right chart in each place.",
+      "Highlight, title and save the figure.",
+      "Print the findings for the report."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The council’s request"
+      ],
+      [
+       0,
+       1,
+       "Plan the page"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the city figure in order.",
+      "Build it. From **weather.csv**, **wards.csv** and **commute.csv**, an **11 × 8** figure in a **2 × 2** grid: top left rain bars by **Month**"
+     ]
+    },
+    {
+     "id": "e1-5-7",
+     "num": "5.7",
+     "title": "Layouts beyond the grid",
+     "summary": "Not every chart deserves the same space. subplot_mosaic draws a layout from a little map of names, so a year-long line can run across the top with two smaller charts below. width_ratios and height_ratios make one column or row bigger than the others.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Draw a layout from a mosaic of names.",
+      "Use the axes dictionary it returns.",
+      "Make one chart wider with width_ratios.",
+      "Choose a layout that matches the story’s order."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: one big chart, two small"
+      ],
+      [
+       0,
+       1,
+       "Reading a mosaic"
+      ],
+      [
+       1,
+       0,
+       "width_ratios"
+      ],
+      [
+       1,
+       1,
+       "Layout is part of the story"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "The year line should span the whole top row, but sits in one corner. Fix the mosaic.",
+      "From **aqi.csv**, the layout **[[\"year\", \"year\"], [\"months\", \"spread\"]]** (**figsize=(10, 7)**): the daily **AQI** line across the top title",
+      "From **weather.csv**: two charts in a row with **width_ratios=[3, 1]** (**figsize=(10, 4)**): rain bars by month on the left titled **Rain b"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title": "The visual story",
+   "free": false,
+   "summary": "Charts become a story when words lead the reader through them. Turn numbers into sentences, put a headline, charts and captions in the order of the argument, and write it all as a web page from Python: headings, paragraphs, pictures, lists and tables. Pictures go inside the page, so one file is the whole story. It ends with a city story page, and Intermediate builds the page from a function, ready for any city.",
+   "testInfo": "sentences from data with f-strings and number formats, words chosen with if, headline and caption, HTML tags (h1, h2, p, img, ul, li, table), writing a file with open and with, alt text, html.escape, df.to_html, embedding a chart with base64, and a section function",
+   "lessons": [
+    {
+     "id": "e1-6-1",
+     "num": "6.1",
+     "title": "Numbers into sentences",
+     "summary": "A chart shows; a sentence tells. Work the finding out from the data and write it as a plain sentence with an f-string: round the numbers, add commas to big ones, turn shares into percentages, and let an if choose words like “more” or “less”, so the sentence is right for any city’s file.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Write a sentence from data with an f-string.",
+      "Format numbers: decimals, commas, percentages.",
+      "Choose words with if.",
+      "Compare with something familiar: times, shares, an average."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the sentence under the chart"
+      ],
+      [
+       0,
+       1,
+       "Numbers people can read"
+      ],
+      [
+       1,
+       0,
+       "Let if choose the word"
+      ],
+      [
+       1,
+       1,
+       "Compare with something familiar"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: the hottest month and its temperature with one decimal.",
+      "The sentence always says “wetter”, even for a dry month. Fix it so the word follows the data.",
+      "Print, from **weather.csv**: the wettest month, its rain and how many times an average month it is (one decimal), like:",
+      "From **wards.csv**, print the total population with commas and the biggest ward’s share of it as a whole percentage, like:"
+     ]
+    },
+    {
+     "id": "e1-6-2",
+     "num": "6.2",
+     "title": "A story in three steps",
+     "summary": "A data story has a shape: a headline that says the point, a little context, the evidence in a chart or two, and what it means. Each chart gets a headline title and a caption sentence, and the charts come in the order of the argument, not the order you drew them.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan a story: headline, context, evidence, meaning.",
+      "Give each chart a headline title and a caption.",
+      "Mark the turning point on a chart.",
+      "Put charts in the order of the argument."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a story outline from data"
+      ],
+      [
+       0,
+       1,
+       "Titles that say the point"
+      ],
+      [
+       1,
+       0,
+       "Mark the turning point"
+      ],
+      [
+       1,
+       1,
+       "Order of the argument"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "The title is a label. Fix it so it says the finding, like **The rain peaks in Jul**, worked out from the data.",
+      "Print a four-line story outline from **weather.csv**:",
+      "An **8 × 4** line of **Rain_mm** by **Month** with a note at the wettest month like **Jul: 310 mm** (**annotate**, **xytext=(10, -5)**, **te"
+     ]
+    },
+    {
+     "id": "e1-6-3",
+     "num": "6.3",
+     "title": "A web page from Python",
+     "summary": "A web page is a text file with tags: <h1> for the headline, <p> for a paragraph, <img> for a picture. Build the page as one f-string, with the findings in it, and write it to story.html. The lab shows the page as a browser would, and checks what a reader sees.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Know the tags for a heading, a paragraph and a picture.",
+      "Build a page with a triple-quoted f-string.",
+      "Write it to a file with open and with.",
+      "Add a saved chart with alt text."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: your first page"
+      ],
+      [
+       0,
+       1,
+       "Open, close, nest"
+      ],
+      [
+       1,
+       0,
+       "Write the page"
+      ],
+      [
+       1,
+       1,
+       "A picture with alt text"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "The heading swallows the paragraph. Fix the tag.",
+      "Write **story.html**: inside **<html>**, a **<head>** with the **<title>** **Rain**, and a **<body>** with the headline **<h1>The rain peaks",
+      "Add the chart: draw **8 × 4** bars of **Rain_mm** by **Month** titled **The rain peaks in Jul**, save **rain.png** (**bbox_inches=\"tight\"**)"
+     ]
+    },
+    {
+     "id": "e1-6-4",
+     "num": "6.4",
+     "title": "Lists and tables on the page",
+     "summary": "Some findings are lists: the wards over a limit, the three worst. Build <li> items with a loop and join them; let pandas write a table with to_html. Names from data can hold characters that HTML reads as code, like & and <, so pass them through html.escape.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Build a bulleted list from data.",
+      "Join many pieces of HTML into one string.",
+      "Write a table with df.to_html(index=False).",
+      "Escape text with html.escape."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the wards over the limit, as a list"
+      ],
+      [
+       0,
+       1,
+       "join, step by step"
+      ],
+      [
+       1,
+       0,
+       "A table in one line"
+      ],
+      [
+       1,
+       1,
+       "Text that looks like code"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: one list item per ward over AQI 150, worst first, inside a bulleted list.",
+      "Write **story.html** with **<h2>Wards over AQI 150</h2>** and a **<ul>** of the wards over 150, worst first, each like **<li>Station Road: 1",
+      "Write **story.html** with **<h2>The three worst wards</h2>** and a table (**to_html(index=False)**) of the **Ward**, **Zone** and **AQI** of"
+     ]
+    },
+    {
+     "id": "e1-6-5",
+     "num": "6.5",
+     "title": "One file to share",
+     "summary": "A page that points to rain.png breaks the moment it is emailed without the picture. Put the picture inside the page instead: save the chart into memory, turn the bytes into text with base64, and write it in the <img> tag. A small function does it for every chart.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Save a chart into memory with io.BytesIO.",
+      "Turn the picture into text with base64.",
+      "Embed it in an <img> as a data: address.",
+      "Wrap it in a function and reuse it."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a page that is one file"
+      ],
+      [
+       0,
+       1,
+       "Why one file?"
+      ],
+      [
+       1,
+       0,
+       "picture(fig, alt)"
+      ],
+      [
+       1,
+       1,
+       "Check what the page holds"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Put the lines of picture(fig, alt) in order.",
+      "The page shows a broken picture: the data: address is wrong. Fix it.",
+      "Write **picture(fig, alt)** (save into **io.BytesIO** as PNG with **bbox_inches=\"tight\"**, base64-encode, return **<img src=\"data:image/png;"
+     ]
+    },
+    {
+     "id": "e1-6-6",
+     "num": "6.6",
+     "title": "Build it: the city story page",
+     "summary": "A brief and hidden tests: the city’s website wants a one-page story about the year’s rain and air, as a single file anyone can open. A headline, a standfirst with the big number, two charts with headline titles and alt text, a caption under each, and a source line: every number from the files.",
+     "minutes": 50,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan a page: headline, standfirst, sections, source.",
+      "Draw two charts with headline titles.",
+      "Embed them with alt text.",
+      "Write the page and report what it holds."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The web team’s request"
+      ],
+      [
+       0,
+       1,
+       "Plan the page"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the story page in order.",
+      "Build it, following the brief: **story.html** with the title **A year in the city**, the **<h1>** **Four wet months, and air that needs them"
+     ]
+    },
+    {
+     "id": "e1-6-7",
+     "num": "6.7",
+     "title": "A story built from parts",
+     "summary": "Every section of a story page has the same shape: a heading, a chart, a caption. Write that shape once as a function, collect the sections in a list and join them. Adding a section is one more line, and a little CSS in the head gives the whole page a readable style.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Write a function that returns one section of HTML.",
+      "Build a page from a list of sections.",
+      "Add a style block for readable pages.",
+      "Reuse the same program for another city’s files."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a page from a list of parts"
+      ],
+      [
+       0,
+       1,
+       "Functions that return HTML"
+      ],
+      [
+       1,
+       0,
+       "A little style"
+      ],
+      [
+       1,
+       1,
+       "One program, any city"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "It stops with a TypeError: section() builds the HTML but gives nothing back. Fix it.",
+      "Write **picture(fig, alt)** and **section(heading, fig, alt, caption)** (returning **<h2>**, the embedded picture and a **<p>** caption, on ",
+      "Same page, styled: add **<style>body { max-width: 720px; margin: auto; font-family: sans-serif; } img { max-width: 100%; }</style>** inside "
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1812 @@
+{
+ "id": "d1",
+ "code": "D1",
+ "title": "Data Analysis with Python",
+ "level": "Data & AI · Sheetah Python",
+ "hours": 35,
+ "programme": "python",
+ "lang": "python",
+ "summary": "pandas from the ground up, on a whole T20 cricket season: load data, ask it questions, clean it, group and join it, follow it over time and write up what you find. It ends with a season analysis report: teams, players and venues.",
+ "prereq": "PY1 · Python Foundations at Beginner (variables, if, loops, lists, functions). No maths beyond averages and percentages. E2 helps but isn’t needed.",
+ "outcomes": [
+  "Load CSV data into pandas and size it up: shape, types, totals, averages and counts.",
+  "Turn questions into filters, new columns, sorts and top-N tables.",
+  "Clean real data: blanks, wrong types, dates, repeats and inconsistent spellings.",
+  "Summarise with groupby, pivot tables and crosstabs, and combine tables with merge.",
+  "Follow numbers over time: dates, running totals, rolling averages and ranks.",
+  "Write up an analysis as a report someone else can act on."
+ ],
+ "levels": [
+  {
+   "id": "B",
+   "name": "Beginner",
+   "hours": 14,
+   "who": "Anyone who wants to answer questions with data: students, analysts-to-be and curious fans.",
+   "outcome": "Load, filter, sort, summarise and clean a dataset, and answer clear questions about it."
+  },
+  {
+   "id": "I",
+   "name": "Intermediate",
+   "hours": 25,
+   "who": "What D2, D3 and X1 expect, and what most data jobs ask for at interview.",
+   "outcome": "Reshape, join and time-series data with confidence, and pick the right summary for the question."
+  },
+  {
+   "id": "M",
+   "name": "Master",
+   "hours": 35,
+   "who": "People who will own analyses: robust, fast, and checked.",
+   "outcome": "Handle large, messy data quickly, test your assumptions, and write analyses others trust."
+  }
+ ],
+ "recommend": "B",
+ "pass": 70,
+ "upcoming": [],
+ "project": {
+  "title": "A T20 season analysis report: teams, players, venues",
+  "brief": "A full season, ball by ball, becomes a report a team analyst could use. A checklist per level, hidden tests on another season and three “explain your code” questions."
+ },
+ "exam": {
+  "questions": 30,
+  "tasks": 4,
+  "minutes": 75,
+  "pass": 70,
+  "attempts": 3,
+  "gapHours": 48,
+  "byLevel": {
+   "B": {
+    "questions": 25,
+    "tasks": 2,
+    "minutes": 50
+   },
+   "I": {
+    "questions": 30,
+    "tasks": 4,
+    "minutes": 75
+   },
+   "M": {
+    "questions": 30,
+    "tasks": 5,
+    "minutes": 90
+   }
+  }
+ },
+ "downloads": [],
+ "modules": [
+  {
+   "n": 1,
+   "title": "A first look at data",
+   "free": true,
+   "summary": "Load a season of a T20 league from a CSV file into pandas and get to know it: how big it is, what its columns hold, totals and averages of a column, and how often each value turns up. It ends with a season fact sheet, and Intermediate adds picking rows by position and by label.",
+   "testInfo": "reading CSV files, shape and columns, one column’s totals and averages, describe, value_counts and nunique, and iloc/loc",
+   "lessons": [
+    {
+     "id": "d1-1-1",
+     "num": "1.1",
+     "title": "Data in a table",
+     "summary": "Data analysis starts with a table. A CSV file is a table saved as plain text, one row per line and commas between the values. pandas reads it in one line with pd.read_csv() into a DataFrame: named columns, numbered rows.",
+     "minutes": 30,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Say what a CSV file is and how it maps to a table.",
+      "Read a CSV file into a DataFrame with pd.read_csv().",
+      "Show the first and last rows with head() and tail().",
+      "Show just a few columns of the table."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a whole season in one variable"
+      ],
+      [
+       0,
+       1,
+       "What read_csv did"
+      ],
+      [
+       1,
+       0,
+       "head and tail"
+      ],
+      [
+       1,
+       1,
+       "A few columns"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that reads players.csv and prints the **Player** and **Runs** columns of the first 3 rows.",
+      "It should print the Team column of the first 4 players, but crashes. Fix it.",
+      "Read **players.csv** and print the **Player** and **Role** columns of the **last 2** rows."
+     ]
+    },
+    {
+     "id": "d1-1-2",
+     "num": "1.2",
+     "title": "How big, and what’s in it",
+     "summary": "Before any analysis, check what you’ve got: shape gives rows and columns, len() the rows, columns the names, and info() the type of every column and how many values each one has. Missing values show up here first.",
+     "minutes": 30,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Find the size of a table with shape and len().",
+      "List the column names.",
+      "Read info(): column types and non-missing counts.",
+      "Spot a numbers column that came in as text."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a quick health check of any file"
+      ],
+      [
+       0,
+       1,
+       "shape has no brackets after it"
+      ],
+      [
+       1,
+       0,
+       "info()"
+      ],
+      [
+       1,
+       1,
+       "A number column read as text"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that reads matches.csv and prints **12 matches, 7 columns**.",
+      "It should print how many players there are, like **16 players**, but crashes. Fix it.",
+      "Read **players.csv** and print the number of players and the column names, like **16 players: Player, Team, Role, Matches, Runs, Balls, Four"
+     ]
+    },
+    {
+     "id": "d1-1-3",
+     "num": "1.3",
+     "title": "One column: totals, averages, extremes",
+     "summary": "One column of a DataFrame is a Series. It knows how to add itself up (sum), average itself (mean), find its biggest and smallest values (max, min), and summarise itself in one go with describe(). round() keeps the answer readable.",
+     "minutes": 35,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Total, average, maximum and minimum of a column.",
+      "Round a result for printing.",
+      "Read describe(): count, mean, min, quartiles and max.",
+      "Say why the median is safer than the mean for skewed data."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the season in numbers"
+      ],
+      [
+       0,
+       1,
+       "A column is a Series"
+      ],
+      [
+       1,
+       0,
+       "describe()"
+      ],
+      [
+       1,
+       1,
+       "Mean or median?"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints **Total wickets: 118** and **Best: 22**.",
+      "It should print the average runs to 1 decimal place, but prints something odd. Fix it.",
+      "Change the program.",
+      "Read **players.csv** and print the total **Sixes**, the most sixes by one player and the average per player to 1 decimal place, like **Sixes"
+     ]
+    },
+    {
+     "id": "d1-1-4",
+     "num": "1.4",
+     "title": "Counting: value_counts and unique",
+     "summary": "For text columns the question is usually “how many of each?”. value_counts() counts each value, most common first. unique() lists the different values and nunique() says how many there are. Together they answer “who won most?” and “how many venues?” in a line.",
+     "minutes": 35,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Count how often each value appears with value_counts().",
+      "List the different values with unique(), and count them with nunique().",
+      "Read one count out of value_counts() by its label.",
+      "Turn counts into shares with normalize=True."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the league table in one line"
+      ],
+      [
+       0,
+       1,
+       "Teams that never won"
+      ],
+      [
+       1,
+       0,
+       "unique and nunique"
+      ],
+      [
+       1,
+       1,
+       "Shares instead of counts"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints how many matches each venue hosted, most first, then **4 venues**.",
+      "It should print how many wins Delhi Daredrums had (0 this season), but crashes. Fix it.",
+      "Read **players.csv** and print how many players there are in each **Role**, most first, then the number of different **Teams**, like **Teams"
+     ]
+    },
+    {
+     "id": "d1-1-5",
+     "num": "1.5",
+     "title": "Build it: the season fact sheet",
+     "summary": "A brief and hidden tests: read the players and the matches of a season and print a fact sheet: how many players, teams, matches and venues, the runs with their average and median, the best score, the wickets, and the team with the most wins.",
+     "minutes": 40,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Plan a short analysis before writing it.",
+      "Combine shape, totals, averages and counts from two files.",
+      "Read the top of value_counts() with index[0] and iloc[0]."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Every season starts with a fact sheet"
+      ],
+      [
+       0,
+       1,
+       "The top of value_counts()"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the fact sheet in order.",
+      "Build it. Read **players.csv** and **matches.csv** and print six lines exactly like:"
+     ]
+    },
+    {
+     "id": "d1-1-6",
+     "num": "1.6",
+     "title": "Rows by position and by label",
+     "summary": "iloc picks rows and columns by position (0, 1, 2 …), like counting down a list. loc picks them by label: the index value and the column names. set_index() makes a column, such as Player, the labels, so df.loc[\"Arjun Rao\", \"Runs\"] reads one cell. idxmax() gives the label of the biggest value.",
+     "minutes": 40,
+     "free": true,
+     "level": "I",
+     "objectives": [
+      "Pick rows and columns by position with iloc.",
+      "Make a column the index with set_index().",
+      "Read a row or one cell by label with loc.",
+      "Find who has the biggest value with idxmax()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: “Siddharth Jain’s runs” in one step"
+      ],
+      [
+       0,
+       1,
+       "A row is a Series too"
+      ],
+      [
+       1,
+       0,
+       "set_index and loc"
+      ],
+      [
+       1,
+       1,
+       "iloc is positions, loc is labels"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It should print Aman Gill’s team, but crashes. Fix it.",
+      "Change the program.",
+      "Read **players.csv**. Print the **first** and **last** players’ names (by position) on one line, like **Arjun Rao … Om Chatterjee**, then th"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title": "Asking questions of data",
+   "free": false,
+   "summary": "Turn questions into code: keep the rows that match (filters, and/or/not, isin, between), work out new columns like strike rate, sort and take the top few, and search text columns. It ends with a scouting report saved as CSV, and Intermediate adds columns that depend on a condition.",
+   "testInfo": "filters and combined conditions, new calculated columns, sorting and top N, text columns with .str, and saving with to_csv",
+   "lessons": [
+    {
+     "id": "d1-2-1",
+     "num": "2.1",
+     "title": "Filters: keep the rows that match",
+     "summary": "A comparison on a column, like df[\"Runs\"] > 300, gives True or False for every row. Put it inside df[...] and pandas keeps only the True rows. That one idea answers most “which players…?” questions.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Compare a whole column with a value to get True/False per row.",
+      "Keep only the matching rows with df[condition].",
+      "Count the matches with len() or sum().",
+      "Pick columns from the filtered rows."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: “which players scored over 300?” in one line"
+      ],
+      [
+       0,
+       1,
+       "The index stays"
+      ],
+      [
+       1,
+       0,
+       "len() or sum()"
+      ],
+      [
+       1,
+       1,
+       "= is not =="
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints the **Player** and **Runs** of the batters (Role **Batter**), then **N batters**.",
+      "It should print how many players hit no sixes at all, but prints a wrong number. Fix it.",
+      "Read **players.csv** and print the names of the players with **at least 400 runs**, one per line, then **N players**."
+     ]
+    },
+    {
+     "id": "d1-2-2",
+     "num": "2.2",
+     "title": "And, or, not: several conditions",
+     "summary": "Real questions have several parts: “Chennai players with over 200 runs”. pandas combines conditions with & (and), | (or) and ~ (not), each condition in its own brackets. isin() matches any of a list, and between() a range.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Combine conditions with & and |, each in brackets.",
+      "Turn a condition round with ~.",
+      "Match any of several values with isin().",
+      "Keep a range of values with between()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: “all-rounders with 10+ wickets and 200+ runs”"
+      ],
+      [
+       0,
+       1,
+       "Why not the words?"
+      ],
+      [
+       1,
+       0,
+       "isin and between"
+      ],
+      [
+       1,
+       1,
+       "Name your conditions"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: the players from Chennai **or** Bengaluru who played **10 to 13** matches.",
+      "It should print the players who are **not** bowlers and hit **at least 15 sixes**, but crashes. Fix it.",
+      "Change the program.",
+      "Read **matches.csv** and print the matches the **away** team won (Winner equals Away) **at Chinnaswamy or Eden Gardens**, showing **Match, V"
+     ]
+    },
+    {
+     "id": "d1-2-3",
+     "num": "2.3",
+     "title": "New columns: strike rate and friends",
+     "summary": "Cricket fans don’t stop at runs: they want the strike rate (runs per 100 balls), the average per match, and how many runs came in boundaries. Each is a new column worked out from others, one line for every row at once, like filling a formula down in Excel.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Add a column calculated from other columns.",
+      "Round a column with .round().",
+      "Guard against dividing by zero.",
+      "Use a new column in a filter."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a strike rate for every player"
+      ],
+      [
+       0,
+       1,
+       "Several columns at once"
+      ],
+      [
+       1,
+       0,
+       "Dividing by zero"
+      ],
+      [
+       1,
+       1,
+       "Use the new column"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that adds **Boundary runs** (4 × Fours + 6 × Sixes) and prints the Player and Boundary runs of the first 3 rows.",
+      "It should add a strike-rate column **SR** to 1 decimal place and print the column, but the column never appears. Fix it.",
+      "Change the program.",
+      "Read **players.csv**, add **SR** (Runs ÷ Balls × 100, 1 decimal place) and print the **average SR of the players who faced at least 100 ball"
+     ]
+    },
+    {
+     "id": "d1-2-4",
+     "num": "2.4",
+     "title": "Sorting and the top few",
+     "summary": "sort_values() orders the rows by a column, smallest first unless you say ascending=False. head(n) after a sort is the top n, and nlargest() does both at once. Sorting by two columns settles ties.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Sort by a column, highest or lowest first.",
+      "Keep the result: sort_values returns a new table.",
+      "Take the top n with head() or nlargest().",
+      "Sort by two columns to settle ties."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the Orange Cap table"
+      ],
+      [
+       0,
+       1,
+       "Sorting doesn’t change df"
+      ],
+      [
+       1,
+       0,
+       "nlargest and nsmallest"
+      ],
+      [
+       1,
+       1,
+       "Two columns settle ties"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints the **Player** and **Wickets** of the 3 best wicket-takers, most first.",
+      "It should print the players by **Runs**, highest first, but the order never changes. Fix it.",
+      "Change the program.",
+      "Read **players.csv**, add **SR** (Runs ÷ Balls × 100, 1 decimal place), keep the players with **at least 100 balls**, and print the top 3 by"
+     ]
+    },
+    {
+     "id": "d1-2-5",
+     "num": "2.5",
+     "title": "Searching text columns",
+     "summary": "Text columns get string methods through .str: contains() finds a word anywhere, startswith() and endswith() check the ends, upper() and len() work on every value, and split() pulls out a first or last name. They make filters like “every team from Mumbai” possible.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Reach string methods on a column through .str.",
+      "Filter with .str.contains() and .str.startswith().",
+      "Change every value with .str.upper(), .str.len().",
+      "Take part of a value with .str.split().str[0]."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: “every player called Rao or Reddy”"
+      ],
+      [
+       0,
+       1,
+       "Without .str it fails"
+      ],
+      [
+       1,
+       0,
+       "split and pick"
+      ],
+      [
+       1,
+       1,
+       "Capitals and case"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints the players whose **Team** contains **\"B\"** (capital), as a list of names.",
+      "It should print every player’s surname in capitals, but crashes. Fix it.",
+      "Read **matches.csv**. The Margin column holds text like **6 wickets** or **22 runs**. Print how many matches were won **by runs** and how ma"
+     ]
+    },
+    {
+     "id": "d1-2-6",
+     "num": "2.6",
+     "title": "Build it: the scouting report",
+     "summary": "A brief and hidden tests: a team’s scout wants the fastest scorers of the season. Keep the players who faced enough balls, work out strike rate and boundary share, sort, keep the top five, save them as a CSV file and print the headline.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan an analysis: filter, calculate, sort, cut, save, report.",
+      "Save a table to CSV with to_csv(index=False).",
+      "Combine everything from Module 2 in one program."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The scout’s question"
+      ],
+      [
+       0,
+       1,
+       "Saving a table as CSV"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the scouting report in order.",
+      "Build it. From **players.csv** keep players with **at least 100 balls**; add **SR** (Runs ÷ Balls × 100) and **Boundary %** ((4 × Fours + 6 "
+     ]
+    },
+    {
+     "id": "d1-2-7",
+     "num": "2.7",
+     "title": "Columns that depend on a condition",
+     "summary": "Some columns are labels, not sums: “Fast” or “Steady”, or a band like 0–99, 100–299, 300+. np.where() picks one of two values per row, .loc[condition, \"Col\"] = sets just the matching rows, map() translates with a dictionary, and pd.cut() sorts numbers into bands.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Make a two-way label with np.where().",
+      "Set values on the matching rows only with .loc.",
+      "Translate values with map() and a dictionary.",
+      "Put numbers into bands with pd.cut()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: every player labelled and banded"
+      ],
+      [
+       0,
+       1,
+       ".loc to set some rows"
+      ],
+      [
+       1,
+       0,
+       "map with a dictionary"
+      ],
+      [
+       1,
+       1,
+       "pd.cut: bands"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It should rename the role **Keeper** to **Wicket-keeper** in df, but df never changes. Fix it.",
+      "Change the program.",
+      "Read **players.csv** and add **Type**: **Bowler** for players with **10 or more wickets**, otherwise **Batter**. Then print how many of each"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title": "Cleaning real data",
+   "free": false,
+   "summary": "Real files arrive messy: blank cells, “DNB” where a number should be, team names typed three ways, dates in three styles and rows entered twice. Find the mess, fix each kind, and end with a cleaned season file. Intermediate wraps the cleaning in a function that checks its own work.",
+   "testInfo": "finding blanks and wrong types, dropna and fillna, to_numeric, tidying text, drop_duplicates, to_datetime with dayfirst, and saving the cleaned file",
+   "lessons": [
+    {
+     "id": "d1-3-1",
+     "num": "3.1",
+     "title": "Spotting the mess",
+     "summary": "Before you fix anything, find out what’s wrong. Four checks find most of it: isna().sum() counts the blanks in each column, dtypes shows which columns pandas thinks are text, unique() lists the different spellings, and duplicated() finds rows typed in twice.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Count the blank cells in each column with isna().sum().",
+      "Spot a number column read as text with dtypes.",
+      "List the different spellings in a column with unique() and nunique().",
+      "Count repeated rows with duplicated()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a mess report for any file"
+      ],
+      [
+       0,
+       1,
+       "Why Runs is text"
+      ],
+      [
+       1,
+       0,
+       "Same team, different spellings"
+      ],
+      [
+       1,
+       1,
+       "Rows typed twice"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints the **blank cells in each column**, then the **total** like **4 blank cells**.",
+      "It should print how many rows are repeats, but crashes. Fix it.",
+      "Read **scorecards.csv** and print a mess report:"
+     ]
+    },
+    {
+     "id": "d1-3-2",
+     "num": "3.2",
+     "title": "Blanks: drop them or fill them",
+     "summary": "A blank cell needs a decision. dropna() removes rows with blanks, and subset= says which columns matter. fillna() puts a value in instead, like 0 balls for a player who didn’t bat. Both give back a new table, so keep the result.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Show the rows with a blank with isna() as a filter.",
+      "Drop rows with blanks in chosen columns with dropna(subset=...).",
+      "Fill blanks with fillna(), for one column or several.",
+      "Keep the result: df = df.dropna(...)."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: blanks handled on purpose"
+      ],
+      [
+       0,
+       1,
+       "Keep what it gives back"
+      ],
+      [
+       1,
+       0,
+       "fillna"
+      ],
+      [
+       1,
+       1,
+       "Blanks and averages"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints the **players whose Runs is blank**, as a list, then **N blank**.",
+      "It should drop the rows with no Runs and print how many rows are left, but always prints 11. Fix it.",
+      "Change the program.",
+      "Read **scorecards.csv**, fill the blank **Balls** with **0**, and print the total balls faced, like **Balls faced: 245**."
+     ]
+    },
+    {
+     "id": "d1-3-3",
+     "num": "3.3",
+     "title": "Numbers stored as text",
+     "summary": "A column of runs that holds “DNB” and “-” is text, so sum() fails. pd.to_numeric() turns it into numbers, and errors=\"coerce\" makes anything unreadable a blank instead of stopping. Then you can see which values were lost, and deal with the blanks as in 3.2.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Explain why sum() fails on a text column of numbers.",
+      "Convert a column with pd.to_numeric(..., errors=\"coerce\").",
+      "Find the values that couldn’t be converted.",
+      "Turn a whole-number column back to int after dropping blanks."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: runs you can add up"
+      ],
+      [
+       0,
+       1,
+       "Without errors=\"coerce\""
+      ],
+      [
+       1,
+       0,
+       "Which values became blank?"
+      ],
+      [
+       1,
+       1,
+       "Back to whole numbers"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: turn Runs into numbers, with unreadable cells blank, and print the total.",
+      "It should print the highest score, but crashes on \"DNB\". Fix it.",
+      "Read **scorecards.csv** and print the **text values in Runs that aren’t numbers** (ignoring blanks), then the **total runs** as a whole numb"
+     ]
+    },
+    {
+     "id": "d1-3-4",
+     "num": "3.4",
+     "title": "Tidy text and repeated rows",
+     "summary": "Seven spellings of four teams become four with two string methods: strip() for stray spaces and title() for capitals. replace() with a dictionary fixes old names, drop_duplicates() removes rows typed twice, and rename() tidies the column names.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Remove stray spaces and fix capitals with .str.strip().str.title().",
+      "Swap old or wrong names with replace() and a dictionary.",
+      "Remove repeated rows with drop_duplicates().",
+      "Rename columns with rename(columns=...)."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: four teams, not seven"
+      ],
+      [
+       0,
+       1,
+       "Why counts were short"
+      ],
+      [
+       1,
+       0,
+       "replace with a dictionary"
+      ],
+      [
+       1,
+       1,
+       "drop_duplicates"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that tidies **Team** and prints the number of innings per team.",
+      "It should print the total runs of **Kolkata Comets**, but a row is missed. Fix it.",
+      "Change the program.",
+      "Read **scorecards.csv**, print the **players in repeated rows** as a list, then drop the repeats and print the rows left:"
+     ]
+    },
+    {
+     "id": "d1-3-5",
+     "num": "3.5",
+     "title": "Dates that are really dates",
+     "summary": "Dates in a CSV arrive as text, often in several styles. pd.to_datetime() turns them into real dates, with dayfirst=True for Indian day/month order and format=\"mixed\" when styles differ. Then .dt gives the month, the weekday and a tidy display.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Convert a text date column with pd.to_datetime().",
+      "Read day-first dates correctly with dayfirst=True.",
+      "Read several date styles at once with format=\"mixed\".",
+      "Take parts of a date with .dt.month, .dt.day_name() and .dt.strftime()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: one kind of date"
+      ],
+      [
+       0,
+       1,
+       "Day first"
+      ],
+      [
+       1,
+       0,
+       ".dt"
+      ],
+      [
+       1,
+       1,
+       "Dates compare and sort"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: read the dates day first, in mixed styles, and print how many innings fell on each weekday.",
+      "It should print the first date of the season, but crashes. Fix it.",
+      "Read **scorecards.csv**, turn **Date** into dates (day first, mixed styles) and print the span and the number of different match days:"
+     ]
+    },
+    {
+     "id": "d1-3-6",
+     "num": "3.6",
+     "title": "Build it: clean the season’s scorecards",
+     "summary": "A brief and hidden tests: the analysts want a clean scorecards file they can trust. Tidy the team names, turn Runs into numbers and drop the innings with none, read the dates, remove repeats, and save clean.csv with a short report.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan a cleaning in the right order.",
+      "Combine every fix from Module 3 in one program.",
+      "Save the cleaned table and report what changed."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The analysts’ request"
+      ],
+      [
+       0,
+       1,
+       "Order matters"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the cleaning in order.",
+      "Build it. From **scorecards.csv**: tidy **Team** (strip, title); convert **Runs** to numbers (unreadable as blank) and drop rows with no Run"
+     ]
+    },
+    {
+     "id": "d1-3-7",
+     "num": "3.7",
+     "title": "Cleaning you can trust",
+     "summary": "A cleaning you run every week belongs in a function: clean(df) takes the raw table and returns the clean one. assert lines check the result and stop loudly if something is wrong, and a log of rows removed at each step shows exactly what the cleaning did.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Put the cleaning steps in a function that returns the table.",
+      "Check the result with assert and a message.",
+      "Write checks with .all() and .any().",
+      "Log how many rows each step removed."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: clean(df), checked"
+      ],
+      [
+       0,
+       1,
+       "Forgetting return"
+      ],
+      [
+       1,
+       0,
+       "assert: stop if it’s wrong"
+      ],
+      [
+       1,
+       1,
+       "A log of what each step removed"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It should print the rows and teams left after cleaning, but crashes. Fix it.",
+      "Write **clean(df)**: tidy **Team**, convert **Runs** (unreadable as blank), drop rows with no Runs, drop repeats, and **return** the table. ",
+      "Read **scorecards.csv**, convert **Runs** (unreadable as blank), and print a cleaning log:"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title": "Group, pivot and join",
+   "free": false,
+   "summary": "Summaries answer the big questions: which team scored most, who is each team’s best batter, where do home teams win? groupby and agg total things up per group, pivot tables and crosstabs lay them out in a grid, and merge brings in columns from another table. It ends with the league’s points table, and Intermediate adds a value per row from its group and top N per group.",
+   "testInfo": "groupby with sum, mean and count, named agg and reset_index, pivot_table and crosstab, merge (how=\"left\") and concat",
+   "lessons": [
+    {
+     "id": "d1-4-1",
+     "num": "4.1",
+     "title": "groupby: totals per team",
+     "summary": "innings.csv has a row for every batter in every match: 72 rows. groupby(\"Team\") splits them into one pile per team, and [\"Runs\"].sum() adds up each pile, giving one total per team. The same works with mean, count, max and min, and with Player instead of Team.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Total a column per group with groupby(...)[col].sum().",
+      "Use mean, count, max and min per group.",
+      "Sort a grouped result and take the top.",
+      "Look up one group’s value by its label."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: every team’s season total"
+      ],
+      [
+       0,
+       1,
+       "Other summaries"
+      ],
+      [
+       1,
+       0,
+       "Sort and take the top"
+      ],
+      [
+       1,
+       1,
+       "Column names are exact"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints each team’s **total sixes**, most first.",
+      "It should print each team’s **average** runs per innings to 1 decimal place, but prints the totals. Fix it.",
+      "Change the program.",
+      "Read **innings.csv** and print each team’s total runs, highest first, one line each, like **Mumbai Mariners: 599**."
+     ]
+    },
+    {
+     "id": "d1-4-2",
+     "num": "4.2",
+     "title": "agg: several summaries at once",
+     "summary": "A team summary needs more than one number: runs, balls, innings, best score. agg() works out several at once, and named aggregation gives each result a clear column name. reset_index() turns the groups back into a column, ready to save, and grouping by two columns gives one row per team and player.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Work out several summaries with agg().",
+      "Name the results with named aggregation.",
+      "Turn the groups back into a column with reset_index().",
+      "Group by two columns at once."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a team summary table"
+      ],
+      [
+       0,
+       1,
+       "A list of summaries"
+      ],
+      [
+       1,
+       0,
+       "reset_index before saving"
+      ],
+      [
+       1,
+       1,
+       "Two columns"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: per team, the total runs and the number of innings, as named columns.",
+      "It should save **teams.csv** with a **Team** column and each team’s **Runs**, but the teams are missing. Fix it.",
+      "Read **innings.csv** and print a team table with **Runs** and **Balls** (totals) and **SR** (Runs ÷ Balls × 100, 1 decimal place), highest S"
+     ]
+    },
+    {
+     "id": "d1-4-3",
+     "num": "4.3",
+     "title": "Pivot tables",
+     "summary": "pivot_table() is Excel’s PivotTable in one line: rows from one column, columns from another, and a summary in each cell. fill_value=0 fills the empty combinations, and margins=True adds the totals row and column.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Build a pivot table with index, columns, values and aggfunc.",
+      "Fill empty cells with fill_value.",
+      "Add totals with margins=True.",
+      "Look up a cell with .loc[row, column]."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: runs by team and role"
+      ],
+      [
+       0,
+       1,
+       "Empty cells and totals"
+      ],
+      [
+       1,
+       0,
+       "mean, count and more than one value"
+      ],
+      [
+       1,
+       1,
+       "Blanks spoil whole numbers"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints how many **players** each team has in each **role**, with 0 for none.",
+      "It should print total runs by team and role as whole numbers, but crashes. Fix it.",
+      "Change the program.",
+      "Read **innings.csv** and use **pivot_table** to print each team’s total **Runs**, **Fours** and **Sixes**."
+     ]
+    },
+    {
+     "id": "d1-4-4",
+     "num": "4.4",
+     "title": "Crosstabs: counting combinations",
+     "summary": "pd.crosstab() counts how often each pair of values occurs: how many players of each role per team, or home wins and losses at each ground. margins=True adds totals and normalize= turns counts into shares.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Count combinations with pd.crosstab(rows, columns).",
+      "Use a condition as one side of a crosstab.",
+      "Add totals with margins=True.",
+      "Turn counts into shares with normalize=\"index\"."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: where do home teams win?"
+      ],
+      [
+       0,
+       1,
+       "Two columns of one table"
+      ],
+      [
+       1,
+       0,
+       "normalize"
+      ],
+      [
+       1,
+       1,
+       "It’s pd., not df."
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: count home wins at each venue, with totals.",
+      "It should count the players of each role per team, but crashes. Fix it.",
+      "Read **innings.csv** and print, for each team, the **percentage of its innings with 30 or more runs**, rounded to a whole number, like **Kol"
+     ]
+    },
+    {
+     "id": "d1-4-5",
+     "num": "4.5",
+     "title": "Joining tables: merge and concat",
+     "summary": "innings.csv says who scored, matches.csv says where, players.csv says each player’s role. merge() joins two tables on a shared column, like VLOOKUP for every row at once. how=\"left\" keeps rows with no match so you can find them, and concat() stacks tables with the same columns.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Join two tables on a shared column with merge(on=...).",
+      "Keep every row with how=\"left\" and find the unmatched ones.",
+      "Bring in only the columns you need.",
+      "Stack tables with pd.concat(ignore_index=True)."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: runs at each ground"
+      ],
+      [
+       0,
+       1,
+       "Like VLOOKUP"
+      ],
+      [
+       1,
+       0,
+       "Rows can vanish"
+      ],
+      [
+       1,
+       1,
+       "concat: stack tables"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that adds each player’s **Role** to the innings and prints the **total runs per role**.",
+      "The players file is out of date, so some innings have no Role. It should keep **every** innings and print the rows, then the innings with **",
+      "Change the program.",
+      "Read **innings.csv**, **matches.csv** and **venues.csv**. Add each innings’ **Venue** (from matches) and **City** (from venues), and print t"
+     ]
+    },
+    {
+     "id": "d1-4-6",
+     "num": "4.6",
+     "title": "Build it: the points table",
+     "summary": "A brief and hidden tests: the league wants its points table from the match results. Each match counts for two teams, so make one row per team per match with concat, group to count played and won, work out lost and points, sort, save points.csv and print it.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Reshape matches into one row per team per match with concat.",
+      "Summarise with groupby and named agg.",
+      "Sort with a tie-break, save and report."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The league’s table"
+      ],
+      [
+       0,
+       1,
+       "True adds up as 1"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the points table in order.",
+      "Build it. From **matches.csv** make one row per team per match (**Team**, **Won** True/False), stack them, and group by team: **Played** (co"
+     ]
+    },
+    {
+     "id": "d1-4-7",
+     "num": "4.7",
+     "title": "A value per row from its group",
+     "summary": "Some questions mix a row with its group: what share of the team’s runs did this player score, and who is each team’s best batter? transform() puts a group’s total on every row, rank() numbers rows within a group, and sort_values() then groupby().head(1) keeps the top of each group.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Put a group’s total on every row with transform().",
+      "Work out each row’s share of its group.",
+      "Rank within groups with groupby(...).rank().",
+      "Keep the top N per group with groupby(...).head(n)."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: each player’s share of the team"
+      ],
+      [
+       0,
+       1,
+       "sum() doesn’t line up"
+      ],
+      [
+       1,
+       0,
+       "rank within a group"
+      ],
+      [
+       1,
+       1,
+       "Top N per group"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It should add each team’s total runs to every player row and print the first three, but they’re all NaN. Fix it.",
+      "Read **innings.csv** and print each team’s **top scorer** of the season (most total runs), teams A to Z, like **Bengaluru Blasters: Siddhart",
+      "Read **innings.csv** and print, for every player, their **share of their team’s runs** as a percentage to 1 decimal place, highest first, as"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title": "Time and trends",
+   "free": false,
+   "summary": "A season is a story told in order. Read dates as dates, keep running totals, smooth the ups and downs with rolling averages, and measure the change from one match to the next. It ends with a form guide for every team, and Intermediate adds weekly summaries and winning streaks.",
+   "testInfo": "parse_dates and date filters, cumsum per group, rolling averages, diff, shift and pct_change, and looping over groups",
+   "lessons": [
+    {
+     "id": "d1-5-1",
+     "num": "5.1",
+     "title": "The season in date order",
+     "summary": "batting.csv has every innings with its date. parse_dates=[\"Date\"] reads the dates as dates straight away, so the season sorts in time order, filters by date range, and gives the gap between matches as a number of days.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Read a date column as dates with parse_dates.",
+      "Sort and filter by date.",
+      "Take parts of dates with .dt.",
+      "Measure the days between dates with diff() and .dt.days."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the season as a timeline"
+      ],
+      [
+       0,
+       1,
+       "Without parse_dates"
+      ],
+      [
+       1,
+       0,
+       "Filtering a date range"
+      ],
+      [
+       1,
+       1,
+       "Days between matches"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints the **total runs scored in April**.",
+      "It should print how many innings fell in each month, but crashes. Fix it.",
+      "Read **batting.csv** (dates as dates) and print the number of different match days and the longest gap between two of them in days:"
+     ]
+    },
+    {
+     "id": "d1-5-2",
+     "num": "5.2",
+     "title": "Running totals",
+     "summary": "A running total adds each match to everything before it: Mumbai’s runs after one match, two, three. cumsum() does it for a column, and groupby(\"Team\") first keeps each team’s total separate. cumcount() numbers each team’s matches, and you can loop over the groups to report on each team.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Make a running total with cumsum().",
+      "Keep running totals per group with groupby(...).cumsum().",
+      "Number rows within a group with cumcount().",
+      "Loop over the groups with for name, rows in df.groupby(...)."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: when did each team pass 300?"
+      ],
+      [
+       0,
+       1,
+       "One team: filter, copy, cumsum"
+      ],
+      [
+       1,
+       0,
+       "cumcount: match 1, 2, 3"
+      ],
+      [
+       1,
+       1,
+       "Looping over groups"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: each team’s running total and match number.",
+      "It should print each team’s running total, but the totals run across all teams. Fix it.",
+      "Read **batting.csv** and print the date each team’s running total **first reached 300 runs**, like **Kolkata Comets: 07 Apr**, in date order"
+     ]
+    },
+    {
+     "id": "d1-5-3",
+     "num": "5.3",
+     "title": "Rolling averages: form",
+     "summary": "One innings says little; the last three say a lot. rolling(3).mean() averages each value with the two before it, which is how commentators talk about form. min_periods sets how many values it needs before it gives an answer.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Average the last n values with rolling(n).mean().",
+      "Explain the NaN at the start of a rolling average.",
+      "Use min_periods to start sooner.",
+      "Compare current form with the season average."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: Aman Gill’s form"
+      ],
+      [
+       0,
+       1,
+       "Why NaN at the start?"
+      ],
+      [
+       1,
+       0,
+       "rolling() on its own"
+      ],
+      [
+       1,
+       1,
+       "Form against the season"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that adds **Form**, the average of **Aman Gill’s** last 3 innings to 1 decimal place, and prints **Date, Runs, Form**.",
+      "It should print Mumbai’s runs in each match and the **total of its last 2 matches**, but the Last 2 column is wrong. Fix it.",
+      "Read **batting.csv** and, for **Aman Gill**, print his form (average of the last 3 innings) and his season average, both to 1 decimal place,"
+     ]
+    },
+    {
+     "id": "d1-5-4",
+     "num": "5.4",
+     "title": "Change from match to match",
+     "summary": "How much better or worse than last time? diff() gives the change from the row before, shift() moves a column down one row so you can put last match next to this one, and pct_change() gives the change as a share. Per team, group first.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Measure the change from the previous row with diff().",
+      "Put the previous value beside the current one with shift().",
+      "Give the change as a percentage with pct_change().",
+      "Do all three per team with groupby."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: up or down since last match"
+      ],
+      [
+       0,
+       1,
+       "Per team"
+      ],
+      [
+       1,
+       0,
+       "pct_change"
+      ],
+      [
+       1,
+       1,
+       "Biggest rise and fall"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that adds **Change** per team (runs minus that team’s previous match) and prints **Date, Team, Runs, Change**.",
+      "Change the program.",
+      "Read **batting.csv** and, for every team, print its **biggest rise** in runs from one match to the next, like **Mumbai Mariners: +95**, team"
+     ]
+    },
+    {
+     "id": "d1-5-5",
+     "num": "5.5",
+     "title": "Build it: the form guide",
+     "summary": "A brief and hidden tests: a broadcaster wants a form guide. From the match results, make one row per team per match in date order, keep running points, mark each result W or L, save form.csv and print every team’s points and its last three results.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Reshape results into one row per team per match, in date order.",
+      "Keep running points per team with groupby cumsum.",
+      "Loop over the teams to report the latest form."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The broadcaster’s form guide"
+      ],
+      [
+       0,
+       1,
+       "Joining the last three"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the form guide in order.",
+      "Build it. From **matches.csv** (dates as dates) make one row per team per match (**Date, Team, Won**), stack them and sort by **Team then Da"
+     ]
+    },
+    {
+     "id": "d1-5-6",
+     "num": "5.6",
+     "title": "Weeks and streaks",
+     "summary": "Matches come on uneven days, so trends often read better week by week. resample(\"W\") adds up each calendar week from a date index, and pd.Grouper does the same inside a groupby. A streak is a run of the same result: compare each result with the one before and count.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Sum by week with set_index(\"Date\").resample(\"W\").",
+      "Group by team and week with pd.Grouper.",
+      "Find runs of the same value with shift and cumsum.",
+      "Report each team’s longest winning streak."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: runs per week, and the longest streaks"
+      ],
+      [
+       0,
+       1,
+       "Teams and weeks together"
+      ],
+      [
+       1,
+       0,
+       "A new block whenever the result changes"
+      ],
+      [
+       1,
+       1,
+       "Per team"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It should print the runs per week, but crashes. Fix it.",
+      "Read **batting.csv** and print the runs per **team per week** using **pd.Grouper** (weeks ending Sunday).",
+      "Read **matches.csv** (dates as dates). For each team, A to Z, print its **longest winning streak** in date order, like **Chennai Chargers: 2"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title": "The analysis report",
+   "free": false,
+   "summary": "Numbers only help when someone can act on them. Turn a vague question into a measure, compare fairly (rates, not just totals; enough balls; median as well as mean), lay tables out so they read well, and write the findings down. It ends with a season report saved as a text file, and Intermediate checks that the claims hold.",
+   "testInfo": "defining a measure, fair comparisons with rates, minimums and medians, readable tables, writing a report file, and checking totals",
+   "lessons": [
+    {
+     "id": "d1-6-1",
+     "num": "6.1",
+     "title": "From a question to a number",
+     "summary": "“Who’s the best batter?” has no answer until you say what best means: most runs, most per match, or fastest scoring. Each is a line of pandas, and they can name different players. A good analysis says which measure it used and why, and describe() shows the spread before you judge anyone.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Turn a vague question into a measure you can compute.",
+      "Compare the answers different measures give.",
+      "Read the spread of a column with describe().",
+      "State the measure alongside the answer."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: three honest answers"
+      ],
+      [
+       0,
+       1,
+       "Say which measure"
+      ],
+      [
+       1,
+       0,
+       "describe()"
+      ],
+      [
+       1,
+       1,
+       "Rank, then read the gaps"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints the **fastest scorer** among players with **at least 100 balls**, like **Fastest (100+ balls): Vikram Nair**.",
+      "It should print the player with the highest **SR**, but names the player with the most runs. Fix it.",
+      "Read **players.csv** and print three answers to “who’s the best batter?”, each with its number:"
+     ]
+    },
+    {
+     "id": "d1-6-2",
+     "num": "6.2",
+     "title": "Fair comparisons",
+     "summary": "Do teams score more at home? Compare like with like: averages per innings rather than totals, the median as well as the mean so one big innings doesn’t decide it, and the number of cases behind each figure. groupby on a True/False column splits the data in two.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Split data in two by grouping on a condition.",
+      "Compare averages, not totals, when group sizes differ.",
+      "Check the median as well as the mean.",
+      "Report how many cases each figure rests on."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: is there a home advantage?"
+      ],
+      [
+       0,
+       1,
+       "Totals mislead when sizes differ"
+      ],
+      [
+       1,
+       0,
+       "One big innings"
+      ],
+      [
+       1,
+       1,
+       "How sure can you be?"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that compares runs **at home** and **away**: mean, median and count, to 1 decimal place.",
+      "Change the program.",
+      "Read **batting.csv** and **matches.csv**, mark each innings at home or away, and print two lines like:"
+     ]
+    },
+    {
+     "id": "d1-6-3",
+     "num": "6.3",
+     "title": "Tables people can read",
+     "summary": "A table for a reader is chosen, not dumped: the few columns that matter, in a sensible order, with clear names, rounded numbers, ranked from 1, and no stray index. rename, round, to_string(index=False) and formatted text do most of it.",
+     "minutes": 30,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Choose and order the columns a reader needs.",
+      "Give columns clear names with rename.",
+      "Number the rows from 1 and hide the index.",
+      "Format numbers as text, like 45.8% or 1,200."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a top-five table worth printing"
+      ],
+      [
+       0,
+       1,
+       "Ranks from 1"
+      ],
+      [
+       1,
+       0,
+       "Formatting in f-strings"
+      ],
+      [
+       1,
+       1,
+       "A formatted column"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints the **top 3 wicket-takers** with **Rank** 1 to 3 as the index, and columns **Player** and **Wickets**.",
+      "It should print the top 3 players by SR, highest first, with SR shown to 1 decimal place, but the order is wrong. Fix it.",
+      "Read **players.csv** and print the **top 5 run-scorers** as a table without the index, with columns **Player**, **Team** and **Share**, wher"
+     ]
+    },
+    {
+     "id": "d1-6-4",
+     "num": "6.4",
+     "title": "Writing the findings",
+     "summary": "A finding is a sentence with a number in it: “Dev Malhotra scored most runs: 275 in 6 innings.” Build the sentences with f-strings, collect them in a list, and write them to a text file with a heading, so the report can be emailed, printed or pasted anywhere.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Write a finding as a sentence with its number.",
+      "Collect report lines in a list.",
+      "Put a table inside a report with to_string.",
+      "Save the report as a text file with open and write."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a short report file"
+      ],
+      [
+       0,
+       1,
+       "A table in the text"
+      ],
+      [
+       1,
+       0,
+       "Lead with the answer"
+      ],
+      [
+       1,
+       1,
+       "with open(...)"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It should save **report.txt** and print it, but crashes. Fix it.",
+      "Change the program.",
+      "Read **batting.csv** and save **report.txt** with these lines, then print it:"
+     ]
+    },
+    {
+     "id": "d1-6-5",
+     "num": "6.5",
+     "title": "Build it: the season report",
+     "summary": "A brief and hidden tests: the league wants a one-page season report. From batting.csv and matches.csv, put together the dates, the points table, the top three run-scorers, the fastest scorer over 100 balls and the best ground for batting, and save it as report.txt.",
+     "minutes": 50,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan a report as sections, each from its own calculation.",
+      "Reuse the points table, groupby, rates and formatting from the course.",
+      "Handle a section with no answer yet.",
+      "Save and print the finished report."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The league’s report"
+      ],
+      [
+       0,
+       1,
+       "A section with no answer"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the season report in order.",
+      "Build it. From **batting.csv** (dates as dates) and **matches.csv**, write **report.txt** and print it, laid out exactly like this for the e"
+     ]
+    },
+    {
+     "id": "d1-6-6",
+     "num": "6.6",
+     "title": "Checking your claims",
+     "summary": "Before a report goes out, check it two ways. Do the totals agree with each other (every match has one winner, team runs add up to all runs)? And does the headline survive a different, equally reasonable choice, like a 50-ball or 150-ball cut-off? A function with the choice as a parameter makes the second check one loop.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Check that totals agree with assert.",
+      "Put a judgement call, like a cut-off, into a parameter.",
+      "Test whether a finding changes when the cut-off does.",
+      "Say in the report how robust a finding is."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a report you’ve checked"
+      ],
+      [
+       0,
+       1,
+       "A choice in a parameter"
+      ],
+      [
+       1,
+       0,
+       "Try other cut-offs"
+      ],
+      [
+       1,
+       1,
+       "Hard-coded numbers"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It should print the fastest scorer at **50** and at **170** balls, but both answers are the same because of a hard-coded number. Fix it.",
+      "Read **batting.csv** and **matches.csv**. **assert** that every match in matches.csv appears in batting.csv and that team runs add up to all",
+      "Read **batting.csv**, write **fastest(bat, min_balls)** (the player with the highest SR among those with at least min_balls balls, or **nobo"
+     ]
+    }
+   ]
+  }
+ ]
+}

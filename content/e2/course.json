@@ -1,0 +1,1841 @@
+{
+ "id": "e2",
+ "code": "E2",
+ "title": "Python for Excel & Office Work",
+ "level": "For everyone · Sheetah Python",
+ "hours": 25,
+ "programme": "python",
+ "lang": "python",
+ "summary": "Made for Sheetah’s Excel learners. Let Python do the spreadsheet chores: read and write workbooks, filter, sort and total with pandas, clean messy sheets, build pivot-style summaries and format finished reports, ending with a one-click monthly report from a dozen messy sheets.",
+ "prereq": "PY1 · Python Foundations at Beginner (variables, if, loops, lists). Knowing Excel helps but isn’t required.",
+ "outcomes": [
+  "Open, read and write Excel workbooks from Python with openpyxl.",
+  "Read sheets into pandas DataFrames, then filter, sort, add columns and total them.",
+  "Write finished reports back to Excel, with several sheets and formatting.",
+  "Clean messy sheets: blanks, text numbers, dates and duplicates.",
+  "Build pivot-style summaries and lookups (groupby, pivot_table, merge).",
+  "Turn a month-end chore into a one-click report."
+ ],
+ "levels": [
+  {
+   "id": "B",
+   "name": "Beginner",
+   "hours": 10,
+   "who": "Excel users taking their first steps in automating it.",
+   "outcome": "Read and write workbooks, filter, sort and total with pandas, and save tidy reports."
+  },
+  {
+   "id": "I",
+   "name": "Intermediate",
+   "hours": 18,
+   "who": "Most office learners, and what the Business Analyst and Data Storyteller certificates expect.",
+   "outcome": "Format reports from Python, combine many sheets, change exactly the rows you mean, and build the monthly report from messy files."
+  },
+  {
+   "id": "M",
+   "name": "Master",
+   "hours": 25,
+   "who": "People who will own their team’s reporting.",
+   "outcome": "Make the report robust to any mess, fast on big files, and run with one click."
+  }
+ ],
+ "recommend": "B",
+ "pass": 70,
+ "upcoming": [],
+ "project": {
+  "title": "A one-click monthly report built from a dozen messy sheets",
+  "brief": "Twelve branch sheets in different states of mess become one clean, formatted report workbook. A checklist per level, hidden tests and three “explain your code” questions."
+ },
+ "exam": {
+  "questions": 30,
+  "tasks": 4,
+  "minutes": 75,
+  "pass": 70,
+  "attempts": 3,
+  "gapHours": 48,
+  "byLevel": {
+   "B": {
+    "questions": 25,
+    "tasks": 2,
+    "minutes": 50
+   },
+   "I": {
+    "questions": 30,
+    "tasks": 4,
+    "minutes": 75
+   },
+   "M": {
+    "questions": 30,
+    "tasks": 5,
+    "minutes": 90
+   }
+  }
+ },
+ "downloads": [],
+ "modules": [
+  {
+   "n": 1,
+   "title": "Workbooks from Python",
+   "free": true,
+   "summary": "Open an Excel workbook from Python, read its cells, go through its rows, write new cells and save. It ends with an attendance summary, and Intermediate adds formatting and many sheets at once.",
+   "testInfo": "opening workbooks, reading cells and rows, writing and saving, new sheets, formatting and many sheets",
+   "lessons": [
+    {
+     "id": "e2-1-1",
+     "num": "1.1",
+     "title": "Open a workbook and read cells",
+     "summary": "openpyxl opens an .xlsx file as a workbook. A workbook holds sheets, and a sheet holds cells you reach by their address, like ws[\"B2\"], or by row and column numbers.",
+     "minutes": 35,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Open a workbook with openpyxl.load_workbook().",
+      "Pick a sheet by its name and list the sheet names.",
+      "Read a cell’s value by address (ws[\"B2\"]) and by number (ws.cell(row=2, column=2)).",
+      "Find how many rows and columns a sheet uses."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: read a workbook without opening Excel"
+      ],
+      [
+       0,
+       1,
+       "Workbook, sheet, cell"
+      ],
+      [
+       0,
+       2,
+       "The cell, not what’s in it"
+      ],
+      [
+       1,
+       0,
+       "Cells by number"
+      ],
+      [
+       1,
+       1,
+       "How big is the sheet?"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints the name of the **last** item on the Stock sheet.",
+      "Fill the gaps: print how many items the sheet lists (every row but the header).",
+      "This should print the price of Pens, **10**. Fix it.",
+      "Change the program.",
+      "Open **stock.xlsx**, sheet **Stock**. Print how many items it lists and the name of the first one, like **6 items, first: Pens**."
+     ]
+    },
+    {
+     "id": "e2-1-2",
+     "num": "1.2",
+     "title": "Go through every row",
+     "summary": "ws.iter_rows(min_row=2, values_only=True) hands you each row below the header as a tuple of values. Unpack it into names, and the loops, totals and counters from PY1 work on a spreadsheet.",
+     "minutes": 40,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Loop over a sheet’s rows with iter_rows(min_row=2, values_only=True).",
+      "Unpack each row into named variables.",
+      "Add up a column and count rows that match.",
+      "Find the row with the biggest value."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the stock report in five lines"
+      ],
+      [
+       0,
+       1,
+       "What iter_rows gives"
+      ],
+      [
+       0,
+       2,
+       "Unpacking"
+      ],
+      [
+       1,
+       0,
+       "A running total"
+      ],
+      [
+       1,
+       1,
+       "The biggest, and counting"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Follow the loop over the first three items (a smaller sheet). Fill in the values after each line runs.",
+      "Arrange a program that counts the items with a quantity of 0 and prints **Out of stock: N**.",
+      "Fill the gaps: add up the quantities of every item and print the total.",
+      "This should print one total, **₹8340**, but prints a line for every row. Fix it.",
+      "Change the program.",
+      "Open **stock.xlsx** (sheet **Stock**). Print the item with the highest **value** (quantity × price) and its value, like **Notebooks: ₹3600**"
+     ]
+    },
+    {
+     "id": "e2-1-3",
+     "num": "1.3",
+     "title": "Write cells and save",
+     "summary": "Give a cell a value with ws[\"D1\"] = \"Total\" or ws.cell(row=r, column=c, value=v), then wb.save(\"new.xlsx\"). Formulas are written as text starting with =; Excel works them out when the file is opened.",
+     "minutes": 40,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Write values into cells by address and by number.",
+      "Add a new column worked out row by row.",
+      "Write an Excel formula into a cell, and know it isn’t calculated by Python.",
+      "Save the workbook, under a new name so the original is safe."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a Value column, added for you"
+      ],
+      [
+       0,
+       1,
+       "Two ways to write a cell"
+      ],
+      [
+       0,
+       2,
+       "Save under a new name"
+      ],
+      [
+       1,
+       0,
+       "Writing a formula"
+      ],
+      [
+       1,
+       1,
+       "Python doesn’t calculate formulas"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that writes **Checked** into cell **E1** and saves the workbook as **stock_checked.xlsx**.",
+      "Fill the gaps: put a 10% higher price in column D for every item, and save as **new_prices.xlsx**.",
+      "It should save **stock_value.xlsx** with a Value in D for **every** item, but the last item is left out. Fix it.",
+      "Change the program.",
+      "Open **marks.xlsx** (sheet **Marks**: Name, Maths, Science, English). Add a **Total** column (E) with each student’s total as a number, and "
+     ]
+    },
+    {
+     "id": "e2-1-4",
+     "num": "1.4",
+     "title": "New workbooks and sheets",
+     "summary": "openpyxl.Workbook() makes a new workbook with one sheet. Rename sheets with .title, add rows with ws.append([...]), add sheets with wb.create_sheet(\"Name\"), and save.",
+     "minutes": 35,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Create a new workbook and rename its first sheet.",
+      "Add whole rows with ws.append().",
+      "Add more sheets with create_sheet().",
+      "Build a summary sheet from data in another workbook."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a report file made from scratch"
+      ],
+      [
+       0,
+       1,
+       "append adds a row"
+      ],
+      [
+       1,
+       0,
+       "create_sheet"
+      ],
+      [
+       1,
+       1,
+       "Copying what you need into a new file"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Arrange a program that makes **team.xlsx** with a sheet called **Team** holding a header **Name, Role** and one row **Meera, Office**.",
+      "Fill the gaps: copy every item and its price (not the quantity) into a new workbook, sheet **Prices**, and save **prices.xlsx**.",
+      "It should save **summary.xlsx** with sheets **Data** and **Summary**, but it crashes. Fix it.",
+      "Change the program.",
+      "From **marks.xlsx** (sheet **Marks**), make **pass_list.xlsx** with a sheet **Passed** listing the **Name** and **Maths** mark of everyone w"
+     ]
+    },
+    {
+     "id": "e2-1-5",
+     "num": "1.5",
+     "title": "Build it: the attendance summary",
+     "summary": "A brief and hidden tests, with no step-by-step instructions: read a week’s attendance sheet, add a Summary sheet with each student’s days present and percentage, save it, and report how many are below 75%.",
+     "minutes": 45,
+     "free": true,
+     "level": "B",
+     "objectives": [
+      "Plan a program before writing it.",
+      "Combine reading rows, counting, and writing a new sheet.",
+      "Save the result as a new workbook."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Mr Kulkarni’s register"
+      ],
+      [
+       0,
+       1,
+       "Two helpful tricks"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the attendance summary in order.",
+      "Build it. **attendance.xlsx** has a sheet **Week 1**: a header (**Name** then one column per day) and one row per student, with **P** or **A"
+     ]
+    },
+    {
+     "id": "e2-1-6",
+     "num": "1.6",
+     "title": "Formatting from Python",
+     "summary": "Make a report look finished: bold headers with Font, coloured cells with PatternFill, number formats like \"#,##0.00\", column widths, and a frozen header row. Formatting is set cell by cell, so loops do the work.",
+     "minutes": 40,
+     "free": true,
+     "level": "I",
+     "objectives": [
+      "Make a header row bold with Font(bold=True).",
+      "Colour cells with PatternFill, based on their values.",
+      "Set number formats and column widths.",
+      "Freeze the header row with freeze_panes."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a report the boss can read"
+      ],
+      [
+       0,
+       1,
+       "Fonts and fills"
+      ],
+      [
+       0,
+       2,
+       "Number formats"
+      ],
+      [
+       1,
+       0,
+       "Widths and frozen rows"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Arrange a program that makes every cell in row 1 bold and saves **stock_bold.xlsx**.",
+      "It should colour the price cell yellow (FFEB9C) for every item costing more than 20, but it crashes. Fix it.",
+      "Change the program.",
+      "From **marks.xlsx** (sheet **Marks**), save **marks_marked.xlsx** where row 1 is bold, and every **Maths** mark below 40 has the fill **FFC7"
+     ]
+    },
+    {
+     "id": "e2-1-7",
+     "num": "1.7",
+     "title": "Many sheets at once",
+     "summary": "wb.worksheets is every sheet in order, so a loop can total each branch, or stack every sheet into one. The sheet’s name (ws.title) becomes a column, so nothing is lost when sheets are combined.",
+     "minutes": 40,
+     "free": true,
+     "level": "I",
+     "objectives": [
+      "Loop over every sheet with wb.worksheets.",
+      "Total each sheet separately.",
+      "Stack the rows of many sheets into one sheet, with the sheet name as a column.",
+      "Split one sheet into a sheet per group."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: one sheet from many"
+      ],
+      [
+       0,
+       1,
+       "A loop inside a loop"
+      ],
+      [
+       1,
+       0,
+       "One sheet per group"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Each branch total should start from zero. Fix it.",
+      "Change the program.",
+      "Stack every sheet of **branches.xlsx** into a new workbook **all_branches.xlsx** with one sheet **All**, header **Branch, Item, Qty, Amount*",
+      "Split **sales.xlsx** (sheet **Nov**: Order, Branch, Item, Qty, Price) into **by_branch.xlsx** with one sheet per branch, in the order the br"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title": "pandas, the spreadsheet in Python",
+   "free": false,
+   "summary": "A DataFrame is a whole sheet in one variable. Read Excel into it, pick columns, filter rows, add columns, sort, total, and write the result back to Excel. It ends with a monthly sales summary, and Intermediate adds .loc for changing exactly the rows you mean.",
+   "testInfo": "reading Excel into DataFrames, columns and filters, new columns and sorting, totals and counts, writing Excel, and .loc",
+   "lessons": [
+    {
+     "id": "e2-2-1",
+     "num": "2.1",
+     "title": "DataFrames: a sheet in one variable",
+     "summary": "pandas reads a whole sheet into a DataFrame with pd.read_excel(). The first row becomes the column names, and each row gets an index number starting at 0. head(), shape and columns tell you what you have.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Read a sheet into a DataFrame with pd.read_excel().",
+      "Look at it with print(), head() and tail().",
+      "Find its size with shape and len(), and its column names with columns.",
+      "Read a particular sheet with sheet_name=."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the month’s sales, read in one line"
+      ],
+      [
+       0,
+       1,
+       "The index is not the Excel row number"
+      ],
+      [
+       1,
+       0,
+       "shape, len and columns"
+      ],
+      [
+       1,
+       1,
+       "Which sheet?"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that reads the sheet **Nov** of sales.xlsx and prints how many orders it holds, like **10 orders**.",
+      "It should print the first 3 orders, but crashes. Fix it.",
+      "Read **sales.xlsx** and print the number of orders and the column names, like **10 orders: Order, Branch, Item, Qty, Price**."
+     ]
+    },
+    {
+     "id": "e2-2-2",
+     "num": "2.2",
+     "title": "Columns and filters",
+     "summary": "df[\"Qty\"] is one column; df[[\"Item\", \"Qty\"]] is a smaller table. df[df[\"Qty\"] > 50] keeps only the rows where the condition is True: pandas’ AutoFilter. Combine conditions with & and |, each in brackets.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Pick one column, or several, by name.",
+      "Filter rows with a condition, like AutoFilter.",
+      "Combine conditions with & (and) and | (or), in brackets.",
+      "Match one of several values with isin()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: “Pune orders over 30”, in one line"
+      ],
+      [
+       0,
+       1,
+       "One column, or a few"
+      ],
+      [
+       1,
+       0,
+       "Keep the rows where…"
+      ],
+      [
+       1,
+       1,
+       "And, or"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints the **Item** and **Qty** columns of the Nagpur orders only.",
+      "Fill the gaps: print the Pune orders of more than 20 items.",
+      "It should print the orders for Pens or Pencils, but crashes. Fix it.",
+      "Change the program.",
+      "Read **sales.xlsx**. Print the orders from **Pune** or **Nashik** whose price is **at least 25**, showing only **Order, Branch, Item**, then"
+     ]
+    },
+    {
+     "id": "e2-2-3",
+     "num": "2.3",
+     "title": "New columns and sorting",
+     "summary": "df[\"Amount\"] = df[\"Qty\"] * df[\"Price\"] works out a whole column at once, like filling a formula down. sort_values() sorts by a column, highest first with ascending=False, and head(n) keeps the top rows.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Add a column calculated from other columns.",
+      "Round a column, and change a column with a calculation.",
+      "Sort by one column, highest first or lowest first.",
+      "Keep the top n rows with head()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the top 3 orders by value"
+      ],
+      [
+       0,
+       1,
+       "Column maths"
+      ],
+      [
+       1,
+       0,
+       "sort_values"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints the **Order** and **Amount** of the 2 biggest orders by Amount.",
+      "It should print the 3 orders with the most items, biggest first. Fix it.",
+      "Change the program.",
+      "Read **sales.xlsx**, add **Amount** (Qty × Price), and print the **Item** and **Amount** of the cheapest 3 orders by Amount, lowest first."
+     ]
+    },
+    {
+     "id": "e2-2-4",
+     "num": "2.4",
+     "title": "Totals, averages and counts",
+     "summary": "A column has methods for the summaries you’d use SUM, AVERAGE, MAX and COUNTIF for: .sum(), .mean(), .max(), .min(), .count(). value_counts() counts each different value, and a filter first gives a SUMIF.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Total, average, find the biggest and smallest of a column.",
+      "Count the rows, and count each different value with value_counts().",
+      "Total only the rows that match: pandas’ SUMIF.",
+      "Print the results neatly with f-strings."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the month in four numbers"
+      ],
+      [
+       0,
+       1,
+       "SUMIF and COUNTIF"
+      ],
+      [
+       1,
+       0,
+       "value_counts"
+      ],
+      [
+       1,
+       1,
+       "Numbers that look odd"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: print the total Amount of the Nashik orders.",
+      "It should print the average order Amount to 2 decimals, like **Average: ₹966.00**. Fix it.",
+      "Change the program.",
+      "Read **sales.xlsx**, add **Amount**, and print, one per line: **Total: ₹X**, **Pune: ₹Y** (the Pune orders only), and **Big orders: N** (Amo"
+     ]
+    },
+    {
+     "id": "e2-2-5",
+     "num": "2.5",
+     "title": "Back to Excel",
+     "summary": "df.to_excel(\"out.xlsx\", index=False) writes a DataFrame as a sheet. Without index=False you get an extra column of row numbers. pd.ExcelWriter writes several DataFrames into one workbook, a sheet each.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Write a DataFrame to a new workbook with to_excel().",
+      "Leave out the index with index=False, and name the sheet.",
+      "Write several sheets into one workbook with pd.ExcelWriter."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a report file, made by pandas"
+      ],
+      [
+       0,
+       1,
+       "index=False"
+      ],
+      [
+       1,
+       0,
+       "ExcelWriter"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Arrange a program that writes the **Nagpur** orders to **nagpur.xlsx**, sheet **Nagpur**, without the index.",
+      "It should save **orders.xlsx** with the orders sorted by Qty, highest first, and **no index column**. Fix it.",
+      "Change the program.",
+      "From **marks.xlsx**, write **results.xlsx** with a sheet **Results**: the Name and a **Total** column (Maths + Science + English), sorted by"
+     ]
+    },
+    {
+     "id": "e2-2-6",
+     "num": "2.6",
+     "title": "Build it: the monthly sales summary",
+     "summary": "A brief and hidden tests: read a month of orders, add the Amount, write a two-sheet summary workbook sorted by Amount, and print the month’s headline numbers.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan a pandas program before writing it.",
+      "Combine new columns, sorting, filtering and summaries.",
+      "Write a multi-sheet workbook with ExcelWriter."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Meera’s month-end"
+      ],
+      [
+       0,
+       1,
+       "Two new tricks"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the monthly summary in order.",
+      "Build it. **sales.xlsx** has a sheet **Nov** with **Order, Branch, Item, Qty, Price**. Add **Amount** (Qty × Price), sort by Amount **highes"
+     ]
+    },
+    {
+     "id": "e2-2-7",
+     "num": "2.7",
+     "title": ".loc: change exactly the rows you mean",
+     "summary": "df.loc[rows, columns] picks rows and columns together, and can set them: df.loc[df[\"Qty\"] > 100, \"Band\"] = \"Bulk\". Changing a filtered copy instead (chained assignment) changes nothing in df, with a warning.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Read with df.loc[condition, \"Column\"].",
+      "Set values in the rows that match with .loc.",
+      "Build a category column with several .loc lines.",
+      "Recognise and fix chained assignment."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a Band column for every order"
+      ],
+      [
+       0,
+       1,
+       "Reading with .loc"
+      ],
+      [
+       1,
+       0,
+       "The change that goes nowhere"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Orders of 100 items or more get the bulk price of **₹4** an item. It should set their Price to 4 and print the prices, but nothing changes. ",
+      "Change the program.",
+      "Read **sales.xlsx**. Add **Amount**. Orders from **Nagpur** pay ₹100 delivery: add a **Delivery** column that is 100 for Nagpur rows and 0 o"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title": "Cleaning messy sheets",
+   "free": false,
+   "summary": "Real sheets arrive messy: blank cells, “ pune” and “PUNE”, numbers typed as text with ₹ signs, title rows above the header, the same order twice. Spot the mess, fix each kind in a line or two, and end by cleaning a whole branch report. Intermediate adds dates typed every which way.",
+   "testInfo": "spotting mess with dtypes and isna, blanks, tidying text, numbers stored as text, duplicates and title rows, and dates",
+   "lessons": [
+    {
+     "id": "e2-3-1",
+     "num": "3.1",
+     "title": "Spotting the mess",
+     "summary": "Before you clean a sheet, find out what’s wrong with it. dtypes says which columns pandas read as numbers and which as text; isna().sum() counts the blank cells in each column; unique() shows every spelling a column holds.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Read dtypes: int64 and float64 are numbers, object is text (or a mix).",
+      "Count blank cells per column with isna().sum().",
+      "See every different value with unique() and nunique().",
+      "Explain why a number column read as object can’t be added up."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: three lines that find the mess"
+      ],
+      [
+       0,
+       1,
+       "Reading dtypes"
+      ],
+      [
+       1,
+       0,
+       "Counting blanks"
+      ],
+      [
+       1,
+       1,
+       "Every spelling"
+      ],
+      [
+       1,
+       2,
+       "Why the totals fail"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "This file is different: what does it print?",
+      "Read **report.xlsx** and print each column’s number of blank cells, one line each, like **Qty: 1**.",
+      "Change the program.",
+      "A health check. Read **report.xlsx** and print three lines like:"
+     ]
+    },
+    {
+     "id": "e2-3-2",
+     "num": "3.2",
+     "title": "Blank cells",
+     "summary": "dropna() removes rows with blanks; subset= says which columns matter, so you don’t throw away good rows. fillna() puts a value in the blanks instead. Both give back a new table: keep it.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Drop the rows that have a blank in the columns that matter.",
+      "Fill blanks with a value, in one column or several.",
+      "Decide whether to drop or fill.",
+      "Keep the result of dropna and fillna."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: blanks dealt with, on purpose"
+      ],
+      [
+       0,
+       1,
+       "subset: the columns that matter"
+      ],
+      [
+       1,
+       0,
+       "fillna"
+      ],
+      [
+       1,
+       1,
+       "Keep the result"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It should put 0 in the blank Qty cells and print the Qty column as a list. Fix it.",
+      "Fill the gaps: drop the orders with no Item, then fill blank Qty cells with 0.",
+      "Change the program.",
+      "Read **report.xlsx**. Drop the orders with no **Item**, fill blank **Qty** and **Price** cells with 0, add **Amount** (Qty × Price), and pri"
+     ]
+    },
+    {
+     "id": "e2-3-3",
+     "num": "3.3",
+     "title": "Tidy text",
+     "summary": "A column’s .str gives you every text method from PY1, for every cell at once: .str.strip() removes stray spaces, .str.title() fixes capitals, and replace() fixes known misspellings. Filters and counts only work once the text is tidy.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Remove stray spaces with .str.strip().",
+      "Make capitals consistent with .str.title(), .str.upper() or .str.lower().",
+      "Fix known misspellings with replace({...}).",
+      "Filter on part of a text with .str.contains()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: three branches, not eight"
+      ],
+      [
+       0,
+       1,
+       "Why it matters"
+      ],
+      [
+       1,
+       0,
+       "Known misspellings"
+      ],
+      [
+       1,
+       1,
+       ".str.contains"
+      ],
+      [
+       1,
+       2,
+       "Through .str"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that tidies **Branch** (no stray spaces, Title Case) and prints how many orders each branch has.",
+      "It should tidy the **Item** names and print them as a list, but crashes. Fix it.",
+      "Fill the gaps: tidy Branch, then fix the misspelling Nasik.",
+      "Change the program.",
+      "Read **report.xlsx**. Tidy **Branch** (no stray spaces, Title Case), change **Nasik** to **Nashik**, and print one line per branch with its "
+     ]
+    },
+    {
+     "id": "e2-3-4",
+     "num": "3.4",
+     "title": "Numbers stored as text",
+     "summary": "pd.to_numeric() turns a column into numbers; errors=\"coerce\" makes anything it can’t read a blank instead of an error. Remove ₹ signs and thousands commas first with .astype(str).str.replace(), or they become blanks too.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Turn a text column into numbers with pd.to_numeric().",
+      "Make unreadable cells blank with errors=\"coerce\", and find them.",
+      "Remove ₹ and commas before converting.",
+      "Explain why .astype(str) comes before .str.replace()."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a Qty column you can add up"
+      ],
+      [
+       0,
+       1,
+       "errors=\"coerce\""
+      ],
+      [
+       1,
+       0,
+       "Clean the text first"
+      ],
+      [
+       1,
+       1,
+       "Why .astype(str)?"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It should turn **Qty** into numbers, with blanks for anything that can’t be read, and print the total. Fix it.",
+      "Fill the gaps: remove the ₹ signs from Price and turn it into numbers.",
+      "Change the program.",
+      "Read **report.xlsx**. Turn **Qty** (commas) and **Price** (₹ signs and commas) into numbers, with blanks for anything unreadable. Drop the r"
+     ]
+    },
+    {
+     "id": "e2-3-5",
+     "num": "3.5",
+     "title": "Title rows and duplicates",
+     "summary": "skiprows= skips the title rows above the real header. rename() changes column names. duplicated() finds rows that repeat an earlier row, and drop_duplicates() removes them; subset= compares only some columns.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Skip title rows above the header with skiprows=.",
+      "Rename columns with rename(columns={...}).",
+      "Count repeated rows with duplicated().sum().",
+      "Remove them with drop_duplicates(), using subset= when only some columns matter."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the export, read properly"
+      ],
+      [
+       0,
+       1,
+       "How many rows to skip?"
+      ],
+      [
+       1,
+       0,
+       "duplicated and drop_duplicates"
+      ],
+      [
+       1,
+       1,
+       "Look before you drop"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that reads the export from its real header, renames **Order No** to **Order**, removes the repeats and prints **N orders**",
+      "It should print the total **Qty**, but crashes. Fix it.",
+      "Change the program.",
+      "Read the export **report.xlsx** from its real header. Rename **Order No** to **Order**, remove the repeats, and write **tidy.xlsx** with a s"
+     ]
+    },
+    {
+     "id": "e2-3-6",
+     "num": "3.6",
+     "title": "Build it: clean the branch report",
+     "summary": "A brief and hidden tests: a branch report with every kind of mess at once. Read it from the real header, tidy the names, turn the numbers into numbers, remove repeats and unusable rows, and save a clean workbook with its total.",
+     "minutes": 50,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan a cleaning program: the order of the steps matters.",
+      "Combine skiprows, .str, to_numeric, drop_duplicates and dropna.",
+      "Report what was removed, so nobody is surprised by the total."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Meera’s worst report"
+      ],
+      [
+       0,
+       1,
+       "Order matters"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the cleaning program in order.",
+      "Build it. **report.xlsx** (sheet Nov) has two title rows, then **Order, Branch, Item, Qty, Price**. Tidy **Branch** and **Item** (no stray s"
+     ]
+    },
+    {
+     "id": "e2-3-7",
+     "num": "3.7",
+     "title": "Dates typed every which way",
+     "summary": "Dates typed as text arrive as object columns in every format: 03/11/2026, 2026-11-04, 7/11/2026. pd.to_datetime(…, dayfirst=True, format=\"mixed\") reads them all the Indian way, day first. Then .dt gives the day, month and weekday, and subtracting two dates gives the days between them.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Turn a column of typed dates into real dates with pd.to_datetime().",
+      "Read day-first dates correctly with dayfirst=True.",
+      "Use .dt.day, .dt.month, .dt.day_name() and .dt.strftime().",
+      "Find the days between two dates with subtraction and .dt.days."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: which deliveries were late"
+      ],
+      [
+       0,
+       1,
+       "Day first"
+      ],
+      [
+       1,
+       0,
+       ".dt"
+      ],
+      [
+       1,
+       1,
+       "Days between"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It should print the month of every order (they are all November, 11), but some come out wrong. Fix it.",
+      "Change the program.",
+      "Read **deliveries.xlsx** (dates day first). For each delivery that took **more than 3 days**, print a line like **Order 102 (Nashik): 6 days",
+      "Read **deliveries.xlsx**. Convert both dates, and write **deliveries_clean.xlsx**, sheet **Nov**, no index, with an extra **Weekday** column"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title": "Pivots and lookups",
+   "free": false,
+   "summary": "The Excel jobs people dread, in a line each: groupby for SUMIFS on every branch at once, agg for several summaries side by side, pivot_table for a real pivot, merge for XLOOKUP, and concat for stacking a dozen sheets into one. It ends with a branch scorecard against targets; Intermediate adds shares of the total and the top items per branch.",
+   "testInfo": "groupby, agg, pivot_table, merge (lookups), stacking sheets with concat, shares and top N per group",
+   "lessons": [
+    {
+     "id": "e2-4-1",
+     "num": "4.1",
+     "title": "groupby: a total for every branch",
+     "summary": "df.groupby(\"Branch\")[\"Amount\"].sum() is a SUMIF for every branch at once: one total per different value. Group by two columns for SUMIFS, sort the result, loop over it with .items(), and reset_index() before writing it to Excel.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Total, count or average a column for each group with groupby.",
+      "Group by two columns at once.",
+      "Sort a grouped result and loop over it with .items().",
+      "Turn the result back into a table with reset_index() before saving it."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: every branch’s total, in one line"
+      ],
+      [
+       0,
+       1,
+       "Using the result"
+      ],
+      [
+       1,
+       0,
+       "SUMIFS: two columns"
+      ],
+      [
+       1,
+       1,
+       "reset_index before saving"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints each branch’s total Amount, biggest first, like **Nagpur: ₹5,060**.",
+      "It should save **totals.xlsx** with a **Branch** and an **Amount** column. The branch names are missing. Fix it.",
+      "Change the program.",
+      "Read **sales.xlsx** and add **Amount**. Write **branch_totals.xlsx**, sheet **Totals**, no index, with columns **Branch** and **Amount**, bi"
+     ]
+    },
+    {
+     "id": "e2-4-2",
+     "num": "4.2",
+     "title": "Several summaries side by side",
+     "summary": "agg() makes several summaries per group in one table, each with its own name: Orders=(\"Order\", \"count\"), Total=(\"Amount\", \"sum\"). Add reset_index() and you have a summary sheet ready to save.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Make several named summaries per group with agg().",
+      "Choose count, sum, mean, max or min for each.",
+      "Round, sort and save the summary table."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: the branch summary sheet"
+      ],
+      [
+       0,
+       1,
+       "Pairs in round brackets"
+      ],
+      [
+       1,
+       0,
+       "Round, sort, save"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Fill the gaps: each branch’s number of orders and total Amount, as a table with a Branch column.",
+      "It should print each branch’s total Amount, but crashes. Fix it.",
+      "Change the program.",
+      "Read **sales.xlsx** and add **Amount**. Make an item summary with columns **Item**, **Orders** (count), **Qty** (sum) and **Total** (sum of "
+     ]
+    },
+    {
+     "id": "e2-4-3",
+     "num": "4.3",
+     "title": "Pivot tables",
+     "summary": "pd.pivot_table() builds Excel’s pivot: index= down the side, columns= across the top, values= in the middle, aggfunc= how to summarise. fill_value=0 fills the empty combinations and margins=True adds the totals row and column. Save it with its index: the side labels live there.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Build a pivot table with index, columns, values and aggfunc.",
+      "Fill empty combinations with fill_value=0.",
+      "Add totals with margins=True.",
+      "Read one cell with .loc and save the pivot with its labels."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: items down, branches across"
+      ],
+      [
+       0,
+       1,
+       "Empty cells and totals"
+      ],
+      [
+       1,
+       0,
+       "Keep the index"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prints a pivot of total **Qty** with **branches down the side** and **items across the top**, 0 where nothing was sol",
+      "It should save **pivot.xlsx** with the item names down column A. They’re missing. Fix it.",
+      "Change the program.",
+      "Read **sales.xlsx**. Make a pivot of the **number of orders** (count of Order) with **branches down** and **items across**, 0 where none, wi"
+     ]
+    },
+    {
+     "id": "e2-4-4",
+     "num": "4.4",
+     "title": "merge: XLOOKUP for whole tables",
+     "summary": "orders.merge(prices, on=\"Item\", how=\"left\") looks up every order’s item in the price list and brings back its columns, like an XLOOKUP filled down. how=\"left\" keeps orders that found no match, with blanks; without it they silently disappear.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Look up columns from another table with merge(on=...).",
+      "Keep unmatched rows with how=\"left\", and find them with isna().",
+      "Merge on columns with different names with left_on and right_on.",
+      "Explain why repeated keys in the lookup table multiply rows."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: every order priced from the price list"
+      ],
+      [
+       0,
+       1,
+       "No match"
+      ],
+      [
+       1,
+       0,
+       "Different column names"
+      ],
+      [
+       1,
+       1,
+       "Repeated keys"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that prices every order and prints **Order**, **Item** and **Amount** (Qty × Price), keeping orders with no price.",
+      "It should list **every** order with its Category, but one order is missing. Fix it.",
+      "Change the program.",
+      "Read **orders.xlsx** and **prices.xlsx**. Look up each order’s Category and Price (keep every order), add **Amount**, and print the total Am"
+     ]
+    },
+    {
+     "id": "e2-4-5",
+     "num": "4.5",
+     "title": "Stacking many sheets",
+     "summary": "sheet_name=None reads every sheet of a workbook into a dictionary: sheet name → DataFrame. Add a column saying where each came from, and pd.concat() stacks them into one table, however many sheets there are. ignore_index=True numbers the rows afresh.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Read every sheet at once with sheet_name=None.",
+      "Loop over the sheets and label each with its name.",
+      "Stack tables with pd.concat(..., ignore_index=True).",
+      "Stack the same sheet from several files."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: one table from every branch’s sheet"
+      ],
+      [
+       0,
+       1,
+       "Label, then stack"
+      ],
+      [
+       1,
+       0,
+       "Same sheet, many files"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that stacks every sheet of branches.xlsx with a **Branch** column and prints the table.",
+      "It should print the total Amount of **all** branches. It only counts one. Fix it.",
+      "Change the program.",
+      "Stack every sheet of **branches.xlsx** with a **Branch** column, and save the result as **all_branches.xlsx**, sheet **All**, no index. Prin"
+     ]
+    },
+    {
+     "id": "e2-4-6",
+     "num": "4.6",
+     "title": "Build it: the branch scorecard",
+     "summary": "A brief and hidden tests: stack every branch’s sheet, total each branch, look up its target, work out the percentage of target, and save a two-sheet scorecard with a pivot by item.",
+     "minutes": 50,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan a program that combines stacking, groupby, merge and pivot_table.",
+      "Work out a percentage from two columns.",
+      "Write a scorecard workbook with two sheets."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The monthly scorecard"
+      ],
+      [
+       0,
+       1,
+       "Two tables, two indexes"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the scorecard in order.",
+      "Build it. **branches.xlsx** has a sheet per branch (**Item, Qty, Amount**); **targets.xlsx** has **Branch, Target**. Stack the sheets with a"
+     ]
+    },
+    {
+     "id": "e2-4-7",
+     "num": "4.7",
+     "title": "Shares of the total and the top N",
+     "summary": "A share is a part divided by a total. transform(\"sum\") puts each group’s total on every row of the group, so each order can be compared with its own branch. Sort, then groupby(...).head(n), gives the top n rows in every group; nlargest gives the top n overall.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Work out each row’s share of the grand total.",
+      "Put each group’s total on its rows with transform(\"sum\").",
+      "Work out each group’s share of the total.",
+      "Keep the top n rows per group, and overall."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: who sold what share"
+      ],
+      [
+       0,
+       1,
+       "transform: the group total on every row"
+      ],
+      [
+       1,
+       0,
+       "Top n per group"
+      ],
+      [
+       1,
+       1,
+       "Each branch’s share of the month"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "It should print each order’s share of **its own branch**, but every share is blank. Fix it.",
+      "Change the program.",
+      "Read **sales.xlsx** and add **Amount**. Print each branch’s share of the month’s total, biggest first, to 1 decimal, like **Nagpur: 52.4%**.",
+      "Read **sales.xlsx** and add **Amount**. For each branch (A–Z), print its best-selling item by total Amount, like **Nagpur: Notebooks (₹2,700"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title": "Report-ready Excel",
+   "free": false,
+   "summary": "pandas works out the numbers; openpyxl makes the file look finished. Polish a pandas sheet, add totals rows with real formulas, colour rules that stay live in Excel, and charts, then build a finished monthly report. Intermediate adds one styling function for every sheet, auto-fit widths and percentages.",
+   "testInfo": "polishing pandas sheets with openpyxl, totals rows and formulas, colour rules, charts, and styling every sheet",
+   "lessons": [
+    {
+     "id": "e2-5-1",
+     "num": "5.1",
+     "title": "pandas writes, openpyxl polishes",
+     "summary": "pandas is quick at the numbers but saves plain sheets. Open the saved file with openpyxl’s load_workbook, then freeze the header, widen columns and give money its ₹ format, the Module 1 way, and save it again.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Reopen a sheet pandas saved, with load_workbook.",
+      "Freeze the header row and set column widths.",
+      "Give a whole column a number format, skipping the header.",
+      "Save again, so the changes reach the file."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a summary that looks finished"
+      ],
+      [
+       0,
+       1,
+       "A column, minus its header"
+      ],
+      [
+       1,
+       0,
+       "Save again"
+      ],
+      [
+       1,
+       1,
+       "A shortcut: ExcelWriter’s sheets"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange a program that freezes the header row of the Summary sheet, widens column A to 14 and saves **report.xlsx**.",
+      "It should save **report.xlsx** with the Amount column (C) in the **\"₹\"#,##0** format. The file comes out plain. Fix it.",
+      "Change the program.",
+      "Read **sales.xlsx**, add **Amount** (Qty × Price) and save every order to **orders.xlsx**, sheet **Orders**, no index. Then reopen it: freez"
+     ]
+    },
+    {
+     "id": "e2-5-2",
+     "num": "5.2",
+     "title": "Totals rows with real formulas",
+     "summary": "ws.append() adds a row under the table. Put formulas in it, like \"=SUM(C2:C4)\", and Excel keeps the total right even when someone edits a number later. Work out the last data row before appending, so the total never includes itself.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Add a row under a table with ws.append().",
+      "Write SUM and AVERAGE formulas with the right range, using an f-string.",
+      "Bold the totals row.",
+      "Avoid a total that includes its own cell."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a Total row that stays right"
+      ],
+      [
+       0,
+       1,
+       "Formulas are text to Python"
+      ],
+      [
+       1,
+       0,
+       "A circular total"
+      ],
+      [
+       1,
+       1,
+       "Other formulas"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: a bold Total row under the summary.",
+      "It should add a Total row for Amount, but Excel says the total is a circular reference. Fix it.",
+      "Change the program.",
+      "Read **sales.xlsx**, add **Amount**, and save every order to **orders.xlsx**, sheet **Orders**, no index. Reopen it and add a bold **Total**"
+     ]
+    },
+    {
+     "id": "e2-5-3",
+     "num": "5.3",
+     "title": "Colours that mean something",
+     "summary": "Colour the cells that need attention. A fill set in a loop colours them once, as they are now. A conditional formatting rule (CellIsRule) is Excel’s own “Highlight cells”: it stays in the file and recolours when the numbers change.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Colour cells once, in a loop, with PatternFill.",
+      "Add a live rule with conditional_formatting.add() and CellIsRule.",
+      "Choose the operator and the threshold.",
+      "Decide which of the two a report needs."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: weak branches turn red by themselves"
+      ],
+      [
+       0,
+       1,
+       "A loop colours once"
+      ],
+      [
+       1,
+       0,
+       "Which cells"
+      ],
+      [
+       1,
+       1,
+       "Several rules"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Arrange a program that adds a rule colouring Amount cells **below 2000** with **FFC7CE**, and saves report.xlsx.",
+      "It should add a rule colouring Amounts **below 2000** red (FFC7CE), but crashes. Fix it.",
+      "Change the program.",
+      "Read **sales.xlsx**, add **Amount**, and save the orders to **orders.xlsx**, sheet **Orders**, no index. Reopen it and add two rules: **Qty*"
+     ]
+    },
+    {
+     "id": "e2-5-4",
+     "num": "5.4",
+     "title": "Charts",
+     "summary": "openpyxl makes real Excel charts. A Reference says which cells hold the data and which hold the labels; add_data(…, titles_from_data=True) takes the series name from the header cell; add_chart() places the chart on the sheet. BarChart, LineChart and PieChart all work the same way.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Point a Reference at the data and at the labels.",
+      "Make a bar, line or pie chart with a title.",
+      "Include the header cell so the series is named.",
+      "Place the chart beside the table."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a chart beside the summary"
+      ],
+      [
+       0,
+       1,
+       "Why the header goes in"
+      ],
+      [
+       1,
+       0,
+       "Line and pie"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Arrange a program that adds a bar chart titled **Sales by branch** at **E2**, with the Amounts (column C, header included) as data and the b",
+      "The chart should have a bar for every branch and a series called **Amount**. One bar is missing. Fix it.",
+      "Change the program.",
+      "Read **sales.xlsx** and add **Amount**. Save the total Amount per **Item** to **items.xlsx**, sheet **Items** (columns Item, Amount; no inde"
+     ]
+    },
+    {
+     "id": "e2-5-5",
+     "num": "5.5",
+     "title": "Build it: the finished monthly report",
+     "summary": "A brief and hidden tests: turn a month of orders into a report workbook ready to send: a summary sheet with a totals row, ₹ formats, a red rule for weak branches and a bar chart, plus every order on a second sheet.",
+     "minutes": 55,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan a report: numbers with pandas, then looks with openpyxl.",
+      "Combine totals, formats, a colour rule and a chart on one sheet.",
+      "Keep the chart and the rule on the data rows, not the totals row."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "Meera’s report, finished"
+      ],
+      [
+       0,
+       1,
+       "Order matters, again"
+      ]
+     ],
+     "tasks": [
+      "Put the steps of the report in order.",
+      "Build it. Read sheet **Nov** of **sales.xlsx** and add **Amount** (Qty × Price). Make a summary per branch (**Branch, Orders, Amount**; Orde"
+     ]
+    },
+    {
+     "id": "e2-5-6",
+     "num": "5.6",
+     "title": "One style for every sheet",
+     "summary": "Put your formatting in a function, style(ws), and call it for every sheet: the same frozen header, money format and widths everywhere, written once. Auto-fit widths from the longest value in each column, and show shares with the 0.0% format, which expects 0.524, not 52.4.",
+     "minutes": 40,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Write a style(ws) function and call it for every sheet.",
+      "Set each column’s width from its longest value.",
+      "Pass which columns are money as an argument.",
+      "Use the percent format with fractions."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: every sheet styled by one function"
+      ],
+      [
+       0,
+       1,
+       "Auto-fit widths"
+      ],
+      [
+       1,
+       0,
+       "0.0% expects a fraction"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "It should add a **Share** column (C) to Branches showing each branch’s share as a percent, like **52.4%**. Excel shows 5240.0%. Fix it, and ",
+      "Change the program.",
+      "Read **sales.xlsx**, add **Amount**, and save **shares.xlsx**, sheet **Shares**, no index, with columns **Branch**, **Amount** and **Share**"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title": "The one-click report",
+   "free": false,
+   "summary": "Turn a month-end chore into one program you run with a click: read every workbook in a folder, take the month and target from a settings sheet, catch bad files and bad rows instead of crashing, split the work into functions, and build the full monthly report. Intermediate cleans the mess inside the pipeline and keeps a log.",
+   "testInfo": "folders of files, settings sheets, checks and try/except, functions for each step, and the one-click report",
+   "lessons": [
+    {
+     "id": "e2-6-1",
+     "num": "6.1",
+     "title": "A folder of files",
+     "summary": "Branches send one workbook each. pathlib’s Path(\"branches\").glob(\"*.xlsx\") finds every workbook in the folder, whatever they’re called and however many arrive. path.stem is the name without .xlsx, a ready-made label. Path(\"out\").mkdir(exist_ok=True) makes a folder for the results.",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "List the workbooks in a folder with Path(...).glob(\"*.xlsx\").",
+      "Use path.name and path.stem.",
+      "Read and stack every file in the folder.",
+      "Save results into a folder of their own."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: however many files arrive"
+      ],
+      [
+       0,
+       1,
+       "A path’s parts"
+      ],
+      [
+       1,
+       0,
+       "The pattern matters"
+      ],
+      [
+       1,
+       1,
+       "Saving into a folder"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Arrange a program that stacks every workbook in branches, with a **Branch** column from the file name in Title Case, and prints **N orders**",
+      "It should print how many rows each file has, but crashes. Fix it.",
+      "Change the program.",
+      "Stack every workbook in **branches** with a **Branch** column (file name, Title Case). Make a folder **out** and save the table as **out/all"
+     ]
+    },
+    {
+     "id": "e2-6-2",
+     "num": "6.2",
+     "title": "A settings sheet",
+     "summary": "Things that change every month, like the month, the target and the report’s name, don’t belong in the code. Keep them in a settings.xlsx anyone can edit, read it into a dictionary with dict(zip(...)), and use settings[\"Month\"] wherever the code used to say \"Nov\".",
+     "minutes": 35,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Read a two-column settings sheet into a dictionary.",
+      "Use settings for the folder, the sheet, a target and the output name.",
+      "Change what the program does without changing its code."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: December without touching the code"
+      ],
+      [
+       0,
+       1,
+       "zip pairs two columns"
+      ],
+      [
+       1,
+       0,
+       "Everywhere the code said \"Nov\""
+      ],
+      [
+       1,
+       1,
+       "Fixed values creep back"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "Fill the gaps: read the settings and print the month.",
+      "It should print each branch’s total for the month named in settings.xlsx. It worked in November; in December it crashes. Fix it.",
+      "Change the program.",
+      "Using **settings.xlsx**: read every workbook in the **Folder**, sheet **Month**, with a **Branch** column; add **Amount**. Save the branch t"
+     ]
+    },
+    {
+     "id": "e2-6-3",
+     "num": "6.3",
+     "title": "Checks that catch bad data",
+     "summary": "A program run by a click has to survive what arrives: a file that isn’t really a workbook, a sheet with a renamed column, a negative quantity. try/except keeps going past a file that can’t be opened; a check for the columns you need skips a file that can’t be used; a filter drops bad rows. Every problem goes into a list, so the report says what it left out.",
+     "minutes": 45,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Keep going past a file that can’t be opened, with try/except.",
+      "Check that a sheet has the columns you need.",
+      "Find and drop rows that make no sense.",
+      "Collect problems in a list and report them."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a run that finishes, and says what went wrong"
+      ],
+      [
+       0,
+       1,
+       "try and except"
+      ],
+      [
+       1,
+       0,
+       "The columns you need"
+      ],
+      [
+       1,
+       1,
+       "Rows that make no sense"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "What does this print?",
+      "Arrange the check for missing columns inside the loop: collect the missing ones, note a problem and skip the file.",
+      "It should print every file’s number of rows, skipping files that can’t be opened. It crashes. Fix it.",
+      "Change the program.",
+      "Read every workbook in **branches** with all three checks (can’t be opened, missing columns, rows with a blank/0/negative Qty: drop them). S"
+     ]
+    },
+    {
+     "id": "e2-6-4",
+     "num": "6.4",
+     "title": "A function for each step, and one click",
+     "summary": "Split the program into functions named after the steps: read_settings, read_branches, summarise, write the report, and a main() that calls them in order. Each one can be checked, fixed and reused on its own. Then run it on your own computer with one click.",
+     "minutes": 40,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Give each step of a report its own function that returns its result.",
+      "Call the steps in order from main().",
+      "Pass values in as parameters instead of reading globals.",
+      "Run the finished program on your own computer."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: a program that reads like a checklist"
+      ],
+      [
+       0,
+       1,
+       "return, not print"
+      ],
+      [
+       1,
+       0,
+       "On your own computer"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "It should save the report, but crashes. Fix it.",
+      "Change the program.",
+      "Write a function **below_target(summary, target)** that returns the list of branch names whose **Amount** is under target, A–Z. Use it with "
+     ]
+    },
+    {
+     "id": "e2-6-5",
+     "num": "6.5",
+     "title": "Build it: the one-click monthly report",
+     "summary": "A brief and hidden tests: everything in E2 so far, in one program. Settings say which month, folder, target and report; every branch file is read and checked; the report has a formatted Summary with a target rule, every order, and a Problems sheet.",
+     "minutes": 60,
+     "free": false,
+     "level": "B",
+     "objectives": [
+      "Plan a program as functions, one per step.",
+      "Combine folders, settings, checks, pandas summaries and openpyxl formatting.",
+      "Produce a report that says what it left out."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "The month-end, in one click"
+      ],
+      [
+       0,
+       1,
+       "A plan in functions"
+      ]
+     ],
+     "tasks": [
+      "Put main()’s steps in order.",
+      "Build it. Read **settings.xlsx** (Month, Folder, Target, Report). Read every workbook in **Folder**, sheet **Month**: skip files that can’t "
+     ]
+    },
+    {
+     "id": "e2-6-6",
+     "num": "6.6",
+     "title": "Cleaning inside the pipeline, with a log",
+     "summary": "Branches don’t only send bad files; they send messy ones. Put Module 3’s cleaning in a clean(df) function and run it on every file as it’s read. usecols= reads only the columns you need, which is quicker on big files. A Log sheet records, for each file, how many rows were read and kept.",
+     "minutes": 45,
+     "free": false,
+     "level": "I",
+     "objectives": [
+      "Write a clean(df) function from Module 3’s steps and apply it to every file.",
+      "Read only the columns you need with usecols=.",
+      "Keep a log of rows read and kept per file, as a list of dictionaries.",
+      "Turn the log into a sheet with pd.DataFrame(log)."
+     ],
+     "downloads": [],
+     "topics": [
+      [
+       0,
+       0,
+       "By the end: messy files in, a clean table and a log out"
+      ],
+      [
+       0,
+       1,
+       "usecols"
+      ],
+      [
+       1,
+       0,
+       "A list of dictionaries is a table"
+      ],
+      [
+       1,
+       1,
+       "Cleaning must return"
+      ]
+     ],
+     "tasks": [
+      "What does this print?",
+      "It should print how many usable orders nashik.xlsx has after cleaning (2). It prints 3. Fix it.",
+      "Change the program.",
+      "Write the pipeline. For every workbook in **branches**: read only **Order, Item, Qty, Price**, clean it (Item tidy; Qty and Price to numbers"
+     ]
+    }
+   ]
+  }
+ ]
+}
